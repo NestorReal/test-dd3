@@ -8,6 +8,10 @@ const GlobalStyles = createGlobalStyle`
     *{
         font-family: 'Inter', sans-serif;
     }
+
+    ol,ul,li {
+        list-style: none;
+    }
 `;
 // If needed, we can continue writing global styles inside string interpolation.
 

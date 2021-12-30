@@ -1,11 +1,7 @@
-import React from 'react';
-import StyledText from './styled';
+import styled from 'styled-components';
+import fontTypes from '../../../config/font';
 
-export interface ITextProps {
-  /**
-   * Recieves a ReactNode as children
-   */
-  children: React.ReactNode;
+interface StyledTextProps {
   /**
    * A string to define typography
    */
@@ -32,14 +28,9 @@ export interface ITextProps {
   uppercase?: boolean;
 }
 
-const Text = (props: ITextProps) => {
-  const { children, typography, uppercase = false } = props;
+const StyledText = styled.div<StyledTextProps>`
+  text-transform: ${(props) => (props.uppercase ? 'uppercase' : 'none')};
+  ${(props) => fontTypes[props.typography]};
+`;
 
-  return (
-    <StyledText uppercase={uppercase} typography={typography}>
-      {children}
-    </StyledText>
-  );
-};
-
-export default Text;
+export default StyledText;
