@@ -11,6 +11,9 @@ export const StyledUserMenu = styled.div<IStyledUserMenuProps>`
   background: ${(props) => props.theme.background.topmenu};
   opacity: ${(props) => (props.open ? 1 : 0)};
   transform: ${(props) => (props.open ? 'scale(1)' : 'scale(0)')};
+  position: absolute;
+  top: 0px;
+  right: 0px;
 `;
 
 export const MenuItem = styled(StyledText)`
@@ -19,7 +22,8 @@ export const MenuItem = styled(StyledText)`
   color: ${(props) => props.theme.text.topmenu.main};
   padding: ${space[4]};
   cursor: pointer;
-
+  text-align: center;
+  min-width: 90px;
   &:hover {
     background: ${(props) => props.theme.background.topmenuHovered};
   }

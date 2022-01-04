@@ -7,4 +7,6 @@ export const UserName = styled(StyledText)`
   margin-right: ${space[4]};
 `;
 
-export const MenuContainer = styled.div``;
+export const MenuContainer = styled.div`
+  position: relative;
+`;
