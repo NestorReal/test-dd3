@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StyledUserMenu, MenuItem } from './styled';
 import ShadowBox from '../../reusableStyledComponents/ShadowBox';
 
-interface IUserMenuProps {
+export interface IUserMenuProps {
   /**
    * Should be open?
    */

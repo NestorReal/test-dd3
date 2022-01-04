@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 
-interface IDropDownprops {
+export interface IDropDownprops {
   onClick: Function;
 }
 

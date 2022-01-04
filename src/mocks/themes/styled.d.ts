@@ -7,9 +7,12 @@ declare module 'styled-components' {
       dropdown: string;
     };
     background: {
-      topmenu: string;
-      topmenuHovered: string;
-      aside: string;
+      topmenu: { main: string; hovered: string };
+      aside: {
+        main: string;
+        secondary: string;
+        selected: string;
+      };
       filters: string;
       datacard: string;
       main: string;

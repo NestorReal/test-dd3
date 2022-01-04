@@ -1,9 +1,9 @@
 import React from 'react';
-import FlexContainer from '../../reusableStyledComponents/FlexContainer';
+import Container from '../../reusableStyledComponents/Container';
 import Logo from '../../atoms/Logo';
 import UserMenuDropDown from '../../molecules/UserMenuDropDown';
 
-interface ITopMenuProps {
+export interface ITopMenuProps {
   /**
    * User name which is logged in
    */
@@ -19,10 +19,10 @@ interface ITopMenuProps {
 }
 
 const TopMenu = ({ userName, urlLogo, onCloseSession }: ITopMenuProps) => (
-  <FlexContainer justifyContent="space-between" alignItems="center">
+  <Container display="flex" justifyContent="space-between" alignItems="center">
     <Logo url={urlLogo} />
     <UserMenuDropDown userName={userName} onCloseSession={onCloseSession} />
-  </FlexContainer>
+  </Container>
 );
 
 export default TopMenu;

@@ -1,7 +1,7 @@
 import React from 'react';
 import StyledLogo from './styled';
 
-interface ILogoProps {
+export interface ILogoProps {
   /**
    * A url string to point to an image file
    */
