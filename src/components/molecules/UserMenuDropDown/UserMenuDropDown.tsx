@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import UserMenu from '../../atoms/UserMenu';
 import DropDown from '../../icons/DropDown';
-import FlexContainer from '../../reusableStyledComponents/FlexContainer';
+import Container from '../../reusableStyledComponents/Container';
 import { UserName, MenuContainer } from './styled';
 
 interface IUserMenuDropDownProps {
@@ -22,12 +22,12 @@ const UserMenuDropDown = ({ onCloseSession, userName }: IUserMenuDropDownProps) 
   const toggleOpen = () => setOpen(!open);
   return (
     <div>
-      <FlexContainer alignItems="center" cursor="pointer">
+      <Container display="flex" alignItems="center" cursor="pointer">
         <UserName typography="paragraph2" onClick={() => toggleOpen()}>
           {userName}
         </UserName>
         <DropDown onClick={() => toggleOpen()} />
-      </FlexContainer>
+      </Container>
 
       <MenuContainer>
         <UserMenu open={open} onCloseSession={onCloseSession} />

@@ -4,9 +4,12 @@ export const mainTheme = {
     dropdown: '#969696',
   },
   background: {
-    topmenu: '#FFFFFF',
-    topmenuHovered: '#E8E8E8',
-    aside: '#5d2c55',
+    topmenu: { main: '#FFFFFF', hovered: '#E8E8E8' },
+    aside: {
+      main: '#5d2c55',
+      secondary: '#E8E8E8',
+      selected: '#ffffff',
+    },
     filters: '#8c4380',
     datacard: '#f7f7f7',
     main: '#F7F7F7',
@@ -52,9 +55,12 @@ export const anotherTheme = {
     dropdown: '#969696',
   },
   background: {
-    topmenu: '#FFFFFF',
-    topmenuHovered: '#E8E8E8',
-    aside: '#5d2c55',
+    topmenu: { main: '#FFFFFF', hovered: '#E8E8E8' },
+    aside: {
+      main: '#5d2c55',
+      secondary: '#E8E8E8',
+      selected: '#ffffff',
+    },
     filters: '#8c4380',
     datacard: '#f7f7f7',
     main: '#F7F7F7',

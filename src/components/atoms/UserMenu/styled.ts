@@ -8,7 +8,7 @@ interface IStyledUserMenuProps {
 
 export const StyledUserMenu = styled.div<IStyledUserMenuProps>`
   transition: opacity 0.15s ease, transform 0.25s ease;
-  background: ${(props) => props.theme.background.topmenu};
+  background: ${(props) => props.theme.background.topmenu.main};
   opacity: ${(props) => (props.open ? 1 : 0)};
   transform: ${(props) => (props.open ? 'scale(1)' : 'scale(0)')};
   position: absolute;
@@ -17,7 +17,7 @@ export const StyledUserMenu = styled.div<IStyledUserMenuProps>`
 `;
 
 export const MenuItem = styled(StyledText)`
-  background: ${(props) => props.theme.background.topmenu};
+  background: ${(props) => props.theme.background.topmenu.main};
   border-bottom: 1px solid ${(props) => props.theme.borders.usermenu};
   color: ${(props) => props.theme.text.topmenu.main};
   padding: ${space[4]};
@@ -25,6 +25,6 @@ export const MenuItem = styled(StyledText)`
   text-align: center;
   min-width: 90px;
   &:hover {
-    background: ${(props) => props.theme.background.topmenuHovered};
+    background: ${(props) => props.theme.background.topmenu.hovered};
   }
 `;
