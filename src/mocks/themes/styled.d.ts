@@ -3,14 +3,21 @@ import 'styled-components';
 declare module 'styled-components' {
   export interface DefaultTheme {
     name: string;
+    icons: {
+      dropdown: string;
+    };
     background: {
       topmenu: string;
+      topmenuHovered: string;
       aside: string;
       filters: string;
       datacard: string;
       main: string;
       secondary: string;
       scrolledbar: string;
+    };
+    borders: {
+      usermenu: string;
     };
     text: {
       section: {
