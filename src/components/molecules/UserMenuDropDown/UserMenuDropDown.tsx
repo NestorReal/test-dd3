@@ -4,7 +4,7 @@ import DropDown from '../../icons/DropDown';
 import Container from '../../reusableStyledComponents/Container';
 import { UserName, MenuContainer } from './styled';
 
-interface IUserMenuDropDownProps {
+export interface IUserMenuDropDownProps {
   /**
    * A function in charge of close Session
    */
