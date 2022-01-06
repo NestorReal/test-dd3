@@ -1,17 +1,18 @@
 import styled from 'styled-components';
-import StyledText from '../../reusableStyledComponents/StyledText';
 import spaces from '../../../config/spacing';
+import fontTypes from '../../../config/font';
 
 interface IItemProps {
   selected: boolean;
 }
 
-const Item = styled(StyledText)<IItemProps>`
+const Item = styled.li<IItemProps>`
 cursor: pointer;
 border-radius: 8px;
 color: ${(props) => (props.selected ? props.theme.text.aside.secondary : props.theme.text.aside.main)};
 background ${(props) => (props.selected ? props.theme.background.aside.selected : props.theme.background.aside.main)};
 padding: ${spaces[4]};
+${fontTypes.paragraph2}
 
 &:hover {
     color: ${(props) => props.theme.text.aside.secondary};

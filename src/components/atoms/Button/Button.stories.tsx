@@ -13,16 +13,16 @@ export default {
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
-export const Secondary = Template.bind({});
+export const SecondaryAndAsync = Template.bind({});
 
 Primary.args = {
   children: 'button',
   primary: true,
+  disabled: false,
 };
 
-Secondary.args = {
+SecondaryAndAsync.args = {
   children: 'button',
-  width: 60,
   borderRadius: 2,
   async: true,
   onClick: () => new Promise((resolve) => {
@@ -30,4 +30,6 @@ Secondary.args = {
       resolve('resolved');
     }, 2000);
   }),
+  primary: false,
+  disabled: false,
 };

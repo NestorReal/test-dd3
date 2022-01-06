@@ -15,9 +15,7 @@ export interface IAsideMenuItemProps {
 
 const AsideMenuItem = ({ selected, name }: IAsideMenuItemProps) => (
   <Container>
-    <Item typography="paragraph2" selected={selected} as="li">
-      {name}
-    </Item>
+    <Item selected={selected}>{name}</Item>
   </Container>
 );
 

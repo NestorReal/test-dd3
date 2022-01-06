@@ -1,32 +1,36 @@
 import styled from 'styled-components';
 import fontTypes from '../../../config/font';
+import space from '../../../config/spacing';
+import { buttonTypographies } from '../../../types/typography';
 
 interface IStyledButton {
   primary?: boolean;
-  onClick: Function;
-  height?: number;
-  width?: number;
   borderRadius?: number;
+  typography: buttonTypographies;
 }
 
 const StyledButton = styled.button<IStyledButton>`
-  height: ${(props) => (props.height)}px;
-  width: ${(props) => (props.width)}px;
-  border-radius: ${(props) => (props.borderRadius ? `${props.borderRadius}px` : '0px')};;
-  border: none;
-  background: ${(props) => (props.primary ? props.theme.background.button.primary : props.theme.background.button.secondary)};
+  width: 100%;
+  border-radius: ${(props) => (props.borderRadius ? `${props.borderRadius}px` : '0px')};
+  border: 2px solid ${(props) => props.theme.background.button.primary};
+  background: ${(props) => (props.primary
+    ? props.theme.background.button.primary
+    : props.theme.background.button.secondary)};
   text-align: center;
-  padding: 0px;
+  padding: ${space[3]};
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${(props) => (props.primary ? props.theme.background.button.secondary : props.theme.background.button.primary)};
-  ${fontTypes.paragraph3}
+  color: ${(props) => (props.primary
+    ? props.theme.background.button.secondary
+    : props.theme.background.button.primary)};
   opacity: ${(props) => (props.disabled ? 0.7 : 1)};
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
   &:hover {
     opacity: ${(props) => (props.disabled ? 0.7 : 0.9)};
   }
+  height: inherit;
+  ${(props) => fontTypes[`${props.typography}`]}
 `;
 
 export default StyledButton;

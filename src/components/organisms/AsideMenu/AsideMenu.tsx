@@ -17,9 +17,7 @@ export interface IAsideMenuProps {
 const AsideMenu = ({ location, title }: IAsideMenuProps) => (
   <MenuStyledContainer>
     <Container paddingLeft={6} paddingTop={6} paddingBottom={6}>
-      <MenuTitle typography="caps2Regular" uppercase>
-        {title}
-      </MenuTitle>
+      <MenuTitle>{title}</MenuTitle>
     </Container>
 
     <Container paddingLeft={4} paddingRight={4}>

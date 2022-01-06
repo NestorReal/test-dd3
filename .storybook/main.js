@@ -5,6 +5,7 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/preset-create-react-app',
     'storybook-addon-styled-component-theme/dist/preset',
+    'storybook-formik/register',
   ],
   framework: '@storybook/react',
   core: {

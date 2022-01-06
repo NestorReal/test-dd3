@@ -17,9 +17,7 @@ export interface IUserMenuProps {
 const UserMenu = ({ open, onCloseSession }: IUserMenuProps) => (
   <StyledUserMenu open={open}>
     <ShadowBox>
-      <MenuItem typography="paragraph3" onClick={() => onCloseSession()}>
-        Cerrar Sesión
-      </MenuItem>
+      <MenuItem onClick={() => onCloseSession()}>Cerrar Sesión</MenuItem>
     </ShadowBox>
   </StyledUserMenu>
 );
