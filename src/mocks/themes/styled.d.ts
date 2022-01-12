@@ -15,6 +15,10 @@ declare module 'styled-components' {
         secondary: string;
         selected: string;
       };
+      button: {
+        primary: '#5d2c55',
+        secondary: '#ffffff',
+      },
       filters: string;
       datacard: {
         main: string,
@@ -27,6 +31,7 @@ declare module 'styled-components' {
     };
     borders: {
       usermenu: string;
+      groupbutton: string;
     };
     text: {
       section: {

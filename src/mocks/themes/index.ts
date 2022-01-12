@@ -12,6 +12,10 @@ export const mainTheme = {
       secondary: '#E8E8E8',
       selected: '#ffffff',
     },
+    button: {
+      primary: '#5d2c55',
+      secondary: '#ffffff',
+    },
     filters: '#8c4380',
     datacard: {
       main: '#f7f7f7',
@@ -24,6 +28,7 @@ export const mainTheme = {
   },
   borders: {
     usermenu: '#E8E8E8',
+    groupbutton: '#e4e4e4',
   },
   text: {
     section: {
