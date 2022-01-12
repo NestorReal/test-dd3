@@ -2,6 +2,8 @@ export const mainTheme = {
   name: 'main',
   icons: {
     dropdown: '#969696',
+    arrowdownright: '#c1751d',
+    arrowupright: '#3b8bd5',
   },
   background: {
     topmenu: { main: '#FFFFFF', hovered: '#E8E8E8' },
@@ -11,7 +13,11 @@ export const mainTheme = {
       selected: '#ffffff',
     },
     filters: '#8c4380',
-    datacard: '#f7f7f7',
+    datacard: {
+      main: '#f7f7f7',
+      increment: '#e6f3ff',
+      decrement: '#ffd9ab',
+    },
     main: '#F7F7F7',
     secondary: '#FFFFFF',
     scrolledbar: '#8c4380',
@@ -39,8 +45,8 @@ export const mainTheme = {
     },
     datacard: {
       title: '#5d2c55',
-      increment: ' #3b8bd5',
-      decrement: ' #c1751d',
+      increment: '#3b8bd5',
+      decrement: '#c1751d',
       value: ' #003566',
     },
     scrolledbar: {
@@ -53,6 +59,8 @@ export const anotherTheme = {
   name: 'another',
   icons: {
     dropdown: '#969696',
+    arrowdownright: '#c1751d',
+    arrowupright: '#3b8bd5',
   },
   background: {
     topmenu: { main: '#FFFFFF', hovered: '#E8E8E8' },
@@ -62,7 +70,11 @@ export const anotherTheme = {
       selected: '#ffffff',
     },
     filters: '#8c4380',
-    datacard: '#f7f7f7',
+    datacard: {
+      main: '#f7f7f7',
+      increment: '#e6f3ff',
+      decrement: '#ffd9ab',
+    },
     main: '#F7F7F7',
     secondary: '#FFFFFF',
     scrolledbar: '#8c4380',

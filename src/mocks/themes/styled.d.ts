@@ -5,6 +5,8 @@ declare module 'styled-components' {
     name: string;
     icons: {
       dropdown: string;
+      arrowdownright: string,
+      arrowupright: string,
     };
     background: {
       topmenu: { main: string; hovered: string };
@@ -14,7 +16,11 @@ declare module 'styled-components' {
         selected: string;
       };
       filters: string;
-      datacard: string;
+      datacard: {
+        main: string,
+        increment: string,
+        decrement: string,
+      };
       main: string;
       secondary: string;
       scrolledbar: string;
