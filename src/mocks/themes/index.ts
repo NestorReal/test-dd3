@@ -28,7 +28,6 @@ export const mainTheme = {
   },
   borders: {
     usermenu: '#E8E8E8',
-    groupbutton: '#e4e4e4',
   },
   text: {
     section: {

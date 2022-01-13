@@ -1,5 +1,5 @@
 import React, { useState, ReactNode } from 'react';
-import ContainerButton from './styled';
+import StyledButton from './styled';
 import LoaderSpinner from '../LoaderSpinner';
 
 export interface IButton {
@@ -19,29 +19,64 @@ export interface IButton {
    * button function
    */
   onClick: Function;
+  /**
+   * disable button
+   */
+   disable?: boolean;
+   /**
+    * height button
+    */
+   height?: number;
+   /**
+    * width button
+    */
+   width?: number;
+   /**
+    * border radius button
+    */
+   borderRadius?: number;
+   /**
+    * type of button you need to use
+    */
+   type: 'button' | 'reset' | 'submit'
 }
 
 const Button = ({
-  children, primary, onClick, async,
+  children,
+  primary,
+  onClick,
+  async,
+  disable,
+  height = 28,
+  width = 60,
+  borderRadius,
+  type = 'button',
 }: IButton) => {
-  const [loader, setLoader] = useState(false);
-
+  const [state, setState] = useState({
+    loader: false,
+    disable,
+  });
+  const newHeight = height - 5;
   return (
-    <ContainerButton
-      type="button"
+    <StyledButton
+      type={type}
       primary={primary}
+      disabled={state.disable}
+      height={height}
+      width={width}
+      borderRadius={borderRadius}
       onClick={async ? async () => {
-        setLoader(true);
+        setState({ ...state, loader: true, disable: true });
         await onClick();
-        setLoader(false);
+        setState({ ...state, loader: false, disable: false });
       } : () => {
         onClick();
       }}
     >
-      {loader
-        ? <LoaderSpinner height={25} width={25} />
+      {state.loader
+        ? <LoaderSpinner primary={!primary} height={newHeight} width={newHeight} />
         : children}
-    </ContainerButton>
+    </StyledButton>
   );
 };
 

@@ -22,6 +22,8 @@ Primary.args = {
 
 Secondary.args = {
   children: 'button',
+  width: 60,
+  borderRadius: 2,
   async: true,
   onClick: () => new Promise((resolve) => {
     setTimeout(() => {
