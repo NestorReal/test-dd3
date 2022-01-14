@@ -15,6 +15,10 @@ declare module 'styled-components' {
         secondary: string;
         selected: string;
       };
+      button: {
+        primary: string,
+        secondary: string,
+      },
       filters: string;
       datacard: {
         main: string,

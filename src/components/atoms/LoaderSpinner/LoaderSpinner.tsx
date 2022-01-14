@@ -11,12 +11,22 @@ export interface ILoaderSpinnerProps {
    * A number to change height in px units.Its recommended width and height have same value.
    */
   height?: number;
+  /**
+   * primary or secondary color
+   */
+  primary?: boolean;
 }
 
-const LoaderSpinner = ({ width = 80, height = 80 }: ILoaderSpinnerProps) => {
+const LoaderSpinner = ({ width = 80, height = 80, primary = true }: ILoaderSpinnerProps) => {
   const themeContext = useContext(ThemeContext);
   return (
-    <Loader type="Puff" width={width} height={height} color={themeContext.background.aside.main} />
+    <Loader
+      type="Puff"
+      width={width}
+      height={height}
+      color={primary
+        ? themeContext.background.button.primary : themeContext.background.button.secondary}
+    />
   );
 };
 
