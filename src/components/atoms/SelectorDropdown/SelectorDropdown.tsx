@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  SelectorTitle, StyledSelector, IconContainer, MultiselectorContainer,
+  OverallSelectorContainer,
+  SelectorTitle,
+  StyledSelector,
+  IconContainer,
+  MultiselectorContainer,
 } from './styled';
 import DoubleArrow from '../../icons/DoubleArrow';
 import useCloseOnClickOutside from '../../../hooks/useCloseOnClickOutside';
@@ -18,21 +22,23 @@ interface ISelectorDropdownProps {
    * Title for the selector
    */
   selectorTitle: string;
+  open: boolean;
+  toggleOpen: React.MouseEventHandler<HTMLDivElement>;
+  close: Function;
 }
 
 const SelectorDropdown = ({
   selectionContent,
   dropDownContent,
   selectorTitle,
+  open,
+  toggleOpen,
+  close,
 }: ISelectorDropdownProps) => {
-  const [open, setOpen] = useState(false);
-
-  const toggleOpen = () => setOpen(!open);
-  const close = () => setOpen(false);
   const { ref } = useCloseOnClickOutside(open, close);
 
   return (
-    <>
+    <OverallSelectorContainer>
       <SelectorTitle>{selectorTitle}</SelectorTitle>
       <StyledSelector onMouseDown={toggleOpen}>
         {selectionContent}
@@ -45,7 +51,7 @@ const SelectorDropdown = ({
       <MultiselectorContainer ref={ref} open={open}>
         {dropDownContent}
       </MultiselectorContainer>
-    </>
+    </OverallSelectorContainer>
   );
 };
 

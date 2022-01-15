@@ -15,3 +15,11 @@ export interface OptionsGroup {
   name: string;
   options: GenericOption[];
 }
+
+export interface RangeOption {
+  lowDate: string;
+  upDate: string;
+  sideLabel: string;
+  label: string;
+  id: number;
+}

@@ -4,6 +4,9 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import SelectorDropdown from './SelectorDropdown';
 
+const SelectContent = () => <div>Select content</div>;
+const DropdownContent = () => <div>Dropdown coneten</div>;
+
 export default {
   title: 'Atoms/SelectorDropdown',
   component: SelectorDropdown,
@@ -13,10 +16,8 @@ const Template: ComponentStory<typeof SelectorDropdown> = (args) => <SelectorDro
 
 export const Primary = Template.bind({});
 
-const SelectionContent = () => <div>Here is selection content</div>;
-const DropDownContent = () => <div>Here is dropdown content</div>;
 Primary.args = {
-  selectionContent: <SelectionContent />,
-  dropDownContent: <DropDownContent />,
-  selectorTitle: 'Categorías',
+  selectionContent: <SelectContent />,
+  dropDownContent: <DropdownContent />,
+  selectorTitle: 'Title',
 };

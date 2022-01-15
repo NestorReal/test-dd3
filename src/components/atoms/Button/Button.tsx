@@ -31,9 +31,9 @@ export interface IButton {
    */
   borderRadius?: number;
   /**
-   * Type of button you need to use
+   * Type of button you need to use, default as button
    */
-  type: 'button' | 'reset' | 'submit';
+  type?: 'button' | 'reset' | 'submit';
   /**
    * A possible value taken from the DesignSystem values.
    */

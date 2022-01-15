@@ -3,9 +3,10 @@ import { Formik } from 'formik';
 import { v4 as uuidv4 } from 'uuid';
 import Pill from '../../atoms/Pill';
 import MultiselectorPicker, { MultiSelectFields } from '../MultiselectPicker';
-import SelectorDropdown from '../../atoms/SelectorDropdown';
 import { PillsContainer, IdividualPillContainer } from './styled';
 import { OptionsGroup } from '../../../types/filters';
+import SelectorDropdown from '../../atoms/SelectorDropdown';
+import useDropdownProps from '../../../hooks/useDropdownProps';
 
 interface ISelectorProps {
   /**
@@ -46,6 +47,7 @@ const PillsSelection = ({ shouldShowAllPill, selectionsToAdd }: IPillsSelection)
 );
 
 const Selector = ({ selectorTitle, optionGroups }: ISelectorProps) => {
+  const { open, toggleOpen, closeDropdown } = useDropdownProps();
   const onSubmit = (values: MultiSelectFields) => {
     const { filters } = values;
     const uniqueValues = [...new Set(filters)];
@@ -99,6 +101,9 @@ const Selector = ({ selectorTitle, optionGroups }: ISelectorProps) => {
 
           return (
             <SelectorDropdown
+              open={open}
+              close={closeDropdown}
+              toggleOpen={toggleOpen}
               selectorTitle={selectorTitle}
               selectionContent={(
                 <PillsSelection

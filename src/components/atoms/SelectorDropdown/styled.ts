@@ -7,6 +7,10 @@ interface IMultiselectorContainer {
   open: boolean;
 }
 
+export const OverallSelectorContainer = styled.div`
+  position: relative;
+`;
+
 export const StyledSelector = styled.div`
   border-radius: 10px;
   border: 2px solid ${(props) => props.theme.borders.selector};
