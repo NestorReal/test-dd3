@@ -10,6 +10,7 @@ export default {
   title: 'Molecules/FilterOptionsList',
   component: FilterOptionsList,
   decorators: [withFormik],
+  argTypes: { searchForEmptyString: { action: 'searchForEmptyString executed' } },
 } as ComponentMeta<typeof FilterOptionsList>;
 
 const Template: ComponentStory<typeof FilterOptionsList> = (args) => (
@@ -19,7 +20,7 @@ const Template: ComponentStory<typeof FilterOptionsList> = (args) => (
 export const Primary = Template.bind({});
 
 Primary.args = {
-  filtersName: 'categories',
+  filtersName: 'filters',
   name: 'Zona',
   options: [
     {
@@ -59,8 +60,6 @@ Primary.args = {
 
 Primary.parameters = {
   formik: {
-    initialValues: {
-      Zona: [],
-    },
+    initialValues: {},
   },
 };

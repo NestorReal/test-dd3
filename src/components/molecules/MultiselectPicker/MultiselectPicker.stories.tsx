@@ -20,7 +20,6 @@ export const Primary = Template.bind({});
 
 Primary.args = {
   filtersName: 'filters',
-  open: false,
   optionGroups: [
     {
       name: 'Zona',

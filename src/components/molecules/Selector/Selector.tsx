@@ -1,21 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik } from 'formik';
 import { v4 as uuidv4 } from 'uuid';
 import Pill from '../../atoms/Pill';
-import DoubleArrow from '../../icons/DoubleArrow';
 import MultiselectorPicker, { MultiSelectFields } from '../MultiselectPicker';
-import {
-  SelectorTitle,
-  StyledSelector,
-  IconContainer,
-  MultiselectorContainer,
-  PillsContainer,
-  IdividualPillContainer,
-} from './styled';
+import SelectorDropdown from '../../atoms/SelectorDropdown';
+import { PillsContainer, IdividualPillContainer } from './styled';
 import { OptionsGroup } from '../../../types/filters';
-import useCloseOnClickOutside from '../../../hooks/useCloseOnClickOutside';
 
 interface ISelectorProps {
+  /**
+   * Title for the selector
+   */
   selectorTitle: string;
   /**
    * All the groups of options to be rendered
@@ -23,13 +18,34 @@ interface ISelectorProps {
   optionGroups: OptionsGroup[];
 }
 
+interface IPillsSelection {
+  /**
+   * Decides if 'Todos' pill should appear
+   */
+  shouldShowAllPill: boolean;
+  /**
+   * A list of names, correspondant to selected checkboxes
+   */
+  selectionsToAdd: string[];
+}
+
+const PillsSelection = ({ shouldShowAllPill, selectionsToAdd }: IPillsSelection) => (
+  <PillsContainer>
+    {shouldShowAllPill && (
+      <IdividualPillContainer>
+        <Pill name="Todos" />
+      </IdividualPillContainer>
+    )}
+    {!shouldShowAllPill
+      && selectionsToAdd.map((selection) => (
+        <IdividualPillContainer key={uuidv4()}>
+          <Pill key={uuidv4()} name={selection} />
+        </IdividualPillContainer>
+      ))}
+  </PillsContainer>
+);
+
 const Selector = ({ selectorTitle, optionGroups }: ISelectorProps) => {
-  const [open, setOpen] = useState(false);
-
-  const toggleOpen = () => setOpen(!open);
-  const close = () => setOpen(false);
-  const { ref } = useCloseOnClickOutside(open, close);
-
   const onSubmit = (values: MultiSelectFields) => {
     const { filters } = values;
     const uniqueValues = [...new Set(filters)];
@@ -80,37 +96,20 @@ const Selector = ({ selectorTitle, optionGroups }: ISelectorProps) => {
           if (numberOfPossibleOptions === filters.length) {
             shouldShowAllPill = true;
           }
+
           return (
-            <>
-              <SelectorTitle>{selectorTitle}</SelectorTitle>
-              <StyledSelector onMouseDown={toggleOpen}>
-                <PillsContainer>
-                  {shouldShowAllPill && (
-                    <IdividualPillContainer>
-                      <Pill name="Todos" />
-                    </IdividualPillContainer>
-                  )}
-                  {!shouldShowAllPill
-                    && selectionsToAdd.map((selection) => (
-                      <IdividualPillContainer key={uuidv4()}>
-                        <Pill key={uuidv4()} name={selection} />
-                      </IdividualPillContainer>
-                    ))}
-                </PillsContainer>
-
-                <IconContainer>
-                  <DoubleArrow />
-                </IconContainer>
-              </StyledSelector>
-
-              <MultiselectorContainer ref={ref} open={open}>
-                <MultiselectorPicker
-                  open={open}
-                  filtersName="filters"
-                  optionGroups={optionGroups}
+            <SelectorDropdown
+              selectorTitle={selectorTitle}
+              selectionContent={(
+                <PillsSelection
+                  shouldShowAllPill={shouldShowAllPill}
+                  selectionsToAdd={selectionsToAdd}
                 />
-              </MultiselectorContainer>
-            </>
+              )}
+              dropDownContent={
+                <MultiselectorPicker filtersName="filters" optionGroups={optionGroups} />
+              }
+            />
           );
         }}
       </Formik>

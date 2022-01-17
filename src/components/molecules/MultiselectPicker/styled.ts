@@ -1,15 +1,7 @@
 import styled from 'styled-components';
 import space from '../../../config/spacing';
 
-interface IGroupsContainer {
-  open: boolean;
-}
-
-export const GroupsContainer = styled.div<IGroupsContainer>`
-  max-height: ${(props) => (props.open ? '400px' : 0)};
-  opacity: ${(props) => (props.open ? 1 : 0)};
-  transition: all 0.4s;
-`;
+export const GroupsContainer = styled.div``;
 
 export const GroupContainer = styled.div`
   margin-top: ${space[4]};

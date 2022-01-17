@@ -27,13 +27,12 @@ export interface IMultiselectPickerProps {
    */
   optionGroups: OptionsGroup[];
   /**
-   * Express if it apprears as open or not
+   * The name under the info of filters is going to accum in formik.
    */
-  open: boolean;
   filtersName: string;
 }
 
-const MultiselectPicker = ({ optionGroups, open, filtersName }: IMultiselectPickerProps) => {
+const MultiselectPicker = ({ optionGroups, filtersName }: IMultiselectPickerProps) => {
   const [groups, setGroups] = useState(optionGroups);
   const { values, setFieldValue, handleSubmit } = useFormikContext<MultiSelectFields>();
   const { filters, selectAll } = values;
@@ -54,6 +53,7 @@ const MultiselectPicker = ({ optionGroups, open, filtersName }: IMultiselectPick
       setFieldValue(filtersName, []);
     }
     setFieldValue('selectAll', !selectAll);
+    // this was added to improve usability, remove focus of current node
     if (e) e.target.blur();
   };
 
@@ -93,7 +93,7 @@ const MultiselectPicker = ({ optionGroups, open, filtersName }: IMultiselectPick
   }, [filters]);
 
   return (
-    <GroupsContainer open={open}>
+    <GroupsContainer>
       <OptionsContainer>
         <SelectAllContainer>
           <CustomCheckbox

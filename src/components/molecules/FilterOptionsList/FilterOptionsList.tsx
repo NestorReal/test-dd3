@@ -15,7 +15,15 @@ export interface IFilterOptionsListProps {
    * Options which belong to the name group
    */
   options: GenericOption[];
+  /**
+   * This is a function to execute on every onChange of checkboxes.
+   * Te intention is to clean the input in MultiselectPicker and return
+   * to show all possible options
+   */
   searchForEmptyString: Function;
+  /**
+   * This is the name where the info is going to accumm in formik.
+   */
   filtersName: string;
 }
 
@@ -29,6 +37,7 @@ const FilterOptionsList = ({
 
   const extraOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFieldValue('selectAll', false);
+    // this action is used to remove current focus, and make the component more usable
     e.target.blur();
   };
 
