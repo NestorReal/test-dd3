@@ -5,8 +5,9 @@ declare module 'styled-components' {
     name: string;
     icons: {
       dropdown: string;
-      arrowdownright: string,
-      arrowupright: string,
+      arrowdownright: string;
+      arrowupright: string;
+      clean: string;
     };
     background: {
       topmenu: { main: string; hovered: string };
@@ -21,16 +22,25 @@ declare module 'styled-components' {
       },
       filters: string;
       datacard: {
-        main: string,
-        increment: string,
-        decrement: string,
+        main: string;
+        increment: string;
+        decrement: string;
       };
+      pills: string;
       main: string;
       secondary: string;
       scrolledbar: string;
+      checkbox: string;
+      field: string;
+      selector: string;
     };
     borders: {
       usermenu: string;
+      field: {
+        main: string;
+        error: string;
+      };
+      selector: string;
     };
     text: {
       section: {
@@ -58,6 +68,13 @@ declare module 'styled-components' {
       };
       scrolledbar: {
         main: string;
+      };
+      field: {
+        main: string;
+        label: string;
+        required: string;
+        error: string;
+        placeholder: string;
       };
     };
   }

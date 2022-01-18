@@ -4,6 +4,7 @@ export const mainTheme = {
     dropdown: '#969696',
     arrowdownright: '#c1751d',
     arrowupright: '#3b8bd5',
+    clean: '#e8e8e8',
   },
   background: {
     topmenu: { main: '#FFFFFF', hovered: '#E8E8E8' },
@@ -22,12 +23,19 @@ export const mainTheme = {
       increment: '#e6f3ff',
       decrement: '#ffd9ab',
     },
+    pills: '#E8E8E8',
+
     main: '#F7F7F7',
     secondary: '#FFFFFF',
     scrolledbar: '#8c4380',
+    checkbox: '#0175FF',
+    field: '#FFFFFF',
+    selector: '#FFFFFF',
   },
   borders: {
     usermenu: '#E8E8E8',
+    field: { main: '#e8e8e8', error: '#e92b2b' },
+    selector: '#e8e8e8',
   },
   text: {
     section: {
@@ -56,6 +64,13 @@ export const mainTheme = {
     scrolledbar: {
       main: 'rgba(255, 255, 255, 0.7)',
     },
+    field: {
+      main: '#969696',
+      label: '#585757',
+      required: '#e92c2c',
+      error: '#e92b2b',
+      placeholder: '#e8e6e6',
+    },
   },
 };
 
@@ -65,6 +80,7 @@ export const anotherTheme = {
     dropdown: '#969696',
     arrowdownright: '#c1751d',
     arrowupright: '#3b8bd5',
+    clean: '#e8e8e8',
   },
   background: {
     topmenu: { main: '#FFFFFF', hovered: '#E8E8E8' },
@@ -79,12 +95,18 @@ export const anotherTheme = {
       increment: '#e6f3ff',
       decrement: '#ffd9ab',
     },
+    pills: '#E8E8E8',
     main: '#F7F7F7',
     secondary: '#FFFFFF',
     scrolledbar: '#8c4380',
+    checkbox: '#0175FF',
+    field: '#FFFFFF',
+    selector: '#FFFFFF',
   },
   borders: {
     usermenu: '#E8E8E8',
+    field: { main: '#e8e8e8', error: '#e92b2b' },
+    selector: '#e8e8e8',
   },
   text: {
     section: {
@@ -112,6 +134,13 @@ export const anotherTheme = {
     },
     scrolledbar: {
       main: 'rgba(255, 255, 255, 0.7)',
+    },
+    field: {
+      main: '#969696',
+      label: '#585757',
+      required: '#e92c2c',
+      error: '#e92b2b',
+      placeholder: '#e8e6e6',
     },
   },
 };

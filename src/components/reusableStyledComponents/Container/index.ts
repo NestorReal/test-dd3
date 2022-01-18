@@ -22,7 +22,13 @@ interface IContainerProps {
   paddingBottom?: Spaces;
   paddingLeft?: Spaces;
   padding?: Spaces;
+  marginTop?: Spaces;
+  marginRight?: Spaces;
+  marginBottom?: Spaces;
+  marginLeft?: Spaces;
   cursor?: 'pointer';
+  maxWidth?: string;
+  position?: 'absolute' | 'relative' | 'static';
 }
 
 const Container = styled.div<IContainerProps>`
@@ -35,7 +41,13 @@ const Container = styled.div<IContainerProps>`
   padding-bottom: ${(props) => (props.paddingBottom ? space[props.paddingBottom] : '')};
   padding-left: ${(props) => (props.paddingLeft ? space[props.paddingLeft] : '')};
   padding: ${(props) => (props.padding ? space[props.padding] : '')};
+  margin-top: ${(props) => (props.marginTop ? space[props.marginTop] : '')};
+  margin-right: ${(props) => (props.marginRight ? space[props.marginRight] : '')};
+  margin-bottom: ${(props) => (props.marginBottom ? space[props.marginBottom] : '')};
+  margin-left: ${(props) => (props.marginLeft ? space[props.marginLeft] : '')};
   cursor: ${(props) => (props.cursor ? props.cursor : '')};
+  max-width: ${(props) => (props.maxWidth ? props.maxWidth : '')};
+  position: ${(props) => (props.position ? props.position : 'static')};
 `;
 
 export default Container;
