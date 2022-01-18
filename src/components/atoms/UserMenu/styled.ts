@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import StyledText from '../../reusableStyledComponents/StyledText';
 import space from '../../../config/spacing';
+import fontTypes from '../../../config/font';
 
 interface IStyledUserMenuProps {
   open: boolean;
@@ -16,7 +16,7 @@ export const StyledUserMenu = styled.div<IStyledUserMenuProps>`
   right: 0px;
 `;
 
-export const MenuItem = styled(StyledText)`
+export const MenuItem = styled.div`
   background: ${(props) => props.theme.background.topmenu.main};
   border-bottom: 1px solid ${(props) => props.theme.borders.usermenu};
   color: ${(props) => props.theme.text.topmenu.main};
@@ -24,6 +24,7 @@ export const MenuItem = styled(StyledText)`
   cursor: pointer;
   text-align: center;
   min-width: 90px;
+  ${fontTypes.paragraph3}
   &:hover {
     background: ${(props) => props.theme.background.topmenu.hovered};
   }
