@@ -2,6 +2,9 @@ import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 
 export interface IDropDownprops {
+  /**
+   * A function to execute when icon is clicked
+   */
   onClick: Function;
 }
 

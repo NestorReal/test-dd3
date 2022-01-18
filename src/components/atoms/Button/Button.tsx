@@ -1,6 +1,9 @@
-import React, { useState, ReactNode } from 'react';
+import React, {
+  useState, ReactNode, useRef, useEffect,
+} from 'react';
 import StyledButton from './styled';
 import LoaderSpinner from '../LoaderSpinner';
+import { buttonTypographies } from '../../../types/typography';
 
 export interface IButton {
   /**
@@ -8,37 +11,33 @@ export interface IButton {
    */
   children: ReactNode;
   /**
-   * change the button color
+   * Should be true for primary colors, false for secondary.
    */
   primary?: boolean;
   /**
-   * if you need to have an async function
+   * Should be true if you want button shows a loader. Used for async functions.
    */
   async?: boolean;
   /**
-   * button function
+   * A function to execute on button Click, could be sync or async.
    */
   onClick: Function;
   /**
-   * disable button
+   * If true button shows as disabled
    */
-   disable?: boolean;
-   /**
-    * height button
-    */
-   height?: number;
-   /**
-    * width button
-    */
-   width?: number;
-   /**
-    * border radius button
-    */
-   borderRadius?: number;
-   /**
-    * type of button you need to use
-    */
-   type: 'button' | 'reset' | 'submit'
+  disabled?: boolean;
+  /**
+   * A value in px to determine border radius
+   */
+  borderRadius?: number;
+  /**
+   * Type of button you need to use
+   */
+  type: 'button' | 'reset' | 'submit';
+  /**
+   * A possible value taken from the DesignSystem values.
+   */
+  typography?: buttonTypographies;
 }
 
 const Button = ({
@@ -46,36 +45,49 @@ const Button = ({
   primary,
   onClick,
   async,
-  disable,
-  height = 28,
-  width = 60,
+  disabled,
   borderRadius,
+  typography = 'paragraph2',
   type = 'button',
 }: IButton) => {
   const [state, setState] = useState({
     loader: false,
-    disable,
+    disabled,
   });
-  const newHeight = height - 5;
+  const [loaderHeight, setLoaderHeight] = useState(0);
+  const ref = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (ref.current) {
+      setLoaderHeight(ref.current.clientHeight - 15);
+    }
+  }, [ref]);
+
   return (
     <StyledButton
+      ref={ref}
       type={type}
       primary={primary}
-      disabled={state.disable}
-      height={height}
-      width={width}
+      disabled={disabled || state.disabled}
       borderRadius={borderRadius}
-      onClick={async ? async () => {
-        setState({ ...state, loader: true, disable: true });
-        await onClick();
-        setState({ ...state, loader: false, disable: false });
-      } : () => {
-        onClick();
-      }}
+      typography={typography}
+      onClick={
+        async
+          ? async () => {
+            setState({ ...state, loader: true, disabled: true });
+            await onClick();
+            setState({ ...state, loader: false, disabled: false });
+          }
+          : () => {
+            onClick();
+          }
+      }
     >
-      {state.loader
-        ? <LoaderSpinner primary={!primary} height={newHeight} width={newHeight} />
-        : children}
+      {state.loader ? (
+        <LoaderSpinner primary={!primary} height={loaderHeight} width={loaderHeight} />
+      ) : (
+        children
+      )}
     </StyledButton>
   );
 };

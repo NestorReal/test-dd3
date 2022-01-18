@@ -23,9 +23,7 @@ const UserMenuDropDown = ({ onCloseSession, userName }: IUserMenuDropDownProps) 
   return (
     <div>
       <Container display="flex" alignItems="center" cursor="pointer">
-        <UserName typography="paragraph2" onClick={() => toggleOpen()}>
-          {userName}
-        </UserName>
+        <UserName onClick={() => toggleOpen()}>{userName}</UserName>
         <DropDown onClick={() => toggleOpen()} />
       </Container>
 
