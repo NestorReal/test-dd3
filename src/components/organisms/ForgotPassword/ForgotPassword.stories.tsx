@@ -12,7 +12,7 @@ const aBackendCall = (ms: number) => new Promise((resolve) => setTimeout(() => {
 }, ms));
 
 export default {
-  title: 'Molecules/ForgotPassword',
+  title: 'Organisms/ForgotPassword',
   component: ForgotPassword,
 } as ComponentMeta<typeof ForgotPassword>;
 

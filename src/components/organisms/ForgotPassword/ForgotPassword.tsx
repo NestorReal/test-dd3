@@ -6,10 +6,11 @@ import FormButton from '../../atoms/FormButton';
 import CustomLink from '../../atoms/CustomLink';
 import Logo from '../../atoms/Logo';
 import LyticaLogo from '../../../../static/images/logo.png';
-import { StyleForm, ContainerForm, FormButtonContainer } from './style';
+import {
+  StyleForm, ContainerForm, FormButtonContainer, Message,
+} from './style';
 import Container from '../../reusableStyledComponents/Container';
 import CustomField from '../../atoms/CustomField';
-import StyledText from '../../reusableStyledComponents/StyledText';
 
 const formValidation = Yup.object().shape({
   email: Yup.string().required('Este campo es requerido').email('Introduce un email válido'),
@@ -51,9 +52,7 @@ const ForgotPassword = ({ onSubmit, link }: IForgotPassword) => (
           </Container>
 
           <Container marginBottom={7}>
-            <StyledText typography="paragraph2">
-              Ingrese su correo electrónico para restablecer la contraseña
-            </StyledText>
+            <Message>Ingrese su correo electrónico para restablecer la contraseña</Message>
           </Container>
 
           <Form>

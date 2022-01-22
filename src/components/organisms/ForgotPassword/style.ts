@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Container from '../../reusableStyledComponents/Container';
+import fontTypes from '../../../config/font';
 
 export const StyleForm = styled.div`
   width: 483px;
@@ -19,4 +20,9 @@ export const ContainerForm = styled(Container)`
   background: ${(props) => props.theme.background.main};
   height: 100%;
   width: 100%;
+`;
+
+export const Message = styled.p`
+  color: ${(props) => props.theme.text.field.main};
+  ${fontTypes.paragraph2}
 `;
