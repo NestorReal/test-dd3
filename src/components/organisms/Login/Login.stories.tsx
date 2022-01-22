@@ -22,12 +22,12 @@ const data = {
 };
 
 // eslint-disable-next-line no-promise-executor-return
-const sleep = (ms) => new Promise((resolve) => setTimeout(() => {
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(() => {
   resolve(data);
 }, ms));
 
 export default {
-  title: 'Molecules/Login',
+  title: 'Organisms/Login',
   component: Login,
 } as ComponentMeta<typeof Login>;
 
