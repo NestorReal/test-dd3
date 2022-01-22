@@ -113,6 +113,7 @@ const CustomInput = ({
           id={name}
           typography={typography}
           isCleaneable={isCleaneable}
+          type={type}
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...field}
         />
