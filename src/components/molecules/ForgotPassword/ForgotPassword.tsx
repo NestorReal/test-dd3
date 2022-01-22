@@ -2,75 +2,85 @@
 import React from 'react';
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
-import Button from '../../atoms/Button';
+import FormButton from '../../atoms/FormButton';
+import CustomLink from '../../atoms/CustomLink';
 import Logo from '../../atoms/Logo';
 import LyticaLogo from '../../../../static/images/logo.png';
-import { StyleForm, ContainerForm } from './style';
+import { StyleForm, ContainerForm, FormButtonContainer } from './style';
 import Container from '../../reusableStyledComponents/Container';
 import CustomField from '../../atoms/CustomField';
 import StyledText from '../../reusableStyledComponents/StyledText';
 
 const formValidation = Yup.object().shape({
-  email: Yup.string()
-    .required('Este campo es requerido')
-    .email(),
+  email: Yup.string().required('Este campo es requerido').email('Introduce un email válido'),
 });
 
 interface IForgotPassword {
   /**
-   * add the function you need
+   * Fucntion to execute when for is submitted
    */
-  onSubmit: any;
+  onSubmit: Function;
+  /**
+   * A string to redirect on link click
+   */
+  link: string;
 }
 
-const ForgotPassword = ({ onSubmit }: IForgotPassword) => (
+const ForgotPassword = ({ onSubmit, link }: IForgotPassword) => (
   <ContainerForm display="flex" justifyContent="center" alignItems="center">
     <Formik
       initialValues={{
         email: '',
       }}
       validationSchema={formValidation}
-      onSubmit={onSubmit}
+      onSubmit={async (values) => {
+        try {
+          const result = await onSubmit(values);
+          // eslint-disable-next-line no-console
+          console.log('result', result);
+        } catch (error) {
+          // eslint-disable-next-line no-console
+          console.log(error);
+        }
+      }}
     >
-      {({ handleSubmit }) => (
+      {({ handleSubmit, isSubmitting }) => (
         <StyleForm>
           <Container display="flex" alignItems="center" justifyContent="center" marginBottom={8}>
             <Logo url={LyticaLogo} />
           </Container>
-          <div>
-            <StyledText typography="paragraph1">
+
+          <Container marginBottom={7}>
+            <StyledText typography="paragraph2">
               Ingrese su correo electrónico para restablecer la contraseña
             </StyledText>
-            <br />
-            <br />
-            <Form>
-              <CustomField
-                label="Correo electrónico"
-                name="email"
-                placeholder="Correo electrónico"
-                required
-                type="text"
-              />
-              <br />
-              <br />
-              <div className="containerButton">
-                <Button
-                  async
-                  borderRadius={6}
-                  type="submit"
-                  onClick={() => new Promise((resolve) => {
-                    setTimeout(() => {
-                      handleSubmit();
-                      resolve('resolved');
-                    }, 2000);
-                  })}
-                  primary
-                >
-                  Ingresar
-                </Button>
-              </div>
-            </Form>
-          </div>
+          </Container>
+
+          <Form>
+            <CustomField
+              label="Correo electrónico"
+              name="email"
+              placeholder="Correo electrónico"
+              required
+              type="text"
+            />
+
+            <FormButtonContainer>
+              <FormButton
+                borderRadius={6}
+                type="submit"
+                onClick={handleSubmit}
+                disabled={isSubmitting}
+                loading={isSubmitting}
+                primary
+              >
+                Restablecer contraseña
+              </FormButton>
+            </FormButtonContainer>
+            <Container marginTop={7} display="flex" alignItems="center" justifyContent="center">
+              <CustomLink to={link}>Regresar al login</CustomLink>
+            </Container>
+          </Form>
         </StyleForm>
       )}
     </Formik>
