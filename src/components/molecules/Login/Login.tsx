@@ -10,34 +10,41 @@ import Container from '../../reusableStyledComponents/Container';
 import CustomField from '../../atoms/CustomField';
 
 const formValidation = Yup.object().shape({
-  user: Yup.string()
-    .required('Este campo es requerido'),
-  pass: Yup.string()
-    .required('Este campo es requerido'),
+  username: Yup.string().required('Este campo es requerido'),
+  password: Yup.string().required('Este campo es requerido'),
 });
 
 interface ILogin {
   /**
    * add the function you need
    */
-  onSubmit: any;
+  onSubmit: Function;
   /**
    * link you want to go to
    */
-   link: string;
+  link: string;
 }
 
 const Login = ({ onSubmit, link }: ILogin) => (
   <ContainerForm display="flex" justifyContent="center" alignItems="center">
     <Formik
       initialValues={{
-        user: '',
-        pass: '',
+        username: '',
+        password: '',
       }}
       validationSchema={formValidation}
-      onSubmit={onSubmit}
+      onSubmit={async (values) => {
+        try {
+          const result = await onSubmit(values);
+          // eslint-disable-next-line no-console
+          console.log('result', result);
+        } catch (error) {
+          // eslint-disable-next-line no-console
+          console.log(error);
+        }
+      }}
     >
-      {({ handleSubmit }) => (
+      {({ handleSubmit, isSubmitting }) => (
         <StyleForm>
           <Container display="flex" alignItems="center" justifyContent="center" marginBottom={8}>
             <Logo url={LyticaLogo} />
@@ -46,7 +53,7 @@ const Login = ({ onSubmit, link }: ILogin) => (
             <Form>
               <CustomField
                 label="Usuario"
-                name="user"
+                name="username"
                 placeholder="Usuario"
                 required
                 type="text"
@@ -54,7 +61,7 @@ const Login = ({ onSubmit, link }: ILogin) => (
               <br />
               <CustomField
                 label="Contraseña"
-                name="pass"
+                name="password"
                 placeholder="Contraseña"
                 required
                 type="password"
@@ -66,12 +73,8 @@ const Login = ({ onSubmit, link }: ILogin) => (
                   async
                   borderRadius={6}
                   type="submit"
-                  onClick={() => new Promise((resolve) => {
-                    setTimeout(() => {
-                      handleSubmit();
-                      resolve('resolved');
-                    }, 2000);
-                  })}
+                  onClick={handleSubmit}
+                  disabled={isSubmitting}
                   primary
                 >
                   Ingresar
