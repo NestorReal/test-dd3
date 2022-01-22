@@ -3,9 +3,10 @@ import React from 'react';
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
 import FormButton from '../../atoms/FormButton';
+import CustomLink from '../../atoms/CustomLink';
 import Logo from '../../atoms/Logo';
 import LyticaLogo from '../../../../static/images/logo.png';
-import { StyleForm, ContainerForm } from './style';
+import { StyleForm, ContainerForm, FormButtonContainer } from './style';
 import Container from '../../reusableStyledComponents/Container';
 import CustomField from '../../atoms/CustomField';
 
@@ -16,11 +17,11 @@ const formValidation = Yup.object().shape({
 
 interface ILogin {
   /**
-   * add the function you need
+   * Function to execute when form is submitted
    */
   onSubmit: Function;
   /**
-   * link you want to go to
+   * A sring to redirect when clicks on link
    */
   link: string;
 }
@@ -49,39 +50,38 @@ const Login = ({ onSubmit, link }: ILogin) => (
           <Container display="flex" alignItems="center" justifyContent="center" marginBottom={8}>
             <Logo url={LyticaLogo} />
           </Container>
-          <div>
-            <Form>
-              <CustomField
-                label="Usuario"
-                name="username"
-                placeholder="Usuario"
-                required
-                type="text"
-              />
-              <br />
-              <CustomField
-                label="Contraseña"
-                name="password"
-                placeholder="Contraseña"
-                required
-                type="password"
-              />
-              <br />
-              <a href={link}>Olvidé mi contraseña</a>
-              <div className="containerButton">
-                <FormButton
-                  borderRadius={6}
-                  type="submit"
-                  onClick={handleSubmit}
-                  disabled={isSubmitting}
-                  loading={isSubmitting}
-                  primary
-                >
-                  Ingresar
-                </FormButton>
-              </div>
-            </Form>
-          </div>
+
+          <Form>
+            <CustomField
+              label="Usuario"
+              name="username"
+              placeholder="Usuario"
+              required
+              type="text"
+            />
+            <br />
+            <CustomField
+              label="Contraseña"
+              name="password"
+              placeholder="Contraseña"
+              required
+              type="password"
+            />
+            <br />
+            <CustomLink to={link}>Olvidé mi contraseña</CustomLink>
+            <FormButtonContainer>
+              <FormButton
+                borderRadius={6}
+                type="submit"
+                onClick={handleSubmit}
+                disabled={isSubmitting}
+                loading={isSubmitting}
+                primary
+              >
+                Ingresar
+              </FormButton>
+            </FormButtonContainer>
+          </Form>
         </StyleForm>
       )}
     </Formik>
