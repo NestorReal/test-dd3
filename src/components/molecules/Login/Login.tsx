@@ -2,7 +2,7 @@
 import React from 'react';
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
-import Button from '../../atoms/Button';
+import FormButton from '../../atoms/FormButton';
 import Logo from '../../atoms/Logo';
 import LyticaLogo from '../../../../static/images/logo.png';
 import { StyleForm, ContainerForm } from './style';
@@ -69,16 +69,16 @@ const Login = ({ onSubmit, link }: ILogin) => (
               <br />
               <a href={link}>Olvidé mi contraseña</a>
               <div className="containerButton">
-                <Button
-                  async
+                <FormButton
                   borderRadius={6}
                   type="submit"
                   onClick={handleSubmit}
                   disabled={isSubmitting}
+                  loading={isSubmitting}
                   primary
                 >
                   Ingresar
-                </Button>
+                </FormButton>
               </div>
             </Form>
           </div>
