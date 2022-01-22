@@ -6,32 +6,32 @@ import FormButton from '../../atoms/FormButton';
 import CustomLink from '../../atoms/CustomLink';
 import Logo from '../../atoms/Logo';
 import LyticaLogo from '../../../../static/images/logo.png';
-import { StyleForm, ContainerForm, FormButtonContainer } from './style';
+import {
+  StyleForm, ContainerForm, FormButtonContainer, Message,
+} from './style';
 import Container from '../../reusableStyledComponents/Container';
 import CustomField from '../../atoms/CustomField';
 
 const formValidation = Yup.object().shape({
-  username: Yup.string().required('Este campo es requerido'),
-  password: Yup.string().required('Este campo es requerido'),
+  email: Yup.string().required('Este campo es requerido').email('Introduce un email válido'),
 });
 
-interface ILogin {
+interface IForgotPassword {
   /**
-   * Function to execute when form is submitted
+   * Fucntion to execute when for is submitted
    */
   onSubmit: Function;
   /**
-   * A sring to redirect when clicks on link
+   * A string to redirect on link click
    */
   link: string;
 }
 
-const Login = ({ onSubmit, link }: ILogin) => (
+const ForgotPassword = ({ onSubmit, link }: IForgotPassword) => (
   <ContainerForm display="flex" justifyContent="center" alignItems="center">
     <Formik
       initialValues={{
-        username: '',
-        password: '',
+        email: '',
       }}
       validationSchema={formValidation}
       onSubmit={async (values) => {
@@ -51,24 +51,19 @@ const Login = ({ onSubmit, link }: ILogin) => (
             <Logo url={LyticaLogo} />
           </Container>
 
+          <Container marginBottom={7}>
+            <Message>Ingrese su correo electrónico para restablecer la contraseña</Message>
+          </Container>
+
           <Form>
             <CustomField
-              label="Usuario"
-              name="username"
-              placeholder="Usuario"
+              label="Correo electrónico"
+              name="email"
+              placeholder="Correo electrónico"
               required
               type="text"
             />
-            <br />
-            <CustomField
-              label="Contraseña"
-              name="password"
-              placeholder="Contraseña"
-              required
-              type="password"
-            />
-            <br />
-            <CustomLink to={link}>Olvidé mi contraseña</CustomLink>
+
             <FormButtonContainer>
               <FormButton
                 borderRadius={6}
@@ -78,9 +73,12 @@ const Login = ({ onSubmit, link }: ILogin) => (
                 loading={isSubmitting}
                 primary
               >
-                Ingresar
+                Restablecer contraseña
               </FormButton>
             </FormButtonContainer>
+            <Container marginTop={7} display="flex" alignItems="center" justifyContent="center">
+              <CustomLink to={link}>Regresar al login</CustomLink>
+            </Container>
           </Form>
         </StyleForm>
       )}
@@ -88,4 +86,4 @@ const Login = ({ onSubmit, link }: ILogin) => (
   </ContainerForm>
 );
 
-export default Login;
+export default ForgotPassword;
