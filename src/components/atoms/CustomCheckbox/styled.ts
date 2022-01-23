@@ -11,6 +11,7 @@ export const StyledCheckboxInput = styled.input.attrs((props) => ({
 export const Checkmark = styled.span`
   position: absolute;
   left: 0px;
+  top: 0px;
   height: 1em;
   width: 1em;
   border: 1px solid gray;
