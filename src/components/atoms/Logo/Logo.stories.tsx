@@ -3,7 +3,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import Logo from './Logo';
-import LyticaLogo from '../../../../static/images/logo.png';
+import LyticaLogo from '../../../static/images/logo.png';
 
 export default {
   title: 'Atoms/Logo',

@@ -1,22 +1,14 @@
 import React from 'react';
-import Container from '../../reusableStyledComponents/Container';
-import Item from './styled';
+import ItemLink from './styled';
 
 export interface IAsideMenuItemProps {
-  /**
-   * Should appear as an item selected?
-   */
-  selected: boolean;
   /**
    * What is the name of the item in the menu?
    */
   name: string;
+  to: string;
 }
 
-const AsideMenuItem = ({ selected, name }: IAsideMenuItemProps) => (
-  <Container>
-    <Item selected={selected}>{name}</Item>
-  </Container>
-);
+const AsideMenuItem = ({ name, to }: IAsideMenuItemProps) => <ItemLink to={to}>{name}</ItemLink>;
 
 export default AsideMenuItem;

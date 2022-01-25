@@ -1,26 +1,32 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 import spaces from '../../../config/spacing';
 import fontTypes from '../../../config/font';
 
-interface IItemProps {
-  selected: boolean;
-}
+export const ItemLink = styled(NavLink)`
+  padding: ${spaces[4]};
+  border-radius: 8px;
+  text-decoration: none;
+  display: block;
+  ${fontTypes.paragraph2}
 
-const Item = styled.li<IItemProps>`
-cursor: pointer;
-border-radius: 8px;
-color: ${(props) => (props.selected ? props.theme.text.aside.secondary : props.theme.text.aside.main)};
-background ${(props) => (props.selected ? props.theme.background.aside.selected : props.theme.background.aside.main)};
-padding: ${spaces[4]};
-${fontTypes.paragraph2}
+  color: ${(props) => props.theme.text.aside.main};
+  background: ${(props) => props.theme.background.aside.main};
 
-&:hover {
+  &[aria-current] {
     color: ${(props) => props.theme.text.aside.secondary};
-    background: ${(props) => (props.selected
-    ? props.theme.background.aside.selected
-    : props.theme.background.aside.secondary)};
-    opacity: ${(props) => (props.selected ? '1' : '0.7')}
-}
+    background: ${(props) => props.theme.background.aside.selected};
+  }
+
+  &:hover {
+    color: ${(props) => props.theme.text.aside.secondary};
+    background: ${(props) => props.theme.background.aside.secondary};
+    opacity: 0.7;
+    &[aria-current] {
+      background: ${(props) => props.theme.background.aside.selected};
+      opacity: 1;
+    }
+  }
 `;
 
-export default Item;
+export default ItemLink;

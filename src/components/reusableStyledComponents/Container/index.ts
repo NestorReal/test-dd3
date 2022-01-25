@@ -28,6 +28,7 @@ interface IContainerProps {
   marginLeft?: Spaces;
   cursor?: 'pointer';
   maxWidth?: string;
+  width?: string;
   position?: 'absolute' | 'relative' | 'static';
 }
 
@@ -47,6 +48,7 @@ const Container = styled.div<IContainerProps>`
   margin-left: ${(props) => (props.marginLeft ? space[props.marginLeft] : '')};
   cursor: ${(props) => (props.cursor ? props.cursor : '')};
   max-width: ${(props) => (props.maxWidth ? props.maxWidth : '')};
+  width: ${(props) => (props.width ? props.width : '')};
   position: ${(props) => (props.position ? props.position : 'static')};
 `;
 

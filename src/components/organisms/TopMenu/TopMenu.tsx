@@ -19,7 +19,7 @@ export interface ITopMenuProps {
 }
 
 const TopMenu = ({ userName, urlLogo, onCloseSession }: ITopMenuProps) => (
-  <Container display="flex" justifyContent="space-between" alignItems="center">
+  <Container display="flex" justifyContent="space-between" alignItems="center" width="100%">
     <Logo url={urlLogo} />
     <UserMenuDropDown userName={userName} onCloseSession={onCloseSession} />
   </Container>
