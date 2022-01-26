@@ -4,6 +4,7 @@ import { addDecorator } from '@storybook/react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { withThemesProvider } from 'storybook-addon-styled-component-theme';
 import { ThemeProvider } from 'styled-components';
+import { MemoryRouter } from 'react-router-dom';
 import GlobalStyles from '../src/config/global-styles';
 import { mainTheme, anotherTheme } from '../src/mocks/themes';
 
@@ -14,7 +15,9 @@ export const decorators = [
   (Story) => (
     <>
       <GlobalStyles />
-      <Story />
+      <MemoryRouter>
+        <Story />
+      </MemoryRouter>
     </>
   ),
 ];

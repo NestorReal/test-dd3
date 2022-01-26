@@ -14,6 +14,6 @@ const Template: ComponentStory<typeof AsideMenuItem> = (args) => <AsideMenuItem 
 export const Primary = Template.bind({});
 
 Primary.args = {
-  selected: false,
   name: 'Dashboard',
+  to: 'dashborad',
 };

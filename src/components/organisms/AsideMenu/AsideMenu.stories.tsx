@@ -7,12 +7,6 @@ import AsideMenu from './AsideMenu';
 export default {
   title: 'Organisms/AsideMenu',
   component: AsideMenu,
-  argTypes: {
-    location: {
-      options: ['dashboard', 'locations'],
-      control: { type: 'select' },
-    },
-  },
 } as ComponentMeta<typeof AsideMenu>;
 
 const Template: ComponentStory<typeof AsideMenu> = (args) => <AsideMenu {...args} />;

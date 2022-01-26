@@ -7,7 +7,7 @@ interface ICustomLinkProps {
 }
 
 const CustomLink = ({ children, to }: ICustomLinkProps) => (
-  <StyledLink href={to}>{children}</StyledLink>
+  <StyledLink to={to}>{children}</StyledLink>
 );
 
 export default CustomLink;

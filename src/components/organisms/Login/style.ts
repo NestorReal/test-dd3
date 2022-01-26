@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Container from '../../reusableStyledComponents/Container';
 
 export const StyleForm = styled.div`
   width: 600px;
@@ -21,9 +20,4 @@ export const FormButtonContainer = styled.div`
   width: 100%;
   height: 52px;
   margin-top: 32px;
-`;
-export const ContainerForm = styled(Container)`
-  background: ${(props) => props.theme.background.main};
-  height: 100%;
-  width: 100%;
 `;
