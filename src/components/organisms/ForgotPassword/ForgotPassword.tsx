@@ -38,7 +38,7 @@ const ForgotPassword = ({ onSubmit, link }: IForgotPassword) => (
         console.log('result', result);
       } catch (error) {
         // eslint-disable-next-line no-console
-        console.log(error);
+        console.log('error from formik', error);
       }
     }}
   >

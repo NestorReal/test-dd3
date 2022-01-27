@@ -1,5 +1,5 @@
-export type User = {
-  id: number;
+export interface User {
+  id: number | null;
   last_login: string;
   is_superuser: boolean;
   username: string;
@@ -9,15 +9,20 @@ export type User = {
   is_staff: boolean;
   is_active: boolean;
   date_joined: string;
-  role: string[];
-};
+  role: number[];
+}
 
-export type LoginArguments = {
+export interface LoginArguments {
   username: string;
   password: string;
-};
+}
 
-export type LoginResult = {
+export interface LoginResult {
   token: string;
   user: User;
-};
+}
+
+export interface LoginState extends LoginResult {
+  status: string;
+  error: string | null;
+}
