@@ -3,9 +3,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { LoginResult, LoginArguments, LoginState } from '../types/auth';
-import {
-  baseUrl, STATUS, GENERIC_ERROR_MESSAGE, EMPTY_USER,
-} from '../config/app/constants';
+import { baseUrl, STATUS, GENERIC_ERROR_MESSAGE, EMPTY_USER } from '../config/app/constants';
 
 const initialState: LoginState = {
   token: localStorage.getItem('token') || '',

@@ -1,6 +1,4 @@
-import {
-  startOfWeek, endOfWeek, subWeeks, isThisYear,
-} from 'date-fns';
+import { startOfWeek, endOfWeek, subWeeks, isThisYear } from 'date-fns';
 import {
   formatToISOWithoutTimeZone,
   formatToMonthAndDay,

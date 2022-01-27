@@ -9,9 +9,7 @@ interface HeaderProps {
   onLogout: () => void;
   onCreateAccount: () => void;
 }
-const Header = ({
-  user, onLogin, onLogout, onCreateAccount,
-}: HeaderProps) => (
+const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => (
   <header>
     <div className="wrapper">
       <div>

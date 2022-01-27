@@ -1,9 +1,7 @@
 import React, { useState, ReactNode } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Button from '../../atoms/Button';
-import {
-  StyledTabs, TitleTabs, ContainerTabs, ActionsTabs,
-} from './styled';
+import { StyledTabs, TitleTabs, ContainerTabs, ActionsTabs } from './styled';
 import Container from '../../reusableStyledComponents/Container';
 
 export interface ITabs {
@@ -17,7 +15,7 @@ export interface ITabs {
   nameButtons?: string[];
   /**
    * separate content into sections
-  */
+   */
   children: ReactNode;
 }
 
@@ -33,22 +31,20 @@ const Tabs = ({ title, nameButtons, children }: ITabs) => {
         <ActionsTabs>
           {nameButtons
             ? nameButtons.map<ReactNode>((item, index) => (
-              <Button
-                key={uuidv4()}
-                primary={index === state}
-                onClick={() => setState(index)}
-                type="button"
-                typography="paragraph3"
-              >
-                {item}
-              </Button>
-            ))
+                <Button
+                  key={uuidv4()}
+                  primary={index === state}
+                  onClick={() => setState(index)}
+                  type="button"
+                  typography="paragraph3"
+                >
+                  {item}
+                </Button>
+              ))
             : null}
         </ActionsTabs>
       </Container>
-      <ContainerTabs child={state + 1}>
-        {children}
-      </ContainerTabs>
+      <ContainerTabs child={state + 1}>{children}</ContainerTabs>
     </StyledTabs>
   );
 };

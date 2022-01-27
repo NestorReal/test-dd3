@@ -13,17 +13,19 @@ const StyledButton = styled.button<IStyledButton>`
   width: 100%;
   border-radius: ${(props) => (props.borderRadius ? `${props.borderRadius}px` : '0px')};
   border: 2px solid ${(props) => props.theme.background.button.primary};
-  background: ${(props) => (props.primary
-    ? props.theme.background.button.primary
-    : props.theme.background.button.secondary)};
+  background: ${(props) =>
+    props.primary
+      ? props.theme.background.button.primary
+      : props.theme.background.button.secondary};
   text-align: center;
   padding: ${space[3]};
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${(props) => (props.primary
-    ? props.theme.background.button.secondary
-    : props.theme.background.button.primary)};
+  color: ${(props) =>
+    props.primary
+      ? props.theme.background.button.secondary
+      : props.theme.background.button.primary};
   opacity: ${(props) => (props.disabled ? 0.7 : 1)};
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
   &:hover {

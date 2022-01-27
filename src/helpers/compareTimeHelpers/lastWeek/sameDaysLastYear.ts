@@ -1,6 +1,4 @@
-import {
-  startOfWeek, endOfWeek, subWeeks, subYears,
-} from 'date-fns';
+import { startOfWeek, endOfWeek, subWeeks, subYears } from 'date-fns';
 import { formatToISOWithoutTimeZone, formatToMonthAndDayAndYear } from '../../formatDateHelpers';
 
 // eslint-disable-next-line import/prefer-default-export

@@ -50,8 +50,8 @@ const FilterOptionsList = ({
       <Container>
         <ListTitle>{name}</ListTitle>
         <ListContainer>
-          {options.length > 0
-            && options.map(({ name: label, id }) => (
+          {options.length > 0 &&
+            options.map(({ name: label, id }) => (
               <ItemContainer key={uuidv4()}>
                 <CustomCheckbox
                   label={label}

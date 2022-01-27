@@ -25,11 +25,12 @@ SecondaryAndAsync.args = {
   children: 'button',
   borderRadius: 2,
   async: true,
-  onClick: () => new Promise((resolve) => {
-    setTimeout(() => {
-      resolve('resolved');
-    }, 2000);
-  }),
+  onClick: () =>
+    new Promise((resolve) => {
+      setTimeout(() => {
+        resolve('resolved');
+      }, 2000);
+    }),
   primary: false,
   disabled: false,
 };

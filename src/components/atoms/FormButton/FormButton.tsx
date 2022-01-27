@@ -1,6 +1,4 @@
-import React, {
-  useState, ReactNode, useRef, useEffect,
-} from 'react';
+import React, { useState, ReactNode, useRef, useEffect } from 'react';
 import StyledFormButton from './styled';
 import LoaderSpinner from '../LoaderSpinner';
 import { buttonTypographies } from '../../../types/typography';
