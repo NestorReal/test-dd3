@@ -31,9 +31,7 @@ const RangeDateSelector = ({
   const [oneDate, rangeOfDates] = conformRanges.custom;
   const [selectedOption, setSelectedOption] = useState({ ...defaultOption });
   const { open, closeDropdown, toggleOpen } = useDropdownProps();
-  const {
-    lowDate, upDate, openCalendar, closeCalendar, Calendar,
-  } = useDatePicker();
+  const { lowDate, upDate, openCalendar, closeCalendar, Calendar } = useDatePicker();
   const {
     lowDate: lowRangeDate,
     upDate: upRangeDate,
@@ -56,21 +54,23 @@ const RangeDateSelector = ({
       close={closeDropdown}
       toggleOpen={toggleOpen}
       selectorTitle={selectorTitle}
-      selectionContent={(
+      selectionContent={
         <DateDisplayContainer>
           <DateDisplay range={selectedOption} />
         </DateDisplayContainer>
-      )}
-      dropDownContent={(
+      }
+      dropDownContent={
         <DropContainer>
           <DateDisplayList options={conformRanges.preformed} onClick={onClickItem} />
           <CustomDateDisplayList
             onClickExactDayOption={() => onClickExactDayOption({ ...oneDate, lowDate, upDate })}
-            onClickRangeOption={() => onClickRangeOption({
-              ...rangeOfDates,
-              lowDate: lowRangeDate,
-              upDate: upRangeDate,
-            })}
+            onClickRangeOption={() =>
+              onClickRangeOption({
+                ...rangeOfDates,
+                lowDate: lowRangeDate,
+                upDate: upRangeDate,
+              })
+            }
             openCalendar={openCalendar}
             openCalendarRange={openCalendarRange}
             closeCalendarRange={closeCalendarRange}
@@ -100,7 +100,7 @@ const RangeDateSelector = ({
             />
           </CalendarContainer>
         </DropContainer>
-      )}
+      }
     />
   );
 };

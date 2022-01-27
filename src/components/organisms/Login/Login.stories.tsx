@@ -1,3 +1,4 @@
+/* eslint-disable no-promise-executor-return */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
@@ -21,10 +22,12 @@ const data = {
   },
 };
 
-// eslint-disable-next-line no-promise-executor-return
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(() => {
-  resolve(data);
-}, ms));
+const sleep = (ms: number) =>
+  new Promise((resolve) =>
+    setTimeout(() => {
+      resolve(data);
+    }, ms),
+  );
 
 export default {
   title: 'Organisms/Login',

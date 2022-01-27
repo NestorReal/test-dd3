@@ -1,6 +1,4 @@
-import {
-  startOfMonth, endOfMonth, subMonths, isThisYear,
-} from 'date-fns';
+import { startOfMonth, endOfMonth, subMonths, isThisYear } from 'date-fns';
 import {
   formatToISOWithoutTimeZone,
   formatToMonthAndDay,

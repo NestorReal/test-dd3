@@ -34,9 +34,7 @@ export interface IUpDown {
   right?: number;
 }
 
-const UpDown = ({
-  value, width, height, top, bottom, left, right,
-}: IUpDown) => (
+const UpDown = ({ value, width, height, top, bottom, left, right }: IUpDown) => (
   <Item
     value={value}
     width={width}

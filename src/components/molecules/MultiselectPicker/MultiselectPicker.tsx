@@ -39,7 +39,9 @@ const MultiselectPicker = ({ optionGroups, filtersName }: IMultiselectPickerProp
 
   const retrieveAllValues = () => {
     // eslint-disable-next-line max-len
-    const mappedIds = groups.map((aGroup) => aGroup.options.map((element) => element.id.toString()));
+    const mappedIds = groups.map((aGroup) =>
+      aGroup.options.map((element) => element.id.toString()),
+    );
     const flattenIds = mappedIds.flat();
     return flattenIds;
   };

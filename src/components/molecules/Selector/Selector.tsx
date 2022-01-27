@@ -37,8 +37,8 @@ const PillsSelection = ({ shouldShowAllPill, selectionsToAdd }: IPillsSelection)
         <Pill name="Todos" />
       </IdividualPillContainer>
     )}
-    {!shouldShowAllPill
-      && selectionsToAdd.map((selection) => (
+    {!shouldShowAllPill &&
+      selectionsToAdd.map((selection) => (
         <IdividualPillContainer key={uuidv4()}>
           <Pill key={uuidv4()} name={selection} />
         </IdividualPillContainer>
@@ -105,12 +105,12 @@ const Selector = ({ selectorTitle, optionGroups }: ISelectorProps) => {
               close={closeDropdown}
               toggleOpen={toggleOpen}
               selectorTitle={selectorTitle}
-              selectionContent={(
+              selectionContent={
                 <PillsSelection
                   shouldShowAllPill={shouldShowAllPill}
                   selectionsToAdd={selectionsToAdd}
                 />
-              )}
+              }
               dropDownContent={
                 <MultiselectorPicker filtersName="filters" optionGroups={optionGroups} />
               }

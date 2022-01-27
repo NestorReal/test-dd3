@@ -34,9 +34,7 @@ const ComparisonDateSelector = ({
   const [defaultOption] = compareOptions;
   const [selectedOption, setSelectedOption] = useState({ ...defaultOption });
   const { open, closeDropdown, toggleOpen } = useDropdownProps();
-  const {
-    lowDate, upDate, openCalendar, closeCalendar, Calendar,
-  } = useDatePicker();
+  const { lowDate, upDate, openCalendar, closeCalendar, Calendar } = useDatePicker();
   const {
     lowDate: lowRangeDate,
     upDate: upRangeDate,
@@ -66,12 +64,12 @@ const ComparisonDateSelector = ({
       close={closeDropdown}
       toggleOpen={toggleOpen}
       selectorTitle={selectorTitle}
-      selectionContent={(
+      selectionContent={
         <DateDisplayContainer>
           <DateDisplay range={selectedOption} />
         </DateDisplayContainer>
-      )}
-      dropDownContent={(
+      }
+      dropDownContent={
         <>
           {optionId >= 0 && optionId <= 8 && (
             <DateDisplayList options={compareOptions} onClick={onClickItem} />
@@ -81,12 +79,16 @@ const ComparisonDateSelector = ({
               <CustomDateDisplayList
                 onClickNormalItem={onClickItem}
                 // eslint-disable-next-line max-len
-                onClickExactDayOption={() => onClickExactDayOption({ ...exactDayOption, lowDate, upDate })}
-                onClickRangeOption={() => onClickRangeOption({
-                  ...rangeOption,
-                  lowDate: lowRangeDate,
-                  upDate: upRangeDate,
-                })}
+                onClickExactDayOption={() =>
+                  onClickExactDayOption({ ...exactDayOption, lowDate, upDate })
+                }
+                onClickRangeOption={() =>
+                  onClickRangeOption({
+                    ...rangeOption,
+                    lowDate: lowRangeDate,
+                    upDate: upRangeDate,
+                  })
+                }
                 openCalendarRange={openCalendarRange}
                 openCalendar={openCalendar}
                 closeCalendarRange={closeCalendarRange}
@@ -118,7 +120,7 @@ const ComparisonDateSelector = ({
             </>
           )}
         </>
-      )}
+      }
     />
   );
 };

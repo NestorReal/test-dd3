@@ -1,6 +1,4 @@
-import {
-  startOfQuarter, endOfQuarter, subQuarters, isThisYear,
-} from 'date-fns';
+import { startOfQuarter, endOfQuarter, subQuarters, isThisYear } from 'date-fns';
 import {
   formatToISOWithoutTimeZone,
   formatToMonthAndDay,

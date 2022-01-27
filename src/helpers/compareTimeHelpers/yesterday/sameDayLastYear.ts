@@ -1,6 +1,4 @@
-import {
-  startOfDay, endOfDay, subYears, subDays,
-} from 'date-fns';
+import { startOfDay, endOfDay, subYears, subDays } from 'date-fns';
 import { formatToISOWithoutTimeZone, formatToMonthAndDayAndYear } from '../../formatDateHelpers';
 
 // eslint-disable-next-line import/prefer-default-export

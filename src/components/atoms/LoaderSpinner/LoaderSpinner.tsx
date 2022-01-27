@@ -24,8 +24,9 @@ const LoaderSpinner = ({ width = 80, height = 80, primary = true }: ILoaderSpinn
       type="Puff"
       width={width}
       height={height}
-      color={primary
-        ? themeContext.background.button.primary : themeContext.background.button.secondary}
+      color={
+        primary ? themeContext.background.button.primary : themeContext.background.button.secondary
+      }
     />
   );
 };

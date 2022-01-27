@@ -1,6 +1,4 @@
-import React, {
-  useState, ReactNode, useRef, useEffect,
-} from 'react';
+import React, { useState, ReactNode, useRef, useEffect } from 'react';
 import StyledButton from './styled';
 import LoaderSpinner from '../LoaderSpinner';
 import { buttonTypographies } from '../../../types/typography';
@@ -74,13 +72,13 @@ const Button = ({
       onClick={
         async
           ? async () => {
-            setState({ ...state, loader: true, disabled: true });
-            await onClick();
-            setState({ ...state, loader: false, disabled: false });
-          }
+              setState({ ...state, loader: true, disabled: true });
+              await onClick();
+              setState({ ...state, loader: false, disabled: false });
+            }
           : () => {
-            onClick();
-          }
+              onClick();
+            }
       }
     >
       {state.loader ? (

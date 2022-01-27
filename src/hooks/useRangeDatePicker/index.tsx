@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { es } from 'date-fns/locale';
-import {
-  subYears, startOfDay, endOfDay, isThisYear,
-} from 'date-fns';
+import { subYears, startOfDay, endOfDay, isThisYear } from 'date-fns';
 import {
   formatToISOWithoutTimeZone,
   formatToMonthAndDay,
