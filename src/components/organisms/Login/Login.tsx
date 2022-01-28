@@ -25,9 +25,13 @@ interface ILogin {
    * A sring to redirect when clicks on link
    */
   link: string;
+  /**
+   * A sring to redirect after a succesful login
+   */
+  redirectAfterLoginTo: string;
 }
 
-const Login = ({ onSubmit, link }: ILogin) => {
+const Login = ({ onSubmit, link, redirectAfterLoginTo }: ILogin) => {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const navigate = useNavigate();
 
@@ -41,7 +45,13 @@ const Login = ({ onSubmit, link }: ILogin) => {
       onSubmit={async (values) => {
         try {
           const result = await onSubmit(values);
-          if (result) navigate('/');
+          // Send them back to the page they tried to visit when they were
+          // redirected to the login page. Use { replace: true } so we don't create
+          // another entry in the history stack for the login page.  This means that
+          // when they get to the protected page and click the back button, they
+          // won't end up back on the login page, which is also really nice for the
+          // user experience.
+          if (result) navigate(`${redirectAfterLoginTo}`, { replace: true });
         } catch (error) {
           if (typeof error === 'string') {
             setErrorMessage(error);
