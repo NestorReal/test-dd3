@@ -5,7 +5,7 @@ export interface IAsideMenuContainerProps {
   top: number;
 }
 
-const asideMenuWidth = 296;
+const asideMenuWidth = 230;
 const topMenuHeight = 120;
 
 export const FullContainer = styled.div`
@@ -29,4 +29,14 @@ export const TopMenuContainer = styled.div`
   padding-left: ${space[8]};
   padding-right: ${space[8]};
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.06);
+`;
+
+export const InsideContainer = styled.div`
+  display: flex;
+`;
+
+export const IndividualContainer = styled.div`
+  &:not(:first-child) {
+    margin-left: ${space[4]};
+  }
 `;

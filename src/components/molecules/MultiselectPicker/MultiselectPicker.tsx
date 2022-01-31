@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { useFormikContext } from 'formik';
+import { useAppDispatch } from '../../../config/app/hooks';
+import { setStoresFilter } from '../../../features/filtersSlice';
 import { OptionsGroup } from '../../../types/filters';
 import FilterOptionsList from '../FilterOptionsList';
 import {
@@ -33,20 +36,21 @@ export interface IMultiselectPickerProps {
 }
 
 const MultiselectPicker = ({ optionGroups, filtersName }: IMultiselectPickerProps) => {
+  const location = useLocation();
+  const dispatch = useAppDispatch();
   const [groups, setGroups] = useState(optionGroups);
   const { values, setFieldValue, handleSubmit } = useFormikContext<MultiSelectFields>();
   const { filters, selectAll } = values;
 
-  const retrieveAllValues = () => {
-    // eslint-disable-next-line max-len
-    const mappedIds = groups.map((aGroup) =>
+  const retrieveAllValues = (groupOfOptions: OptionsGroup[]) => {
+    const mappedIds = groupOfOptions.map((aGroup) =>
       aGroup.options.map((element) => element.id.toString()),
     );
     const flattenIds = mappedIds.flat();
     return flattenIds;
   };
 
-  const selectAllData = retrieveAllValues();
+  const selectAllData = retrieveAllValues(groups);
 
   const customOnChange = (e?: React.ChangeEvent<HTMLInputElement>) => {
     if (!selectAll) {
@@ -87,12 +91,27 @@ const MultiselectPicker = ({ optionGroups, filtersName }: IMultiselectPickerProp
     }
   }, []);
 
+  // every time filters change (check or uncheck an option).
+  // eval if all posible options are selected in order to autoselect 'All checkbox'
   useEffect(() => {
-    const allFiltersValues = retrieveAllValues();
+    const allFiltersValues = retrieveAllValues(groups);
     if (filters.length === allFiltersValues.length) {
       setFieldValue('selectAll', true);
     }
   }, [filters]);
+
+  // everytime pathname changes reselect all
+  useEffect(() => {
+    setFieldValue(filtersName, selectAllData);
+  }, [location.pathname]);
+
+  // when optionsGroups prop changes, refresh groups state
+  useEffect(() => {
+    setGroups(optionGroups);
+    const allIds = retrieveAllValues(optionGroups);
+    setFieldValue(filtersName, allIds);
+    dispatch(setStoresFilter(allIds));
+  }, [optionGroups]);
 
   return (
     <GroupsContainer>

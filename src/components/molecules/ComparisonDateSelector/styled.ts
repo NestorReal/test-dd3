@@ -3,8 +3,8 @@ import space from '../../../config/spacing';
 
 export const CalendarContainer = styled.div`
   position: absolute;
-  left: 185px;
-  top: 60px;
+  top: 69px;
+  right: 220px;
 `;
 
 export const DateDisplayContainer = styled.div`

@@ -119,6 +119,7 @@ const useRangeDatePicker = () => {
     openCalendarRange,
     closeCalendarRange,
     CalendarRange,
+    isOpen,
   };
 };
 
