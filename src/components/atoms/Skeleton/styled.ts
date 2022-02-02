@@ -17,7 +17,7 @@ const StyledSketon = styled.div<IStyledSketon>`
   height: ${(props) => `${props.height}px`};
   border-radius: ${(props) => `${props.borderRadius}px`};
 
-  animation: ${blink} 1.4s linear infinite;
+  animation: ${blink} 1s linear infinite;
 `;
 
 export default StyledSketon;

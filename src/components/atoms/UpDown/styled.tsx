@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import fontTypes from '../../../config/font';
+import space from '../../../config/spacing';
+import { cardTypographies } from '../../../types/typography';
 
 interface IItemProps {
+  typography: cardTypographies;
   value: number;
-  width: number;
-  height: number;
   top?: number;
   bottom?: number;
   left?: number;
@@ -16,8 +17,6 @@ const Item = styled.div<IItemProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: ${(props) => props.width}px;
-  height: ${(props) => props.height}px;
   background: ${(props) =>
     props.value < 0
       ? props.theme.background.datacard.decrement
@@ -28,8 +27,16 @@ const Item = styled.div<IItemProps>`
   bottom: ${(props) => props.bottom}px;
   left: ${(props) => props.left}px;
   right: ${(props) => props.right}px;
-  ${fontTypes.caps3Bold};
   border-radius: 6px;
+  padding: 0 ${space[5]} 0 ${space[2]};
+  ${(props) => fontTypes[`${props.typography}`]}
 `;
 
+export const IconContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 25%;
+  right: 5%;
+`;
 export default Item;

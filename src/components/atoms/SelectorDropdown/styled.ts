@@ -40,6 +40,7 @@ export const MultiselectorContainer = styled(ShadowBox)<IMultiselectorContainer>
   max-height: ${(props) => (props.open ? '400px' : 0)};
   opacity: ${(props) => (props.open ? 1 : 0)};
   transition: all 0.4s;
+  z-index: 99;
 `;
 
 export const SelectorTitle = styled.div`
