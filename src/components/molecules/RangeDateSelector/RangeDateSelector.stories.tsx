@@ -3,6 +3,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import RangeDateSelector from './RangeDateSelector';
+import { setTimeFilter } from '../../../features/filtersSlice';
 
 export default {
   title: 'Molecules/RangeDateSelector',
@@ -22,4 +23,9 @@ export const PrimaryRanges = Template.bind({});
 
 PrimaryRanges.args = {
   selectorTitle: 'Tiempo',
+
+  // Redux actions
+  onClickDropdownItem: setTimeFilter,
+  onClickFilterCalendar: setTimeFilter,
+  onClickFilterCalendarRange: setTimeFilter,
 };

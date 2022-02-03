@@ -9,8 +9,10 @@ export const DateDisplayContainer = styled.div`
 
 export const CalendarContainer = styled.div`
   position: absolute;
-  left: 220px;
-  top: 123px;
+  top: 70px;
+  right: 55px;
 `;
 
-export const DropContainer = styled.div``;
+export const DropContainer = styled.div`
+  position: relative;
+`;

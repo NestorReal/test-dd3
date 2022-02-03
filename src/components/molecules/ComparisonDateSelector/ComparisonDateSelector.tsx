@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { initialState } from '../../../features/filtersSlice';
+import { useAppDispatch } from '../../../config/app/hooks';
 import DateDisplay from '../../atoms/DateDisplay';
 import DateDisplayList from '../DateDisplayList';
 import CustomDateDisplayList from '../CustomDateDisplayList';
@@ -42,6 +45,8 @@ const ComparisonDateSelector = ({
     closeCalendarRange,
     CalendarRange,
   } = useRangePicker();
+  const dispatch = useAppDispatch();
+  const location = useLocation();
 
   const [exactDayOption] = conformComparations[CUSTOM_RANGES_ID.exactDay];
   const [rangeOption] = conformComparations[CUSTOM_RANGES_ID.range];
@@ -50,13 +55,18 @@ const ComparisonDateSelector = ({
     closeDropdown();
     setSelectedOption(option);
     if (onClickDropdownItem) {
-      onClickDropdownItem(option);
+      dispatch(onClickDropdownItem(option));
     }
   };
 
   useEffect(() => {
     setSelectedOption(defaultOption);
   }, [compareOptions]);
+
+  useEffect(() => {
+    setSelectedOption(initialState.comparison);
+    dispatch(onClickDropdownItem(initialState.comparison));
+  }, [location.pathname]);
 
   return (
     <SelectorDropdown
@@ -99,7 +109,7 @@ const ComparisonDateSelector = ({
               <CalendarContainer>
                 <Calendar
                   onClickFilter={(date: any) => {
-                    onClickFilterCalendar({ ...exactDayOption, ...date });
+                    dispatch(onClickFilterCalendar({ ...exactDayOption, ...date }));
                   }}
                   closeDropdown={closeDropdown}
                   setSelectedOption={setSelectedOption}
@@ -110,7 +120,7 @@ const ComparisonDateSelector = ({
               <CalendarContainer>
                 <CalendarRange
                   onClickFilter={(date: any) => {
-                    onClickFilterCalendarRange({ ...rangeOption, ...date });
+                    dispatch(onClickFilterCalendarRange({ ...rangeOption, ...date }));
                   }}
                   closeDropdown={closeDropdown}
                   setSelectedOption={setSelectedOption}

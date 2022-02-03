@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Formik } from 'formik';
 import { v4 as uuidv4 } from 'uuid';
 import Pill from '../../atoms/Pill';
@@ -7,6 +8,7 @@ import { PillsContainer, IdividualPillContainer } from './styled';
 import { OptionsGroup } from '../../../types/filters';
 import SelectorDropdown from '../../atoms/SelectorDropdown';
 import useDropdownProps from '../../../hooks/useDropdownProps';
+import { useAppDispatch } from '../../../config/app/hooks';
 
 interface ISelectorProps {
   /**
@@ -16,7 +18,8 @@ interface ISelectorProps {
   /**
    * All the groups of options to be rendered
    */
-  optionGroups: OptionsGroup[];
+  optionGroups: OptionsGroup[] | undefined;
+  setFilters: Function;
 }
 
 interface IPillsSelection {
@@ -46,13 +49,16 @@ const PillsSelection = ({ shouldShowAllPill, selectionsToAdd }: IPillsSelection)
   </PillsContainer>
 );
 
-const Selector = ({ selectorTitle, optionGroups }: ISelectorProps) => {
+const Selector = ({ selectorTitle, optionGroups = [], setFilters }: ISelectorProps) => {
   const { open, toggleOpen, closeDropdown } = useDropdownProps();
+  const location = useLocation();
+  const dispatch = useAppDispatch();
+
   const onSubmit = (values: MultiSelectFields) => {
     const { filters } = values;
     const uniqueValues = [...new Set(filters)];
-    // eslint-disable-next-line no-alert
-    alert(`submit ${uniqueValues}`);
+    dispatch(setFilters(uniqueValues));
+    closeDropdown();
   };
 
   const retrieveOptionName = (id: number) => {
@@ -72,53 +78,67 @@ const Selector = ({ selectorTitle, optionGroups }: ISelectorProps) => {
     return flatenOptions.length;
   };
 
+  const retrieveAllValues = () => {
+    const mappedIds = optionGroups.map((aGroup) =>
+      aGroup.options.map((element) => element.id.toString()),
+    );
+    const flattenIds = mappedIds.flat();
+    return flattenIds;
+  };
+
+  useEffect(() => {
+    dispatch(setFilters(retrieveAllValues()));
+  }, []);
+
+  useEffect(() => {
+    dispatch(setFilters(retrieveAllValues()));
+  }, [location.pathname]);
+
   return (
-    <div>
-      <Formik
-        initialValues={{
-          searchTerm: '',
-          filters: [],
-          selectAll: false,
-        }}
-        onSubmit={onSubmit}
-      >
-        {({ values }) => {
-          const { filters } = values;
-          const selectionsToAdd: string[] = [];
-          let shouldShowAllPill = false;
+    <Formik
+      initialValues={{
+        searchTerm: '',
+        filters: [],
+        selectAll: false,
+      }}
+      onSubmit={onSubmit}
+    >
+      {({ values }) => {
+        const { filters } = values;
+        const selectionsToAdd: string[] = [];
+        let shouldShowAllPill = false;
 
-          filters.forEach((filterId) => {
-            const name = retrieveOptionName(Number(filterId));
-            if (name) {
-              selectionsToAdd.unshift(name);
-            }
-          });
-
-          const numberOfPossibleOptions = retrieveNumerOfOptions();
-          if (numberOfPossibleOptions === filters.length) {
-            shouldShowAllPill = true;
+        filters.forEach((filterId) => {
+          const name = retrieveOptionName(Number(filterId));
+          if (name) {
+            selectionsToAdd.unshift(name);
           }
+        });
 
-          return (
-            <SelectorDropdown
-              open={open}
-              close={closeDropdown}
-              toggleOpen={toggleOpen}
-              selectorTitle={selectorTitle}
-              selectionContent={
-                <PillsSelection
-                  shouldShowAllPill={shouldShowAllPill}
-                  selectionsToAdd={selectionsToAdd}
-                />
-              }
-              dropDownContent={
-                <MultiselectorPicker filtersName="filters" optionGroups={optionGroups} />
-              }
-            />
-          );
-        }}
-      </Formik>
-    </div>
+        const numberOfPossibleOptions = retrieveNumerOfOptions();
+        if (numberOfPossibleOptions === filters.length) {
+          shouldShowAllPill = true;
+        }
+
+        return (
+          <SelectorDropdown
+            open={open}
+            close={closeDropdown}
+            toggleOpen={toggleOpen}
+            selectorTitle={selectorTitle}
+            selectionContent={
+              <PillsSelection
+                shouldShowAllPill={shouldShowAllPill}
+                selectionsToAdd={selectionsToAdd}
+              />
+            }
+            dropDownContent={
+              <MultiselectorPicker filtersName="filters" optionGroups={optionGroups} />
+            }
+          />
+        );
+      }}
+    </Formik>
   );
 };
 

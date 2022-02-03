@@ -4,6 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { withFormik } from 'storybook-formik';
 import { categoriesOptions, storesOptions } from './mocks/optionsGroups';
+import { setCategoriesFilter, setStoresFilter } from '../../../features/filtersSlice';
 
 import Selector from './Selector';
 
@@ -21,6 +22,7 @@ export const Stores = Template.bind({});
 Categories.args = {
   selectorTitle: 'Categorías',
   optionGroups: categoriesOptions,
+  setFilters: setCategoriesFilter,
 };
 
 Categories.parameters = {
@@ -36,6 +38,7 @@ Categories.parameters = {
 Stores.args = {
   selectorTitle: 'Locaciones',
   optionGroups: storesOptions,
+  setFilters: setStoresFilter,
 };
 
 Stores.parameters = {

@@ -8,10 +8,11 @@ interface IMultiselectorContainer {
 }
 
 export const OverallSelectorContainer = styled.div`
-  position: relative;
+  width: 260px;
 `;
 
 export const StyledSelector = styled.div`
+  height: 40px;
   border-radius: 10px;
   border: 2px solid ${(props) => props.theme.borders.selector};
   background: ${(props) => props.theme.background.selector};
@@ -32,7 +33,8 @@ export const MultiselectorContainer = styled(ShadowBox)<IMultiselectorContainer>
   background-color: ${(props) => props.theme.background.selector};
   border: 1px solid ${(props) => props.theme.borders.selector};
   border-radius: 8px;
-  max-width: 338px;
+  position: absolute;
+  width: 260px;
   margin-top: ${space[2]};
   overflow: auto;
   max-height: ${(props) => (props.open ? '400px' : 0)};

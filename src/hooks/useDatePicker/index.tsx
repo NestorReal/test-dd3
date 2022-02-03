@@ -107,6 +107,7 @@ const useDatePicker = () => {
     openCalendar,
     closeCalendar,
     Calendar,
+    isOpen,
   };
 };
 

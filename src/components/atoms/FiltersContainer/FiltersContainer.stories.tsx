@@ -14,6 +14,6 @@ const Template: ComponentStory<typeof FiltersContainer> = (args) => <FiltersCont
 export const Primary = Template.bind({});
 
 Primary.args = {
-  title: 'Filtros',
-  children: 'Algún contenido',
+  title: 'Filters',
+  children: 'Some content',
 };

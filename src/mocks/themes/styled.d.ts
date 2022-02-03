@@ -33,6 +33,7 @@ declare module 'styled-components' {
       checkbox: string;
       field: string;
       selector: string;
+      skeleton: string;
     };
     borders: {
       usermenu: string;

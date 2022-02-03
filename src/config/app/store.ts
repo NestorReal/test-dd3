@@ -2,11 +2,14 @@ import { configureStore, combineReducers, ThunkAction, Action } from '@reduxjs/t
 import type { PreloadedState } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import authSlice from '../../features/authSlice';
+import filtersSlice from '../../features/filtersSlice';
+import { vicoApi } from '../../features/vicoApi';
 
 const rootReducer = combineReducers({
   // Add the generated reducer as a specific top-level slice
-  //   [furnitureApi.reducerPath]: furnitureApi.reducer,
+  [vicoApi.reducerPath]: vicoApi.reducer,
   auth: authSlice,
+  filters: filtersSlice,
 });
 
 // Infer the `RootState` type from the store itself
@@ -15,10 +18,10 @@ export type RootState = ReturnType<typeof rootReducer>;
 export const setupStore = (preloadedState?: PreloadedState<RootState>) =>
   configureStore({
     reducer: rootReducer,
-    //   middleware: (getDefaultMiddleware) =>
-    // adding the api middleware enables caching, invalidation,
-    // polling and other features of `rtk-query`
-    // getDefaultMiddleware().concat(furnitureApi.middleware),
+    middleware: (getDefaultMiddleware) =>
+      // adding the api middleware enables caching, invalidation,
+      // polling and other features of `rtk-query`
+      getDefaultMiddleware().concat(vicoApi.middleware),
     preloadedState,
     devTools: true,
   });

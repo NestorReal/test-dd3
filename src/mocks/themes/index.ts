@@ -31,6 +31,7 @@ export const mainTheme = {
     checkbox: '#0175FF',
     field: '#FFFFFF',
     selector: '#FFFFFF',
+    skeleton: '#e8e8e8',
   },
   borders: {
     usermenu: '#E8E8E8',
@@ -102,6 +103,7 @@ export const anotherTheme = {
     checkbox: '#0175FF',
     field: '#FFFFFF',
     selector: '#FFFFFF',
+    skeleton: '#e8e8e8',
   },
   borders: {
     usermenu: '#E8E8E8',
