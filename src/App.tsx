@@ -5,6 +5,7 @@ import Main from './layouts/Main';
 import Login from './pages/Login';
 import RequireAuth from './components/auth/RequireAuth';
 import PasswordRecovery from './pages/PasswordRecovery';
+import Dashboard from './pages/Dashboard';
 import { mainTheme } from './mocks/themes';
 
 const App = () => (
@@ -16,7 +17,7 @@ const App = () => (
           path="dashboard"
           element={
             <RequireAuth>
-              <div>Dashboard</div>
+              <Dashboard />
             </RequireAuth>
           }
         />

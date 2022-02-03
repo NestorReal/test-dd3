@@ -1,6 +1,7 @@
 // Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { CategoriesResult, StoresResult } from '../types/filters';
+import { CounterResult } from '../types/graphs/counter';
 import { baseUrl } from '../config/app/constants';
 import type { RootState } from '../config/app/store';
 
@@ -27,9 +28,13 @@ export const vicoApi = createApi({
     getStoresByCategory: builder.query<StoresResult, string[]>({
       query: (categories) => `stores-categories?categories=${categories.join(',')}`,
     }),
+    getCounterData: builder.query<CounterResult, string>({
+      query: (queryString) => `/visitors/counter${queryString}`,
+    }),
   }),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetCategoriesQuery, useGetStoresByCategoryQuery } = vicoApi;
+export const { useGetCategoriesQuery, useGetStoresByCategoryQuery, useGetCounterDataQuery } =
+  vicoApi;

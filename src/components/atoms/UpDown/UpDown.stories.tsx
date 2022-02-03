@@ -15,6 +15,5 @@ export const Primary = Template.bind({});
 
 Primary.args = {
   value: 5,
-  width: 40,
-  height: 20,
+  typography: 'caps2Bold',
 };

@@ -1,21 +1,14 @@
 import React from 'react';
-import Item from './styled';
+import Item, { IconContainer } from './styled';
 import ArrowDownRight from '../../icons/ArrowDownRight';
 import ArrowUpRight from '../../icons/ArrowUpRight';
+import { cardTypographies } from '../../../types/typography';
 
 export interface IUpDown {
   /**
    * The number to show as a percentage, postive or negative value affects the component.
    */
   value: number;
-  /**
-   * component width measured in px
-   */
-  width: number;
-  /**
-   * component height measured in px
-   */
-  height: number;
   /**
    * modify the position of the component with measurement in px
    */
@@ -32,21 +25,14 @@ export interface IUpDown {
    * modify the position of the component with measurement in px
    */
   right?: number;
+  typography: cardTypographies;
 }
 
-const UpDown = ({ value, width, height, top, bottom, left, right }: IUpDown) => (
-  <Item
-    value={value}
-    width={width}
-    height={height}
-    top={top}
-    bottom={bottom}
-    left={left}
-    right={right}
-  >
-    {value}
+const UpDown = ({ value, top, bottom, left, right, typography }: IUpDown) => (
+  <Item value={value} top={top} bottom={bottom} left={left} right={right} typography={typography}>
+    {Math.abs(value)}
     &#37;
-    {value < 0 ? <ArrowDownRight /> : <ArrowUpRight />}
+    <IconContainer>{value < 0 ? <ArrowDownRight /> : <ArrowUpRight />}</IconContainer>
   </Item>
 );
 

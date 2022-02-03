@@ -1,6 +1,7 @@
 import React from 'react';
 import UpDown from '../../atoms/UpDown';
 import { ContainerCard, TitleCard, ValueCard } from './styled';
+import { cardTypographies } from '../../../types/typography';
 
 interface ICard {
   /**
@@ -15,15 +16,17 @@ interface ICard {
    * This is a number to change increment/decrement behavior
    */
   upDown: number;
+
+  upDownTypography: cardTypographies;
 }
 
-const Card = ({ title, value, upDown }: ICard) => (
+const Card = ({ title, value, upDown, upDownTypography = 'paragraph2' }: ICard) => (
   <ContainerCard>
     <TitleCard typography="caps2Regular" uppercase>
       {title}
     </TitleCard>
     <ValueCard typography="heading2">{value}</ValueCard>
-    <UpDown value={upDown} width={40} height={20} top={58} right={19} />
+    <UpDown value={upDown} top={58} right={19} typography={upDownTypography} />
   </ContainerCard>
 );
 
