@@ -1,30 +1,33 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
-import Container from '../../reusableStyledComponents/Container';
-import { options, width, height } from './Options';
-
+import { options, height } from './Options';
+import { FormatedDayWeekAverageResult } from '../../../types/graphs/heatmap';
+import Skeleton from '../../atoms/Skeleton';
 
 export interface HeatmapProps {
   /**
-   * data json
+   * data formatted from /visitors/counter-day endpoint
    */
-    data: object[],
+  data: FormatedDayWeekAverageResult[];
   /**
    * colorScale json
    */
-     colorScale: object,
+  colorScale: object;
+
+  isLoading: boolean;
 }
 
-const Heatmap = ({ data, colorScale }: HeatmapProps) => (
-  <Container display="flex" justifyContent="space-between" alignItems="center">
+const Heatmap = ({ data, colorScale, isLoading }: HeatmapProps) => {
+  if (isLoading) return <Skeleton width="100%" height={200} borderRadius={8} />;
+  return (
     <Chart
-      options={Object.assign(options, {plotOptions: colorScale})}
+      options={Object.assign(options, { plotOptions: colorScale })}
       series={data}
       type="heatmap"
-      width={width}
+      width="100%"
       height={height}
     />
-  </Container>
-);
+  );
+};
 
 export default Heatmap;

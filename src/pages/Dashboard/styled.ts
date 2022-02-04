@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 import space from '../../config/spacing';
 
-const CountersContainer = styled.div`
+export const CountersContainer = styled.div`
   padding-left: ${space[8]};
   padding-right: ${space[8]};
   margin-top: ${space[5]};
   margin-bottom: ${space[8]};
 `;
 
-export default CountersContainer;
+export const HeatMapContainer = styled.div`
+  margin-top: ${space[5]};
+  margin-bottom: ${space[8]};
+`;
