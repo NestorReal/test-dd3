@@ -3,7 +3,7 @@ import fontTypes from '../../../config/font';
 import spaces from '../../../config/spacing';
 
 export const StyleForm = styled.div`
-  width: 600px;
+  width: 483px;
   height: auto;
   background: #fff;
   padding: 40px 60px;
@@ -17,6 +17,10 @@ export const FormButtonContainer = styled.div`
 `;
 
 export const Message = styled.p`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
   color: ${(props) => props.theme.text.field.main};
   ${fontTypes.paragraph2}
 `;
@@ -28,6 +32,13 @@ export const UserMessage = styled.p`
   text-align: center;
   color: ${(props) => props.theme.text.section.title};
   ${fontTypes.paragraph2}
+`;
+
+export const MessageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
 `;
 
 export const ErrorMessageContainer = styled.div`
