@@ -1,14 +1,14 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
 import { options, height } from './Options';
-import { FormatedDayWeekAverageResult } from '../../../types/graphs/heatmap';
+import { FormattedDayWeekAverageResult } from '../../../types/graphs/heatmap';
 import Skeleton from '../../atoms/Skeleton';
 
 export interface HeatmapProps {
   /**
    * data formatted from /visitors/counter-day endpoint
    */
-  data: FormatedDayWeekAverageResult[];
+  data: FormattedDayWeekAverageResult[];
   /**
    * colorScale json
    */

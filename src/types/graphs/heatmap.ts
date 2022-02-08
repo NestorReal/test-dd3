@@ -17,7 +17,7 @@ export interface DayWeekAverageResult {
   secondary_range: string[] | null;
   data: Data;
 }
-export interface FormatedDayWeekAverageResult {
+export interface FormattedDayWeekAverageResult {
   name: string;
   data: number[];
   comparedData: number[];
@@ -27,6 +27,6 @@ export interface FormatedDayWeekAverageResult {
   secondaryRange: string[];
 }
 
-export const defautlFormatedDayWeekAverageResult: FormatedDayWeekAverageResult[] = [
+export const defaultFormattedDayWeekAverageResult: FormattedDayWeekAverageResult[] = [
   { name: '', data: [], comparedData: [], diff: [], mainRange: [], secondaryRange: [], colors: [] },
 ];
