@@ -4,7 +4,7 @@ import { cleanNulls } from '../graphs/cleanNulls';
 import { rgbToHex } from './RGBAtoHEX';
 import {
   DayWeekAverageResult,
-  FormatedDayWeekAverageResult,
+  FormattedDayWeekAverageResult,
   Data,
 } from '../../../types/graphs/heatmap';
 
@@ -35,7 +35,7 @@ export const rangesColors = (data: any) => {
 
 export const formatDayWeekAverageResults = (
   data: DayWeekAverageResult,
-): FormatedDayWeekAverageResult[] => {
+): FormattedDayWeekAverageResult[] => {
   if (!data) return [];
   const unformattedData = deepClone(data);
   const unformattedDataValues = unformattedData.data;
@@ -45,10 +45,10 @@ export const formatDayWeekAverageResults = (
   const keys = Object.keys(unformattedDataValues);
 
   const formattedData = keys.map((key) => {
-    const formattedDataObject: FormatedDayWeekAverageResult = unformattedDataValues[
+    const formattedDataObject: FormattedDayWeekAverageResult = unformattedDataValues[
       key as keyof Data
     ]!.reduce(
-      (accum: FormatedDayWeekAverageResult, element) => {
+      (accum: FormattedDayWeekAverageResult, element) => {
         accum.data.push(element.value);
         accum.diff.push(element.diff);
         accum.colors.push(element.color);

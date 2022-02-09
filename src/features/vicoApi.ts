@@ -2,10 +2,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { CategoriesResult, StoresResult } from '../types/filters';
 import { CounterResult } from '../types/graphs/counter';
-import { FormatedDayWeekAverageResult, DayWeekAverageResult } from '../types/graphs/heatmap';
+import { FormattedDayWeekAverageResult, DayWeekAverageResult } from '../types/graphs/heatmap';
+import { FormattedHourAverageResult, HourAverageResults } from '../types/graphs/graphBar';
 import { baseUrl } from '../config/app/constants';
 import type { RootState } from '../config/app/store';
 import { formatDayWeekAverageResults } from '../helpers/graphsHelpers/heatMap';
+import { formatHourAverageResults } from '../helpers/graphsHelpers/graphBar';
 
 // Define a service using a base URL and expected endpoints
 export const vicoApi = createApi({
@@ -33,10 +35,16 @@ export const vicoApi = createApi({
     getCounterData: builder.query<CounterResult, string>({
       query: (queryString) => `/visitors/counter${queryString}`,
     }),
-    getDayWeekAverage: builder.query<FormatedDayWeekAverageResult[], string>({
+    getDayWeekAverage: builder.query<FormattedDayWeekAverageResult[], string>({
       query: (queryString) => `/visitors/counter-day${queryString}`,
       transformResponse(response: DayWeekAverageResult) {
         return formatDayWeekAverageResults(response);
+      },
+    }),
+    getHourAverage: builder.query<FormattedHourAverageResult[], string>({
+      query: (queryString) => `/visitors/counter-hour${queryString}`,
+      transformResponse(response: HourAverageResults) {
+        return formatHourAverageResults(response);
       },
     }),
   }),
@@ -49,4 +57,5 @@ export const {
   useGetStoresByCategoryQuery,
   useGetCounterDataQuery,
   useGetDayWeekAverageQuery,
+  useGetHourAverageQuery,
 } = vicoApi;
