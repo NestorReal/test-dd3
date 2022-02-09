@@ -23,7 +23,7 @@ export const MenuItem = styled.div`
   padding: ${space[4]};
   cursor: pointer;
   text-align: center;
-  min-width: 90px;
+  min-width: 105px;
   ${fontTypes.paragraph3}
   &:hover {
     background: ${(props) => props.theme.background.topmenu.hovered};
