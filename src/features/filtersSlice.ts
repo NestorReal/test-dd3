@@ -9,7 +9,7 @@ export const initialState: FiltersState = {
   categories: [],
   stores: [],
   time: conformRanges.preformed[TIME_RANGES_ID.currentMonth],
-  comparison: conformComparations[TIME_RANGES_ID.lastMonth][0],
+  comparison: conformComparations[TIME_RANGES_ID.currentMonth][0],
 };
 
 export const filtersSlice = createSlice({

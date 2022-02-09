@@ -2,8 +2,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { CategoriesResult, StoresResult } from '../types/filters';
 import { CounterResult } from '../types/graphs/counter';
+import { FormatedDayWeekAverageResult, DayWeekAverageResult } from '../types/graphs/heatmap';
 import { baseUrl } from '../config/app/constants';
 import type { RootState } from '../config/app/store';
+import { formatDayWeekAverageResults } from '../helpers/graphsHelpers/heatMap';
 
 // Define a service using a base URL and expected endpoints
 export const vicoApi = createApi({
@@ -31,10 +33,20 @@ export const vicoApi = createApi({
     getCounterData: builder.query<CounterResult, string>({
       query: (queryString) => `/visitors/counter${queryString}`,
     }),
+    getDayWeekAverage: builder.query<FormatedDayWeekAverageResult[], string>({
+      query: (queryString) => `/visitors/counter-day${queryString}`,
+      transformResponse(response: DayWeekAverageResult) {
+        return formatDayWeekAverageResults(response);
+      },
+    }),
   }),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetCategoriesQuery, useGetStoresByCategoryQuery, useGetCounterDataQuery } =
-  vicoApi;
+export const {
+  useGetCategoriesQuery,
+  useGetStoresByCategoryQuery,
+  useGetCounterDataQuery,
+  useGetDayWeekAverageQuery,
+} = vicoApi;

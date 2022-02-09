@@ -1,16 +1,15 @@
 import './heatmap.css';
 
 // eslint-disable-next-line import/prefer-default-export
-export const builderTooltip = 
-        (
-            initialDate: string, 
-            finalDate: string, 
-            label: string, 
-            currentValue: number, 
-            diff: number,
-            showDiff: boolean,
-        ) => (
-            `<div class="tooltipHead">
+export const builderTooltip = (
+  initialDate: string,
+  finalDate: string,
+  label: string,
+  currentValue: number,
+  diff: number,
+  showDiff: boolean,
+) =>
+  `<div class="tooltipHead">
                     <div class="info">
                         <div>Mes actual</div>
                     </div>
@@ -34,5 +33,4 @@ export const builderTooltip =
                             ${showDiff ? diff : ''}
                         </div>
                     </div>
-                </div>`
-        )
+                </div>`;

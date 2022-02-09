@@ -2,7 +2,7 @@ import React from 'react';
 import StyledSkeleton from './styled';
 
 interface ISkeletonProps {
-  width: number;
+  width: number | string;
   height: number;
   borderRadius: number;
 }
