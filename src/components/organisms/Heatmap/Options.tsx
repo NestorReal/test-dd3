@@ -82,4 +82,4 @@ export const options: genericObject = {
     show: false,
   },
 };
-export const height = 200;
+export const height = 150;

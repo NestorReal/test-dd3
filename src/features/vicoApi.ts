@@ -4,10 +4,12 @@ import { CategoriesResult, StoresResult } from '../types/filters';
 import { CounterResult } from '../types/graphs/counter';
 import { FormattedDayWeekAverageResult, DayWeekAverageResult } from '../types/graphs/heatmap';
 import { FormattedHourAverageResult, HourAverageResults } from '../types/graphs/graphBar';
+import { FormattedDataEntity, ClassificationResults } from '../types/graphs/rangeBar';
 import { baseUrl } from '../config/app/constants';
 import type { RootState } from '../config/app/store';
 import { formatDayWeekAverageResults } from '../helpers/graphsHelpers/heatMap';
 import { formatHourAverageResults } from '../helpers/graphsHelpers/graphBar';
+import { dataClassification } from '../helpers/graphsHelpers/rangeBar';
 
 // Define a service using a base URL and expected endpoints
 export const vicoApi = createApi({
@@ -47,6 +49,12 @@ export const vicoApi = createApi({
         return formatHourAverageResults(response);
       },
     }),
+    getClassification: builder.query<FormattedDataEntity[], string>({
+      query: (queryString) => `/visitors/classification${queryString}`,
+      transformResponse(response: ClassificationResults) {
+        return dataClassification(response);
+      },
+    }),
   }),
 });
 
@@ -58,4 +66,5 @@ export const {
   useGetCounterDataQuery,
   useGetDayWeekAverageQuery,
   useGetHourAverageQuery,
+  useGetClassificationQuery,
 } = vicoApi;

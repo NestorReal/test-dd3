@@ -17,3 +17,8 @@ export const GraphBarContainer = styled.div`
   margin-top: ${space[5]};
   margin-bottom: ${space[8]};
 `;
+
+export const RangeBarContainer = styled.div`
+  margin-top: ${space[5]};
+  margin-bottom: ${space[8]};
+`;

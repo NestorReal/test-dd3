@@ -40,7 +40,6 @@ export const options : genericObject = {
     },
     chart: {
       type: 'bar',
-      height: 350,
       stacked: true,
     },
     plotOptions: {
