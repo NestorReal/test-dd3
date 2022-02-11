@@ -1,18 +1,27 @@
 import React from 'react';
 import { useAppSelector } from '../../config/app/hooks';
 import { buildQuery } from '../../helpers/buildEndpoints';
-import { useGetCounterDataQuery, useGetDayWeekAverageQuery, useGetHourAverageQuery, useGetClassificationQuery } from '../../features/vicoApi';
+import { 
+    useGetCounterDataQuery, 
+    useGetDayWeekAverageQuery, 
+    useGetHourAverageQuery, 
+    useGetClassificationQuery, 
+    useGetClassificationHourQuery
+  } from '../../features/vicoApi';
 import Counters from '../../components/molecules/Counters';
 import Heatmap from '../../components/organisms/Heatmap';
 import GraphBar from '../../components/organisms/GraphBar';
 import { defaultCountersData } from '../../types/graphs/counter';
-import { CountersContainer, HeatMapContainer, GraphBarContainer, RangeBarContainer } from './styled';
+import { CountersContainer, HeatMapContainer, GraphBarContainer, RangeBarContainer, GroupedGraphContainer } from './styled';
 import { defaultFormattedDayWeekAverageResult } from '../../types/graphs/heatmap';
 import { defaultFormattedHourAverageResult } from '../../types/graphs/graphBar';
 import { defaultFormattedClassficationResult } from '../../types/graphs/rangeBar';
+import { defaultFormattedClassificationHourResult } from '../../types/graphs/groupedGraph';
 import { rangesColors } from '../../helpers/graphsHelpers/heatMap';
 import { labelFormatData } from '../../helpers/graphsHelpers/graphBar';
 import RangeBar from '../../components/organisms/RangeBar';
+import GroupedGraph from '../../components/organisms/GroupedGraph';
+
 
 
 const Dashboard = () => {
@@ -48,6 +57,14 @@ const Dashboard = () => {
     skip: filtersSelected.stores.length === 0,
   });
 
+  const {
+    data: classificationHourResults,
+    isLoading: isLoadingClassificationHourResults,
+    isFetching: isFetchingClassificationHourResults,
+  } = useGetClassificationHourQuery(query, {
+    skip: filtersSelected.stores.length === 0,
+  });
+
   return (
     <>
       <CountersContainer>
@@ -78,6 +95,20 @@ const Dashboard = () => {
           isLoading={isLoadingClassificationResults || isFetchingClassificationResults}
         />
       </RangeBarContainer>
+      <GroupedGraphContainer>
+        <GroupedGraph 
+          data= {classificationHourResults?.genders || defaultFormattedClassificationHourResult}
+          optionsData= {classificationHourResults?.labels || []}
+          isLoading={isLoadingClassificationHourResults || isFetchingClassificationHourResults}
+        />
+      </GroupedGraphContainer>
+      <GroupedGraphContainer>
+        <GroupedGraph 
+          data= {classificationHourResults?.ageRanges || defaultFormattedClassificationHourResult}
+          optionsData= {classificationHourResults?.labels || []}
+          isLoading={isLoadingClassificationHourResults || isFetchingClassificationHourResults}
+        />
+      </GroupedGraphContainer>
     </>
   );
 };

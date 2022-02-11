@@ -22,3 +22,8 @@ export const RangeBarContainer = styled.div`
   margin-top: ${space[5]};
   margin-bottom: ${space[8]};
 `;
+
+export const GroupedGraphContainer = styled.div`
+  margin-top: ${space[5]};
+  margin-bottom: ${space[8]};
+`;
