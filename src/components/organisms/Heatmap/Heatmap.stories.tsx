@@ -20,4 +20,5 @@ const formattedData = formatDayWeekAverageResults(data);
 Primary.args = {
   data: formattedData,
   colorScale: rangesColors(formattedData),
+  isLoading: false,
 };
