@@ -1,6 +1,6 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
-import { FormattedClassificationHourResult } from '../../../types/graphs/groupedGraph'
+import { FormattedClassificationHourResult } from '../../../types/graphs/groupedGraph';
 import { options, height } from './Options';
 import Skeleton from '../../atoms/Skeleton';
 
@@ -10,23 +10,23 @@ export interface GroupedGraphProps {
   /**
    * data json
    */
-    data: FormattedClassificationHourResult[],
+  data: FormattedClassificationHourResult[];
   /**
    * option json
    */
-    optionsData: string[],
+  optionsData: string[];
 
-    isLoading: boolean;
+  isLoading: boolean;
 }
 
 const GroupedGraph = ({ data, optionsData, isLoading }: GroupedGraphProps) => {
   if (isLoading) return <Skeleton width="100%" height={300} borderRadius={8} />;
-  return(
+  return (
     <Chart
-      options={Object.assign(options, {xaxis: {categories: optionsData}})}
+      options={Object.assign(options, { xaxis: { categories: optionsData } })}
       series={data}
       type="bar"
-      width='100%'
+      width="100%"
       height={height}
     />
   );

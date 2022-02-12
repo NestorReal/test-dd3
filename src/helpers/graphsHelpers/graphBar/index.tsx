@@ -26,8 +26,8 @@ export const formatHourAverageResults = (
     ]!.reduce(
       (accum: FormattedHourAverageResult, element) => {
         accum.data.push(element.value);
-        accum.diff.push(element.diff)
-        accum.hour.push(element.hour)
+        accum.diff.push(element.diff);
+        accum.hour.push(element.hour);
         accum.comparedData.push(element.secondary_value);
         return accum;
       },
@@ -50,9 +50,8 @@ export const formatHourAverageResults = (
   return formattedData;
 };
 
-
 export const labelFormatData = (data: FormattedHourAverageResult[]): string[] => {
   if (!data) return [];
   const [values] = data;
   return formatHours(values.hour);
-}
+};

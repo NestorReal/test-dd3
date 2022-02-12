@@ -3,7 +3,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { labelFormatData, formatHourAverageResults } from '../../../helpers/graphsHelpers/graphBar';
 import { data } from './mocks/data';
- 
+
 import GraphBar from './GraphBar';
 
 export default {

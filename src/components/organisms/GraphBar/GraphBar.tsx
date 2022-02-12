@@ -8,27 +8,27 @@ export interface GraphBarProps {
   /**
    * data json
    */
-    data: FormattedHourAverageResult[],
+  data: FormattedHourAverageResult[];
   /**
    * array colors
    */
-     colors: string[],
+  colors: string[];
   /**
    * array colors
    */
-      labels: string[],
+  labels: string[];
 
-      isLoading: boolean;
+  isLoading: boolean;
 }
 
 const GraphBar = ({ data, colors, labels, isLoading }: GraphBarProps) => {
   if (isLoading) return <Skeleton width="100%" height={300} borderRadius={8} />;
-  return(
+  return (
     <Chart
-      options={Object.assign(options, {colors}, {xaxis:{categories: labels}})}
+      options={Object.assign(options, { colors }, { xaxis: { categories: labels } })}
       series={data}
       type="bar"
-      width='100%'
+      width="100%"
       height={height}
     />
   );

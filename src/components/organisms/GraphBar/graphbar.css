@@ -2,24 +2,25 @@
     display: none !important;
 }*/
 .apexcharts-active {
-    background-color: rgba(28, 28, 28, 0.6) !important;
+  background-color: rgba(28, 28, 28, 0.6) !important;
 }
 
 .tooltipHead {
-    padding: 5px 5px;
-    border-radius: 4px;
-    width: auto;
+  padding: 5px 5px;
+  border-radius: 4px;
+  width: auto;
 }
 
-.tooltipHead p, .tooltipHead .info {
-    font-size: 13px;
-    color: #ffffff;
-    line-height: 5px;
-    font-family: 'Helvetica' !important;
+.tooltipHead p,
+.tooltipHead .info {
+  font-size: 13px;
+  color: #ffffff;
+  line-height: 5px;
+  font-family: 'Helvetica' !important;
 }
 
 .tooltipHead .info {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
 }

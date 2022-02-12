@@ -5,13 +5,19 @@ import { CounterResult } from '../types/graphs/counter';
 import { FormattedDayWeekAverageResult, DayWeekAverageResult } from '../types/graphs/heatmap';
 import { FormattedHourAverageResult, HourAverageResults } from '../types/graphs/graphBar';
 import { FormattedDataEntity, ClassificationResults } from '../types/graphs/rangeBar';
-import { FormattedResponseClassificationHour, ClassificationHourResult } from '../types/graphs/groupedGraph';
+import {
+  FormattedResponseClassificationHour,
+  ClassificationHourResult,
+} from '../types/graphs/groupedGraph';
 import { baseUrl } from '../config/app/constants';
 import type { RootState } from '../config/app/store';
 import { formatDayWeekAverageResults } from '../helpers/graphsHelpers/heatMap';
 import { formatHourAverageResults } from '../helpers/graphsHelpers/graphBar';
 import { dataClassification } from '../helpers/graphsHelpers/rangeBar';
-import { dataClassificationGrouped, labelClassificationGrouped } from '../helpers/graphsHelpers/groupedGraph';
+import {
+  dataClassificationGrouped,
+  labelClassificationGrouped,
+} from '../helpers/graphsHelpers/groupedGraph';
 
 // Define a service using a base URL and expected endpoints
 export const vicoApi = createApi({
@@ -60,11 +66,11 @@ export const vicoApi = createApi({
     getClassificationHour: builder.query<FormattedResponseClassificationHour, string>({
       query: (queryString) => `/visitors/classification-hour${queryString}`,
       transformResponse(response: ClassificationHourResult) {
-        const responseData={
+        const responseData = {
           genders: dataClassificationGrouped(response, 'genders'),
-          ageRanges:dataClassificationGrouped(response, 'age_ranges'),
+          ageRanges: dataClassificationGrouped(response, 'age_ranges'),
           labels: labelClassificationGrouped(response),
-        }
+        };
         return responseData;
       },
     }),
