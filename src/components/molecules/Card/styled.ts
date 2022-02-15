@@ -4,9 +4,9 @@ import StyledText from '../../reusableStyledComponents/StyledText';
 
 export const ContainerCard = styled.div`
   position: relative;
-  max-width: 308px;
+  max-width: 340px;
   width: calc(100% / 3);
-  height: 70px;
+  height: 102px;
   padding: ${space[5]};
   margin: ${space[3]};
   background: ${(props) => props.theme.background.datacard.main};

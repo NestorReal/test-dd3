@@ -9,6 +9,7 @@ const GlobalStyles = createGlobalStyle`
 * {
   scrollbar-width: thin;
   scrollbar-color: #F4F2F2 #E8E8E8;
+  box-sizing: border-box;
 }
 
 /* Works on Chrome, Edge, and Safari */

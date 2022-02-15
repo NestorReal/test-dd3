@@ -1,8 +1,9 @@
 import React, { useState, ReactNode } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Button from '../../atoms/Button';
-import { StyledTabs, TitleTabs, ContainerTabs, ActionsTabs } from './styled';
+import { StyledTabs, ContainerTabs, ActionsTabs } from './styled';
 import Container from '../../reusableStyledComponents/Container';
+import Title from '../../atoms/Title';
 
 export interface ITabs {
   /**
@@ -25,9 +26,7 @@ const Tabs = ({ title, nameButtons, children }: ITabs) => {
   return (
     <StyledTabs>
       <Container display="flex" justifyContent="space-between" alignItems="center">
-        <TitleTabs uppercase typography="caps1Regular">
-          {title}
-        </TitleTabs>
+        <Title text={title} uppercase  typography='caps1Regular' />
         <ActionsTabs>
           {nameButtons
             ? nameButtons.map<ReactNode>((item, index) => (

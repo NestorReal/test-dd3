@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import StyledText from '../../reusableStyledComponents/StyledText';
 
 interface IContainerTabs {
   child: number;
@@ -26,10 +25,6 @@ export const ActionsTabs = styled.div`
   button:last-child {
     border-radius: 0px 6px 6px 0px;
   }
-`;
-
-export const TitleTabs = styled(StyledText)`
-  color: ${(props) => props.theme.text.section.title};
 `;
 
 export const ContainerTabs = styled.div<IContainerTabs>`
