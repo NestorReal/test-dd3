@@ -1,10 +1,10 @@
 type genericObject = {};
 
-export const options : genericObject = {
+export const options: genericObject = {
   chart: {
     type: 'bar',
     stacked: true,
-    offsetY: 0
+    offsetY: 0,
   },
   tooltip: {
     theme: 'dark',
@@ -31,19 +31,19 @@ export const options : genericObject = {
   },
   stroke: {
     width: 3,
-    colors: ["#fff"]
+    colors: ['#fff'],
   },
   grid: {
     xaxis: {
       lines: {
-        show: false
-      }
+        show: false,
+      },
     },
     yaxis: {
       lines: {
-        show: false
-      }
-    },  
+        show: false,
+      },
+    },
   },
   yaxis: {
     min: -5000,
@@ -53,8 +53,8 @@ export const options : genericObject = {
         colors: '#969696',
         fontSize: '13px',
         fontFamily: 'Helvetica',
-      }
-    }
+      },
+    },
   },
   xaxis: {
     categories: ['+65', '55-64', '45-54', '35-44', '25-34', '16-24', '-15'],
@@ -63,7 +63,7 @@ export const options : genericObject = {
         colors: '#969696',
         fontSize: '13px',
         fontFamily: 'Helvetica',
-      }
+      },
     },
   },
   legend: {

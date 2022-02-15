@@ -1,6 +1,6 @@
 type genericObject = {};
 
-export const options : genericObject = {
+export const options: genericObject = {
   chart: {
     type: 'bar',
     height: 500,

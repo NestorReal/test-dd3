@@ -21,24 +21,24 @@ export interface VisitorsEntity {
   genders: GendersEntity[];
   age_ranges: AgeRangesEntity[];
 }
-  export interface Data {
-    visitors: VisitorsEntity[];
-  }
-  export interface ClassificationHourResult {
-    main_range: string[] | null;
-    secondary_range: string[] | null;
-    data: Data;
-  }
-  export interface FormattedClassificationHourResult {
-    data: number[];
-  }
+export interface Data {
+  visitors: VisitorsEntity[];
+}
+export interface ClassificationHourResult {
+  main_range: string[] | null;
+  secondary_range: string[] | null;
+  data: Data;
+}
+export interface FormattedClassificationHourResult {
+  data: number[];
+}
 
-  export const defaultFormattedClassificationHourResult: FormattedClassificationHourResult[] = [
-    {data: []},
-  ];
+export const defaultFormattedClassificationHourResult: FormattedClassificationHourResult[] = [
+  { data: [] },
+];
 
-  export interface FormattedResponseClassificationHour {
-    genders: FormattedClassificationHourResult[],
-    ageRanges: FormattedClassificationHourResult[],
-    labels: string[],
-  }
+export interface FormattedResponseClassificationHour {
+  genders: FormattedClassificationHourResult[];
+  ageRanges: FormattedClassificationHourResult[];
+  labels: string[];
+}
