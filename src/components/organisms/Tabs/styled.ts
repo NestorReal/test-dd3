@@ -7,7 +7,6 @@ interface IContainerTabs {
 export const StyledTabs = styled.div`
   width: 100%;
   height: auto;
-  padding: 0 30px;
 `;
 
 export const ActionsTabs = styled.div`

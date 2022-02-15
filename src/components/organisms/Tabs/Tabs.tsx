@@ -26,7 +26,7 @@ const Tabs = ({ title, nameButtons, children }: ITabs) => {
   return (
     <StyledTabs>
       <Container display="flex" justifyContent="space-between" alignItems="center">
-        <Title text={title} uppercase  typography='caps1Regular' />
+        <Title text={title} uppercase typography="caps1Regular" />
         <ActionsTabs>
           {nameButtons
             ? nameButtons.map<ReactNode>((item, index) => (
