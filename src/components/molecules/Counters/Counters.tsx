@@ -1,11 +1,19 @@
 import React from 'react';
-import { DataForCounter } from '../../../types/graphs/counter';
 import Card from '../Card';
 import Container from '../../reusableStyledComponents/Container';
 import Skeleton from '../../atoms/Skeleton';
+import { Entity } from '../../../types/graphs/counter';
 
-interface ICountersProps {
-  counters: DataForCounter;
+export interface CounterEntity extends Entity {
+  name: string;
+}
+export interface CounterData {
+  first: CounterEntity;
+  second: CounterEntity;
+  third: CounterEntity;
+}
+export interface ICountersProps {
+  counters: CounterData;
   isLoading: boolean;
 }
 
@@ -13,7 +21,7 @@ const Counters: React.FunctionComponent<ICountersProps> = ({
   counters,
   isLoading = false,
 }: ICountersProps) => {
-  const { visitors, transactions, conversions } = counters;
+  const { first, second, third } = counters;
   return (
     <Container display="flex" justifyContent="space-between">
       {isLoading ? (
@@ -25,21 +33,21 @@ const Counters: React.FunctionComponent<ICountersProps> = ({
       ) : (
         <>
           <Card
-            title="Entradas"
-            value={Number(visitors.value)}
-            upDown={visitors.diff}
+            title={first.name}
+            value={Number(first.value)}
+            upDown={Number(first.diff)}
             upDownTypography="paragraph2"
           />
           <Card
-            title="Transacciones"
-            value={Number(transactions.value)}
-            upDown={transactions.diff}
+            title={second.name}
+            value={Number(second.value)}
+            upDown={Number(second.diff)}
             upDownTypography="paragraph2"
           />
           <Card
-            title="Tasa de Conversión"
-            value={Number(conversions.value)}
-            upDown={conversions.diff}
+            title={third.name}
+            value={Number(third.value)}
+            upDown={Number(third.diff)}
             upDownTypography="paragraph2"
           />
         </>

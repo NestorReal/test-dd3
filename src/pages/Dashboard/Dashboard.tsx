@@ -2,6 +2,10 @@ import React from 'react';
 import { useAppSelector } from '../../config/app/hooks';
 import { buildQuery } from '../../helpers/buildEndpoints';
 import {
+  adaptStoreCounters,
+  adaptClassificationCounters,
+} from '../../helpers/graphsHelpers/counters';
+import {
   useGetCounterDataQuery,
   useGetDayWeekAverageQuery,
   useGetHourAverageQuery,
@@ -11,7 +15,10 @@ import {
 import Counters from '../../components/molecules/Counters';
 import Heatmap from '../../components/organisms/Heatmap';
 import GraphBar from '../../components/organisms/GraphBar';
-import { defaultCountersData } from '../../types/graphs/counter';
+import {
+  defaultStoreCountersData,
+  defaultClassificationCountersData,
+} from '../../types/graphs/counter';
 import {
   CountersContainer,
   HeatMapContainer,
@@ -82,7 +89,11 @@ const Dashboard = () => {
           </TitleContainer>
 
           <Counters
-            counters={countersResults ? countersResults.data : defaultCountersData}
+            counters={
+              countersResults
+                ? adaptStoreCounters(countersResults.data)
+                : adaptStoreCounters(defaultStoreCountersData)
+            }
             isLoading={isCounterResultsLoading || isCounterResultsFetching}
           />
         </CountersContainer>
@@ -123,9 +134,20 @@ const Dashboard = () => {
       </Section>
 
       <Section title="Demográficos">
+        <CountersContainer>
+          <Counters
+            counters={
+              classificationResults
+                ? adaptClassificationCounters(classificationResults.counter)
+                : adaptClassificationCounters(defaultClassificationCountersData)
+            }
+            isLoading={isCounterResultsLoading || isCounterResultsFetching}
+          />
+        </CountersContainer>
+
         <RangeBarContainer>
           <RangeBar
-            data={classificationResults || defaultFormattedClassficationResult}
+            data={classificationResults?.data || defaultFormattedClassficationResult}
             colors={['#ba59aa', '#003566']}
             isLoading={isLoadingClassificationResults || isFetchingClassificationResults}
           />

@@ -4,7 +4,7 @@ import { CategoriesResult, StoresResult } from '../types/filters';
 import { CounterResult } from '../types/graphs/counter';
 import { FormattedDayWeekAverageResult, DayWeekAverageResult } from '../types/graphs/heatmap';
 import { FormattedHourAverageResult, HourAverageResults } from '../types/graphs/graphBar';
-import { FormattedDataEntity, ClassificationResults } from '../types/graphs/rangeBar';
+import { ClassificationResults, FormattedClassificationData } from '../types/graphs/rangeBar';
 import {
   FormattedResponseClassificationHour,
   ClassificationHourResult,
@@ -57,10 +57,13 @@ export const vicoApi = createApi({
         return formatHourAverageResults(response);
       },
     }),
-    getClassification: builder.query<FormattedDataEntity[], string>({
+    getClassification: builder.query<FormattedClassificationData, string>({
       query: (queryString) => `/visitors/classification${queryString}`,
       transformResponse(response: ClassificationResults) {
-        return dataClassification(response);
+        return {
+          data: dataClassification(response),
+          counter: response.count,
+        };
       },
     }),
     getClassificationHour: builder.query<FormattedResponseClassificationHour, string>({
