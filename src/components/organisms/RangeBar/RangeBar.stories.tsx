@@ -18,4 +18,5 @@ Primary.args = {
   data: dataClassification(data),
   colors: ['#ba59aa', '#003566'],
   isLoading: false,
+  valueAxis: 10000,
 };

@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import RequireAuth from './components/auth/RequireAuth';
 import PasswordRecovery from './pages/PasswordRecovery';
 import Dashboard from './pages/Dashboard';
+import Locations from './pages/Locations';
 import { mainTheme } from './mocks/themes';
 
 const App = () => (
@@ -18,6 +19,14 @@ const App = () => (
           element={
             <RequireAuth>
               <Dashboard />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="locations"
+          element={
+            <RequireAuth>
+              <Locations />
             </RequireAuth>
           }
         />
