@@ -5,7 +5,7 @@ export interface IAsideMenuContainerProps {
   top: number;
 }
 
-const asideMenuWidth = 230;
+export const asideMenuWidth = 230;
 const topMenuHeight = 120;
 
 export const FullContainer = styled.div`
@@ -41,4 +41,8 @@ export const IndividualContainer = styled.div`
   &:not(:first-child) {
     margin-left: ${space[4]};
   }
+`;
+
+export const BarContainer = styled.div`
+  margin-left: ${asideMenuWidth}px;
 `;
