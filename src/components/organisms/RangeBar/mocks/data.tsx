@@ -2,8 +2,23 @@
 import { ClassificationResults } from '../../../../types/graphs/rangeBar';
 
 export const data: ClassificationResults = {
-  main_total: 10466,
-  secondary_total: 77980,
+  count: {
+    totals: {
+      value: 80538,
+      secondary_value: 80472,
+      diff: 0.08,
+    },
+    males: {
+      value: 56876,
+      secondary_value: 58977,
+      diff: -3.56,
+    },
+    females: {
+      value: 23662,
+      secondary_value: 21495,
+      diff: 10.08,
+    },
+  },
   main_range: ['2022-02-01T00:00:00', '2022-02-10T23:59:59'],
   secondary_range: ['2022-01-01T00:00:00', '2022-01-28T23:59:59'],
   data: {

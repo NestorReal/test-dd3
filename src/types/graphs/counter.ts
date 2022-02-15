@@ -1,7 +1,9 @@
+import { CountEntity } from './rangeBar';
+
 export interface Entity {
   value: number | null;
   secondary_value: number | null;
-  diff: number;
+  diff: number | null;
 }
 
 export interface DataForCounter {
@@ -16,7 +18,7 @@ export interface CounterResult {
   data: DataForCounter;
 }
 
-export const defaultCountersData: DataForCounter = {
+export const defaultStoreCountersData: DataForCounter = {
   visitors: {
     value: null,
     secondary_value: null,
@@ -28,6 +30,24 @@ export const defaultCountersData: DataForCounter = {
     diff: 0,
   },
   conversions: {
+    value: null,
+    secondary_value: null,
+    diff: 0,
+  },
+};
+
+export const defaultClassificationCountersData: CountEntity = {
+  females: {
+    value: null,
+    secondary_value: null,
+    diff: 0,
+  },
+  males: {
+    value: null,
+    secondary_value: null,
+    diff: 0,
+  },
+  totals: {
     value: null,
     secondary_value: null,
     diff: 0,
