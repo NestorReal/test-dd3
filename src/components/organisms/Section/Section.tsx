@@ -16,11 +16,9 @@ export interface ISection {
 const Section = ({ title, children }: ISection) => (
   <SectionStyled>
     <TitleStyled>
-      <Title typography='paragraph1' text={title} />
+      <Title typography="paragraph1" text={title} />
     </TitleStyled>
-    <ContainerChildren>
-      {children}
-    </ContainerChildren>
+    <ContainerChildren>{children}</ContainerChildren>
   </SectionStyled>
 );
 

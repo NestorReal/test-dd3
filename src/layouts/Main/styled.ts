@@ -13,6 +13,8 @@ export const FullContainer = styled.div`
   padding-left: ${space[8]};
   padding-right: ${space[8]};
   padding-top: ${space[6]};
+  padding-bottom: ${space[1]};
+  background-color: ${(props) => props.theme.background.main};
 `;
 
 export const AsideMenuContainer = styled.div<IAsideMenuContainerProps>`

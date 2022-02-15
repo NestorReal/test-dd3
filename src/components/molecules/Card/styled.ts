@@ -8,7 +8,6 @@ export const ContainerCard = styled.div`
   width: calc(100% / 3);
   height: 102px;
   padding: ${space[5]};
-  margin: ${space[3]};
   background: ${(props) => props.theme.background.datacard.main};
   border-radius: 8px;
 `;
