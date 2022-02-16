@@ -72,6 +72,9 @@ export const mainTheme = {
       error: '#e92b2b',
       placeholder: '#e8e6e6',
     },
+    message: {
+      error: '#E92B2B',
+    },
   },
 };
 
@@ -143,6 +146,9 @@ export const anotherTheme = {
       required: '#e92c2c',
       error: '#e92b2b',
       placeholder: '#e8e6e6',
+    },
+    message: {
+      error: '#E92B2B',
     },
   },
 };

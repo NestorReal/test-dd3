@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import spaces from '../../../config/spacing';
 
 export const StyleForm = styled.div`
   width: 600px;
@@ -20,4 +21,11 @@ export const FormButtonContainer = styled.div`
   width: 100%;
   height: 52px;
   margin-top: 32px;
+`;
+
+export const ErrorMessageContainer = styled.div`
+  width: 100%;
+  margin-top: ${spaces[3]};
+  color: ${props => props.theme.text.message.error};
+  text-align: center;
 `;
