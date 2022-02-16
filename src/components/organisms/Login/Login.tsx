@@ -7,7 +7,7 @@ import FormButton from '../../atoms/FormButton';
 import CustomLink from '../../atoms/CustomLink';
 import Logo from '../../atoms/Logo';
 import LyticaLogo from '../../../static/images/logo.png';
-import { StyleForm, FormButtonContainer } from './style';
+import { StyleForm, FormButtonContainer, ErrorMessageContainer } from './style';
 import Container from '../../reusableStyledComponents/Container';
 import CustomField from '../../atoms/CustomField';
 
@@ -90,7 +90,7 @@ const Login = ({ onSubmit, link, redirectAfterLoginTo }: ILogin) => {
               </FormButton>
             </FormButtonContainer>
           </Form>
-          {errorMessage && <div>{errorMessage}</div>}
+          {errorMessage && <ErrorMessageContainer>{errorMessage}</ErrorMessageContainer>}
         </StyleForm>
       )}
     </Formik>

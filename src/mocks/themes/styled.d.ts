@@ -77,6 +77,9 @@ declare module 'styled-components' {
         error: string;
         placeholder: string;
       };
+      message: {
+        error: string;
+      }
     };
   }
 }
