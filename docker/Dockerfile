@@ -6,6 +6,8 @@ WORKDIR /app
 
 RUN npm install
 
-VOLUME ["/app/build"]
+VOLUME ["/build"]
 
 ENTRYPOINT ["/app/docker/entrypoint.sh"]
+
+CMD ["/bin/sh", "-ec", "while :; do echo '.'; sleep 1000 ; done"]

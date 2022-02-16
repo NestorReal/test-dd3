@@ -1,6 +1,9 @@
 #! /usr/bin/env sh
 set -e
 
-rm -rf /app/build/*
-
 cd /app && npm run build
+
+rm -rf /build/*
+mv /app/build/* /build
+
+exec "$@"
