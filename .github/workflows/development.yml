@@ -3,7 +3,7 @@ name: Development packaging
 on:
   push:
     branches:
-      - 'feature/deployment-automation'
+      - 'master'
 
 env:
   IMAGE_NAME: vico-frontend-builder
