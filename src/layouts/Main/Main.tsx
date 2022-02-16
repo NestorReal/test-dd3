@@ -17,6 +17,7 @@ import {
   TopMenuContainer,
   InsideContainer,
   IndividualContainer,
+  BarContainer,
 } from './styled';
 import { throttle } from '../../helpers/performance';
 import { EMPTY_USER } from '../../config/app/constants';
@@ -27,8 +28,11 @@ import SelectorSkeleton from '../../components/molecules/SelectorSkeleton';
 import FiltersContainer from '../../components/atoms/FiltersContainer';
 import RangeDateSelector from '../../components/molecules/RangeDateSelector';
 import ComparisonDateSelector from '../../components/molecules/ComparisonDateSelector';
+import StatusBar from '../../components/molecules/StatusBar';
 
 const Main = () => {
+  const filtersSelected = useAppSelector((state) => state.filters);
+  const statusBarText = `${filtersSelected.time.label} (${filtersSelected.time.sideLabel}) comparado con ${filtersSelected.comparison.label} (${filtersSelected.comparison.sideLabel})`;
   const [scrollY, setScrollY] = useState(0);
   const [topMenuHeight, setTopMenuHeight] = useState(0);
   const dispatch = useAppDispatch();
@@ -79,7 +83,18 @@ const Main = () => {
           onCloseSession={onCloseSession}
         />
       </TopMenuContainer>
-
+      <BarContainer>
+        <StatusBar
+          onClick={() =>
+            window.scroll({
+              top: 0,
+              behavior: 'smooth',
+            })
+          }
+          text={statusBarText}
+          hidden={!(scrollY >= 120)}
+        />
+      </BarContainer>
       <AsideMenuContainer top={topMenuHeight - scrollY}>
         <AsideMenu title="Main Menu" />
       </AsideMenuContainer>
