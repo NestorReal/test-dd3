@@ -24,6 +24,10 @@ export const filtersSlice = createSlice({
     },
     setTimeFilter: (state, action: PayloadAction<FiltersState['time']>) => {
       state.time = action.payload;
+      const timeSelectedId = action.payload.id;
+      const compareOptions = conformComparations[timeSelectedId];
+      const [defaultOption] = compareOptions;
+      state.comparison = defaultOption;
     },
     setComparisonFilter: (state, action: PayloadAction<FiltersState['comparison']>) => {
       state.comparison = action.payload;
