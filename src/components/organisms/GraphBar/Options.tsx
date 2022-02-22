@@ -44,7 +44,6 @@ export const options: genericObject = {
     bar: {
       borderRadius: 8,
       distributed: true,
-      endingShape: 'rounded',
     },
   },
   responsive: [

@@ -11,16 +11,6 @@ export const HeatMapContainer = styled.div`
   margin-bottom: ${space[8]};
 `;
 
-export const GraphBarContainer = styled.section`
-  margin-top: ${space[5]};
-  margin-bottom: ${space[8]};
-`;
-
-export const RangeBarContainer = styled.div`
-  margin-top: ${space[5]};
-  margin-bottom: ${space[8]};
-`;
-
 export const GroupedGraphContainer = styled.section`
   margin-top: ${space[5]};
   margin-bottom: ${space[8]};

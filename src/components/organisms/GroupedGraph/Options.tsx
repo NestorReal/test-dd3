@@ -31,13 +31,7 @@ export const options: genericObject = {
       return tooltip.replace(',', '');
     },
   },
-  plotOptions: {
-    bar: {
-      horizontal: false,
-      columnWidth: '55%',
-      endingShape: 'rounded',
-    },
-  },
+
   dataLabels: {
     enabled: false,
   },
@@ -69,21 +63,3 @@ export const options: genericObject = {
   },
 };
 export const height = 400;
-
-export const horizontalTrue = {
-  bar: {
-    horizontal: true,
-    borderRadius: 6,
-    endingShape: 'rounded',
-    distributed: false,
-  },
-};
-
-export const horizontalFalse = {
-  bar: {
-    horizontal: false,
-    borderRadius: 6,
-    endingShape: 'rounded',
-    distributed: false,
-  },
-};

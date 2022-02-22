@@ -1,7 +1,7 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
 import { FormattedClassificationHourResult } from '../../../types/graphs/groupedGraph';
-import { options, height, horizontalFalse, horizontalTrue } from './Options';
+import { options, height } from './Options';
 import Skeleton from '../../atoms/Skeleton';
 
 import './groupedGraph.css';
@@ -25,13 +25,19 @@ export interface GroupedGraphProps {
 
 const GroupedGraph = ({ data, optionsData, isLoading, horizontal, colors }: GroupedGraphProps) => {
   if (isLoading) return <Skeleton width="100%" height={300} borderRadius={8} />;
-  let plotOptions = horizontalFalse;
-  if (horizontal) {
-    plotOptions = horizontalTrue;
-  }
+
+  const plotOptions = {
+    bar: {
+      horizontal,
+      borderRadius: 8,
+      distributed: false,
+      columnWidth: '55%',
+    },
+  };
+
   return (
     <Chart
-      options={{...options, plotOptions ,fill: { colors } ,xaxis: { categories: optionsData }}}
+      options={{ ...options, plotOptions, fill: { colors }, xaxis: { categories: optionsData } }}
       series={data}
       type="bar"
       width="100%"

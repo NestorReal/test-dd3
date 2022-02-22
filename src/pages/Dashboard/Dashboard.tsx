@@ -151,7 +151,6 @@ const Dashboard = () => {
             isLoading={isCounterResultsLoading || isCounterResultsFetching}
           />
         </CountersContainer>
-        {/* {console.log(classificationResults?.data.map(test => test.data).flat().map(valueNumber => Math.abs(valueNumber)))} */}
         <RangeBarContainer>
           <RangeBar
             data={classificationResults?.data || defaultFormattedClassficationResult}

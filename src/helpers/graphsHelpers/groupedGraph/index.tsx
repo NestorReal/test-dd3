@@ -34,7 +34,7 @@ export const dataClassificationGrouped = (
   return newArray.map((arrayDataNumbers) => ({ data: arrayDataNumbers }));
 };
 
-export const labelClassificationGrouped = (data?: ClassificationHourResult): string[] => {
+export const labelClassificationGrouped = (data: ClassificationHourResult): string[] => {
   if (!data) return [];
   const dataValues = data.data;
   const keys = Object.keys(dataValues);
@@ -43,7 +43,7 @@ export const labelClassificationGrouped = (data?: ClassificationHourResult): str
   return formatHours(paramData);
 };
 
-export const labelClassificationStore = (data?: ClassificationLocationResult) => {
+export const labelClassificationStore = (data: ClassificationLocationResult) => {
   if (!data) return [];
   const dataValues = data.data;
   const keys = Object.keys(dataValues);

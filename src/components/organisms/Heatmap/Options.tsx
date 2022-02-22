@@ -38,7 +38,6 @@ export const options: genericObject = {
                 </div>`;
     },
   },
-  plotOptions: {},
   yaxis: {
     labels: {
       style: {
@@ -51,7 +50,6 @@ export const options: genericObject = {
   stroke: {
     width: 13,
   },
-  xaxis: {},
   dataLabels: {
     enabled: true,
     textAnchor: 'middle',
@@ -72,8 +70,8 @@ export const options: genericObject = {
   },
 };
 export const height = 300;
-/* eslint-disable import/prefer-default-export */
-export const axisData = (labels: string[]) : ApexXAxis => ({
+
+export const axisData = (labels: string[]): ApexXAxis => ({
   type: 'category',
   categories: labels,
   position: 'top',

@@ -14,11 +14,13 @@ import {
   GroupedGraphContainer,
   TitleContainer,
 } from './styled';
-import { defaultFormattedClassificationHourResult } from '../../types/graphs/groupedGraph';
+import {
+  defaultFormattedClassificationHourResult,
+  defaultStoreOption,
+} from '../../types/graphs/groupedGraph';
 import { defaultFormattedDayWeekAverageResult } from '../../types/graphs/heatmap';
 import { rangesColors } from '../../helpers/graphsHelpers/heatMap';
 import { retrieveOptionName } from '../../helpers/graphsHelpers/groupedGraph';
-import { defaultStoreOption }  from '../../types/graphs/groupedGraph';
 import Section from '../../components/organisms/Section';
 import Title from '../../components/atoms/Title';
 import Tabs from '../../components/organisms/Tabs';
@@ -63,7 +65,10 @@ const Locations = () => {
           categories={
             counterLocationResults
               ? counterLocationResults[0].labels.map((valueClassification) =>
-                  retrieveOptionName(valueClassification, storesData?.results || defaultStoreOption),
+                  retrieveOptionName(
+                    valueClassification,
+                    storesData?.results || defaultStoreOption,
+                  ),
                 )
               : [] || []
           }

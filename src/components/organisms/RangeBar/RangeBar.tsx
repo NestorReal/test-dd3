@@ -24,7 +24,7 @@ const RangeBar = ({ data, colors, isLoading, valueAxis }: RangeBarProps) => {
   const yaxis = yaxisData(valueAxis);
   return (
     <Chart
-      options={Object.assign(options, { colors }, { yaxis })}
+      options={{ ...options, colors, yaxis }}
       series={data}
       type="bar"
       width="100%"
