@@ -20,3 +20,12 @@ export const dataClassification = (data: ClassificationResults): FormattedDataEn
     },
   ];
 };
+
+export const valueAxis = (data: FormattedDataEntity[]): number => {
+  if (!data) return 0;
+  const arrayData = data
+    .map((objectData) => objectData.data)
+    .flat()
+    .map((valueNumber) => Math.abs(valueNumber));
+  return Math.max(...arrayData);
+};

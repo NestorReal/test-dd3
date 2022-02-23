@@ -1,5 +1,6 @@
 import { builderTooltip } from './BuilderTooltip';
 import { humanFormat } from '../../../helpers/graphsHelpers/graphs/humanFormat';
+import { ApexXAxis } from '../../../types/graphs/heatmap';
 
 type genericObject = {};
 
@@ -37,20 +38,6 @@ export const options: genericObject = {
                 </div>`;
     },
   },
-  plotOptions: {},
-  xaxis: {
-    type: 'category',
-    categories: ['L', 'Ma', 'Mi', 'J', 'V', 'S', 'D'],
-    position: 'top',
-    labels: {
-      style: {
-        colors: '#5d2c55',
-        fontSize: '16px',
-        fontWeight: 500,
-        fontFamily: 'Helvetica',
-      },
-    },
-  },
   yaxis: {
     labels: {
       style: {
@@ -82,4 +69,17 @@ export const options: genericObject = {
     show: false,
   },
 };
-export const height = 150;
+
+export const axisData = (labels: string[]): ApexXAxis => ({
+  type: 'category',
+  categories: labels,
+  position: 'top',
+  labels: {
+    style: {
+      colors: '#5d2c55',
+      fontSize: '16px',
+      fontWeight: 500,
+      fontFamily: 'Helvetica',
+    },
+  },
+});

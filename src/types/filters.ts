@@ -16,6 +16,13 @@ export interface OptionsGroup {
   options: GenericOption[];
 }
 
+export const OptionsGroupDefault = [
+  {
+    name: '',
+    options: [],
+  },
+];
+
 export interface RangeOption {
   lowDate: string;
   upDate: string;
@@ -36,6 +43,13 @@ export interface StoresResult {
   previous: number | null;
   results: OptionsGroup[];
 }
+
+export const StoresResultDefault: StoresResult = {
+  count: 0,
+  next: 0,
+  previous: 0,
+  results: OptionsGroupDefault,
+};
 export interface FiltersState {
   categories: string[];
   stores: string[];

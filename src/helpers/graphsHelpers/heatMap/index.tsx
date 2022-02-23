@@ -5,8 +5,13 @@ import { rgbToHex } from './RGBAtoHEX';
 import {
   DayWeekAverageResult,
   FormattedDayWeekAverageResult,
+  FormattedCounterLocationResult,
   Data,
+  DataClassification,
+  DayWeekAverageClassificationResult,
 } from '../../../types/graphs/heatmap';
+import { OptionsGroupDefault, StoresResult } from '../../../types/filters';
+import { retrieveOptionName } from '../groupedGraph';
 
 export const rangesColors = (data: any) => {
   if (!data) return {};
@@ -72,4 +77,58 @@ export const formatDayWeekAverageResults = (
     return formattedDataObject;
   });
   return formattedData;
+};
+
+export const formatCounterLocationAverageResults = (
+  data: DayWeekAverageClassificationResult,
+): FormattedCounterLocationResult[] => {
+  if (!data) return [];
+  const unformattedData = deepClone(data);
+  const unformattedDataValues = unformattedData.data;
+  const { main_range } = unformattedData;
+  const { secondary_range } = unformattedData;
+  cleanNulls(unformattedDataValues);
+  const keys = Object.keys(unformattedDataValues);
+
+  const formattedData = keys.map((key) => {
+    const formattedDataObject: FormattedCounterLocationResult = unformattedDataValues[
+      key as keyof DataClassification
+    ]!.reduce(
+      (accum: FormattedCounterLocationResult, element) => {
+        accum.data.push(element.value);
+        accum.diff.push(element.diff);
+        accum.labels.push(element.store_id);
+        accum.colors.push(element.color);
+        accum.comparedData.push(element.secondary_value);
+        return accum;
+      },
+      {
+        data: [],
+        diff: [],
+        comparedData: [],
+        colors: [],
+        labels: [],
+        name: '',
+        mainRange: [],
+        secondaryRange: [],
+      },
+    );
+
+    formattedDataObject.name = key;
+    formattedDataObject.mainRange = main_range || [];
+    formattedDataObject.secondaryRange = secondary_range || [];
+    return formattedDataObject;
+  });
+  return formattedData;
+};
+
+export const getStoreLabels = (
+  data: FormattedCounterLocationResult[],
+  stores: StoresResult,
+): string[] => {
+  if (!data || !stores) return [''];
+  const dataLabels = data[0].labels.map((idValue) =>
+    retrieveOptionName(idValue, stores?.results || OptionsGroupDefault),
+  );
+  return dataLabels;
 };

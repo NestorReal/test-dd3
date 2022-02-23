@@ -58,6 +58,9 @@ export const options: genericObject = {
       },
     },
   ],
+  legend: {
+    show: false,
+  },
   fill: {
     opacity: 1,
   },

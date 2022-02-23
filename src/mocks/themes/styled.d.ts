@@ -79,7 +79,7 @@ declare module 'styled-components' {
       };
       message: {
         error: string;
-      }
+      };
     };
   }
 }

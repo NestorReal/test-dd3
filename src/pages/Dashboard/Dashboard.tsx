@@ -33,6 +33,7 @@ import { defaultFormattedClassficationResult } from '../../types/graphs/rangeBar
 import { defaultFormattedClassificationHourResult } from '../../types/graphs/groupedGraph';
 import { rangesColors } from '../../helpers/graphsHelpers/heatMap';
 import { labelFormatData } from '../../helpers/graphsHelpers/graphBar';
+import { valueAxis } from '../../helpers/graphsHelpers/rangeBar';
 import RangeBar from '../../components/organisms/RangeBar';
 import GroupedGraph from '../../components/organisms/GroupedGraph';
 import Section from '../../components/organisms/Section';
@@ -102,6 +103,8 @@ const Dashboard = () => {
             data={dayWeekAverageResults || defaultFormattedDayWeekAverageResult}
             colorScale={rangesColors(dayWeekAverageResults)}
             isLoading={isLoadingDayWeekAverageResults || isFetchingDayWeekAverageResults}
+            categories={['L', 'Ma', 'Mi', 'J', 'V', 'S', 'D']}
+            height={150}
           />
         </HeatMapContainer>
 
@@ -119,6 +122,8 @@ const Dashboard = () => {
               data={classificationHourResults?.genders || defaultFormattedClassificationHourResult}
               optionsData={classificationHourResults?.labels || []}
               isLoading={isLoadingClassificationHourResults || isFetchingClassificationHourResults}
+              horizontal={false}
+              colors={['#ba59aa', '#003566']}
             />
           </GroupedGraphContainer>
           <GroupedGraphContainer>
@@ -128,6 +133,8 @@ const Dashboard = () => {
               }
               optionsData={classificationHourResults?.labels || []}
               isLoading={isLoadingClassificationHourResults || isFetchingClassificationHourResults}
+              horizontal={false}
+              colors={['#168fff', '#17cb49', '#ff9f2d', '#f74141', '#e96fd5', '#9b51e0', '#797979']}
             />
           </GroupedGraphContainer>
         </Tabs>
@@ -144,12 +151,14 @@ const Dashboard = () => {
             isLoading={isCounterResultsLoading || isCounterResultsFetching}
           />
         </CountersContainer>
-
         <RangeBarContainer>
           <RangeBar
             data={classificationResults?.data || defaultFormattedClassficationResult}
             colors={['#ba59aa', '#003566']}
             isLoading={isLoadingClassificationResults || isFetchingClassificationResults}
+            valueAxis={valueAxis(
+              classificationResults?.data || defaultFormattedClassficationResult,
+            )}
           />
         </RangeBarContainer>
       </Section>

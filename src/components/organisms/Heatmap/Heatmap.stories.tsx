@@ -16,9 +16,10 @@ const Template: ComponentStory<typeof Heatmap> = (args) => <Heatmap {...args} />
 export const Primary = Template.bind({});
 
 const formattedData = formatDayWeekAverageResults(data);
-
 Primary.args = {
   data: formattedData,
   colorScale: rangesColors(formattedData),
   isLoading: false,
+  categories: ['L', 'Ma', 'Mi', 'J', 'V', 'S', 'D'],
+  height: 300,
 };

@@ -1,3 +1,5 @@
+import { ICustom } from '../../../types/graphs/groupedGraph';
+
 type genericObject = {};
 
 export const options: genericObject = {
@@ -7,16 +9,29 @@ export const options: genericObject = {
     stacked: false,
   },
   tooltip: {
-    theme: 'dark',
-  },
-  plotOptions: {
-    bar: {
-      horizontal: false,
-      borderRadius: 6,
-      endingShape: 'rounded',
-      distributed: false,
+    shared: true,
+    intersect: false,
+    custom({ series, dataPointIndex, w: valuesGlobals }: ICustom) {
+      const tooltip = `
+        <div class="tooltipHead">
+          <div>${valuesGlobals.globals.labels[dataPointIndex]}</div>
+          ${series.map(
+            (item, index) =>
+              `<div class="info">
+              <div class="info">
+                <div class="circle" style="background: ${valuesGlobals.globals.colors[index]}" ></div>
+                <div>${valuesGlobals.globals.labels[index]}</div>
+              </div>
+              <div>
+                ${item[dataPointIndex]}
+              </div>
+            </div>`,
+          )}
+        </div>`;
+      return tooltip;
     },
   },
+
   dataLabels: {
     enabled: false,
   },
@@ -42,6 +57,9 @@ export const options: genericObject = {
         fontFamily: 'Helvetica',
       },
     },
+  },
+  legend: {
+    show: false,
   },
 };
 export const height = 400;

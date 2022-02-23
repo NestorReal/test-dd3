@@ -2,21 +2,32 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { CategoriesResult, StoresResult } from '../types/filters';
 import { CounterResult } from '../types/graphs/counter';
-import { FormattedDayWeekAverageResult, DayWeekAverageResult } from '../types/graphs/heatmap';
+import {
+  FormattedDayWeekAverageResult,
+  DayWeekAverageResult,
+  FormattedCounterLocationResult,
+  DayWeekAverageClassificationResult,
+} from '../types/graphs/heatmap';
 import { FormattedHourAverageResult, HourAverageResults } from '../types/graphs/graphBar';
 import { ClassificationResults, FormattedClassificationData } from '../types/graphs/rangeBar';
 import {
   FormattedResponseClassificationHour,
   ClassificationHourResult,
+  FormattedResponseClassificationLocationHour,
+  ClassificationLocationResult,
 } from '../types/graphs/groupedGraph';
 import { baseUrl } from '../config/app/constants';
 import type { RootState } from '../config/app/store';
-import { formatDayWeekAverageResults } from '../helpers/graphsHelpers/heatMap';
+import {
+  formatDayWeekAverageResults,
+  formatCounterLocationAverageResults,
+} from '../helpers/graphsHelpers/heatMap';
 import { formatHourAverageResults } from '../helpers/graphsHelpers/graphBar';
 import { dataClassification } from '../helpers/graphsHelpers/rangeBar';
 import {
   dataClassificationGrouped,
   labelClassificationGrouped,
+  labelClassificationStore,
 } from '../helpers/graphsHelpers/groupedGraph';
 
 // Define a service using a base URL and expected endpoints
@@ -77,6 +88,24 @@ export const vicoApi = createApi({
         return responseData;
       },
     }),
+    getCounterLocation: builder.query<FormattedCounterLocationResult[], string>({
+      query: (queryString) => `/visitors/counter-location${queryString}`,
+      transformResponse(response: DayWeekAverageClassificationResult) {
+        return formatCounterLocationAverageResults(response);
+      },
+    }),
+    getClassificationLocation: builder.query<FormattedResponseClassificationLocationHour, string>({
+      query: (queryString) => `/visitors/classification-location${queryString}`,
+      transformResponse(response: ClassificationLocationResult) {
+        const responseData = {
+          genders: dataClassificationGrouped(response, 'genders'),
+          ageRanges: dataClassificationGrouped(response, 'age_ranges'),
+          visitors: dataClassificationGrouped(response, 'visitors'),
+          labels: labelClassificationStore(response),
+        };
+        return responseData;
+      },
+    }),
   }),
 });
 
@@ -90,4 +119,6 @@ export const {
   useGetHourAverageQuery,
   useGetClassificationQuery,
   useGetClassificationHourQuery,
+  useGetCounterLocationQuery,
+  useGetClassificationLocationQuery,
 } = vicoApi;

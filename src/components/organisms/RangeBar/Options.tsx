@@ -45,17 +45,6 @@ export const options: genericObject = {
       },
     },
   },
-  yaxis: {
-    min: -5000,
-    max: 5000,
-    labels: {
-      style: {
-        colors: '#969696',
-        fontSize: '13px',
-        fontFamily: 'Helvetica',
-      },
-    },
-  },
   xaxis: {
     categories: ['+65', '55-64', '45-54', '35-44', '25-34', '16-24', '-15'],
     labels: {
@@ -70,4 +59,17 @@ export const options: genericObject = {
     show: false,
   },
 };
+
 export const height = 400;
+
+export const yaxisData = (value: number) => ({
+  min: -value,
+  max: value,
+  labels: {
+    style: {
+      colors: '#969696',
+      fontSize: '13px',
+      fontFamily: 'Helvetica',
+    },
+  },
+});
