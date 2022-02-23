@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import space from '../../config/spacing';
 
-export const CountersContainer = styled.div`
+export const HeaderContainer = styled.div`
   margin-top: ${space[5]};
   margin-bottom: ${space[8]};
 `;

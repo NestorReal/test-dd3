@@ -6,7 +6,10 @@ import {
   FormattedClassificationHourResult,
   ClassificationLocationResult,
   ResultsRetrieveOptionsName,
+  FormattedResponseClassificationLocationHour,
 } from '../../../types/graphs/groupedGraph';
+
+import { OptionsGroupDefault, StoresResult } from '../../../types/filters';
 
 export const dataClassificationGrouped = (
   data: ClassificationHourResult | ClassificationLocationResult,
@@ -62,4 +65,15 @@ export const retrieveOptionName = (id: number, optionGroups: ResultsRetrieveOpti
     return foundOption.name;
   }
   return '';
+};
+
+export const getStoreLabelsGroupedGraph = (
+  data: FormattedResponseClassificationLocationHour,
+  stores: StoresResult,
+): string[] => {
+  if (!data || !stores) return [''];
+  const dataLabels = data.labels.map((idValue) =>
+    retrieveOptionName(idValue, stores.results || OptionsGroupDefault),
+  );
+  return dataLabels;
 };

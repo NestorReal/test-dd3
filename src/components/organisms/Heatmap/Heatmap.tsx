@@ -28,7 +28,7 @@ const Heatmap = ({ data, colorScale, isLoading, categories, height }: HeatmapPro
   const axisDataJson = axisData(categories);
   return (
     <Chart
-      options={{...options, plotOptions: colorScale, xaxis: axisDataJson}}
+      options={{ ...options, plotOptions: colorScale, xaxis: axisDataJson }}
       series={data}
       type="heatmap"
       width="100%"

@@ -69,7 +69,6 @@ export const options: genericObject = {
     show: false,
   },
 };
-export const height = 300;
 
 export const axisData = (labels: string[]): ApexXAxis => ({
   type: 'category',

@@ -73,17 +73,16 @@ export const defaultFormattedCounterLocationResult: FormattedCounterLocationResu
   },
 ];
 
-
 export type ApexXAxis = {
-  type?: 'category' | 'datetime' | 'numeric'
-  categories: string[],
-  position: string,
+  type?: 'category' | 'datetime' | 'numeric';
+  categories: string[];
+  position: string;
   labels: {
     style: {
-      colors?: string | string[],
-      fontSize: string,
-      fontWeight: number,
-      fontFamily: string,
-    },
-  },
+      colors?: string | string[];
+      fontSize: string;
+      fontWeight: number;
+      fontFamily: string;
+    };
+  };
 };

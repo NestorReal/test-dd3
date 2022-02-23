@@ -10,6 +10,8 @@ import {
   DataClassification,
   DayWeekAverageClassificationResult,
 } from '../../../types/graphs/heatmap';
+import { OptionsGroupDefault, StoresResult } from '../../../types/filters';
+import { retrieveOptionName } from '../groupedGraph';
 
 export const rangesColors = (data: any) => {
   if (!data) return {};
@@ -17,7 +19,7 @@ export const rangesColors = (data: any) => {
   for (let i = 0; i < data.length; i += 1) {
     for (let j = 0; j < Object.values(data[i].colors).length; j += 1) {
       const rgbaArray = data[i].colors[j];
-      const [r, g, b] = rgbaArray !== undefined ? rgbaArray : [1, 1, 1, 1];
+      const [r, g, b] = rgbaArray;
       arrayData.push({
         color: rgbToHex(r, g, b),
         from: data[i].data[j],
@@ -118,4 +120,15 @@ export const formatCounterLocationAverageResults = (
     return formattedDataObject;
   });
   return formattedData;
+};
+
+export const getStoreLabels = (
+  data: FormattedCounterLocationResult[],
+  stores: StoresResult,
+): string[] => {
+  if (!data || !stores) return [''];
+  const dataLabels = data[0].labels.map((idValue) =>
+    retrieveOptionName(idValue, stores?.results || OptionsGroupDefault),
+  );
+  return dataLabels;
 };

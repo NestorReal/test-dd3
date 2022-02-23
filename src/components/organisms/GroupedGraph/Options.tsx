@@ -11,16 +11,16 @@ export const options: genericObject = {
   tooltip: {
     shared: true,
     intersect: false,
-    custom({ series, dataPointIndex, w }: ICustom) {
+    custom({ series, dataPointIndex, w: valuesGlobals }: ICustom) {
       const tooltip = `
         <div class="tooltipHead">
-          <div>${w.globals.labels[dataPointIndex]}</div>
+          <div>${valuesGlobals.globals.labels[dataPointIndex]}</div>
           ${series.map(
             (item, index) =>
               `<div class="info">
               <div class="info">
-                <div class="circle" style="background: ${w.globals.colors[index]};" ></div>
-                <div>${w.globals.labels[index]}</div>
+                <div class="circle" style="background: ${valuesGlobals.globals.colors[index]}" ></div>
+                <div>${valuesGlobals.globals.labels[index]}</div>
               </div>
               <div>
                 ${item[dataPointIndex]}
@@ -28,7 +28,7 @@ export const options: genericObject = {
             </div>`,
           )}
         </div>`;
-      return tooltip.replace(',', '');
+      return tooltip;
     },
   },
 

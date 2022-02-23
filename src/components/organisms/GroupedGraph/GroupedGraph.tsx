@@ -4,7 +4,7 @@ import { FormattedClassificationHourResult } from '../../../types/graphs/grouped
 import { options, height } from './Options';
 import Skeleton from '../../atoms/Skeleton';
 
-import './groupedGraph.css';
+import '../index.css';
 
 export interface GroupedGraphProps {
   /**

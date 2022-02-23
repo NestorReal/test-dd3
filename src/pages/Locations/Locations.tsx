@@ -8,19 +8,14 @@ import {
 } from '../../features/vicoApi';
 import Heatmap from '../../components/organisms/Heatmap';
 import GroupedGraph from '../../components/organisms/GroupedGraph';
+import { HeaderContainer, HeatMapContainer, GroupedGraphContainer, TitleContainer } from './styled';
+import { defaultFormattedClassificationHourResult } from '../../types/graphs/groupedGraph';
+import { StoresResultDefault } from '../../types/filters';
 import {
-  CountersContainer,
-  HeatMapContainer,
-  GroupedGraphContainer,
-  TitleContainer,
-} from './styled';
-import {
-  defaultFormattedClassificationHourResult,
-  defaultStoreOption,
-} from '../../types/graphs/groupedGraph';
-import { defaultFormattedDayWeekAverageResult } from '../../types/graphs/heatmap';
-import { rangesColors } from '../../helpers/graphsHelpers/heatMap';
-import { retrieveOptionName } from '../../helpers/graphsHelpers/groupedGraph';
+  defaultFormattedDayWeekAverageResult,
+  defaultFormattedCounterLocationResult,
+} from '../../types/graphs/heatmap';
+import { rangesColors, getStoreLabels } from '../../helpers/graphsHelpers/heatMap';
 import Section from '../../components/organisms/Section';
 import Title from '../../components/atoms/Title';
 import Tabs from '../../components/organisms/Tabs';
@@ -50,28 +45,24 @@ const Locations = () => {
     skip: categoriesSelected.length === 0,
   });
 
+  const labelsData = getStoreLabels(
+    counterLocationResults || defaultFormattedCounterLocationResult,
+    storesData || StoresResultDefault,
+  );
+
   return (
     <Section title="Objetivos">
-      <CountersContainer>
+      <HeaderContainer>
         <TitleContainer>
           <Title typography="caps1Regular" text="Objetivos por tienda" uppercase />
         </TitleContainer>
-      </CountersContainer>
+      </HeaderContainer>
       <HeatMapContainer>
         <Heatmap
           data={counterLocationResults || defaultFormattedDayWeekAverageResult}
           colorScale={rangesColors(counterLocationResults)}
           isLoading={isLoadingcounterLocationResults || isFetchingcounterLocationResults}
-          categories={
-            counterLocationResults
-              ? counterLocationResults[0].labels.map((valueClassification) =>
-                  retrieveOptionName(
-                    valueClassification,
-                    storesData?.results || defaultStoreOption,
-                  ),
-                )
-              : [] || []
-          }
+          categories={labelsData}
           height={300}
         />
       </HeatMapContainer>
@@ -81,11 +72,7 @@ const Locations = () => {
             data={
               classificationLocationResults?.visitors || defaultFormattedClassificationHourResult
             }
-            optionsData={
-              classificationLocationResults?.labels.map((valueClassification) =>
-                retrieveOptionName(valueClassification, storesData?.results || defaultStoreOption),
-              ) || []
-            }
+            optionsData={labelsData}
             isLoading={
               isLoadingClassificationLocationResults || isFetchingClassificationLocationResults
             }
@@ -98,11 +85,7 @@ const Locations = () => {
             data={
               classificationLocationResults?.genders || defaultFormattedClassificationHourResult
             }
-            optionsData={
-              classificationLocationResults?.labels.map((valueClassification) =>
-                retrieveOptionName(valueClassification, storesData?.results || defaultStoreOption),
-              ) || []
-            }
+            optionsData={labelsData}
             isLoading={
               isLoadingClassificationLocationResults || isFetchingClassificationLocationResults
             }
@@ -115,11 +98,7 @@ const Locations = () => {
             data={
               classificationLocationResults?.ageRanges || defaultFormattedClassificationHourResult
             }
-            optionsData={
-              classificationLocationResults?.labels.map((valueClassification) =>
-                retrieveOptionName(valueClassification, storesData?.results || defaultStoreOption),
-              ) || []
-            }
+            optionsData={labelsData}
             isLoading={
               isLoadingClassificationLocationResults || isFetchingClassificationLocationResults
             }

@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { dataClassification } from '../../../helpers/graphsHelpers/rangeBar';
+import { dataClassification, valueAxis } from '../../../helpers/graphsHelpers/rangeBar';
 import { data } from './mocks/data';
 
 import RangeBar from './RangeBar';
@@ -18,5 +18,5 @@ Primary.args = {
   data: dataClassification(data),
   colors: ['#ba59aa', '#003566'],
   isLoading: false,
-  valueAxis: 10000,
+  valueAxis: valueAxis(dataClassification(data)),
 };

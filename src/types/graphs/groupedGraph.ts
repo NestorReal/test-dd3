@@ -72,15 +72,23 @@ export interface RetrieveOptionEntity {
   name: string;
   categories?: number[] | [];
 }
+
+export const RetrieveOptionEntityDefault = {
+  id: 0,
+  name: '',
+  categories: [],
+};
+
+export const RetrieveOptionEntityDefaultFormat = {
+  id: 0,
+  name: '',
+  categories: [],
+};
 export interface ResultsRetrieveOptionsName {
   name: string;
   options: RetrieveOptionEntity[] | null;
 }
 
-export const defaultStoreOption : ResultsRetrieveOptionsName[]  =  [{
-  name: '',
-  options: [],
-}]
 export interface FormattedRetrieveOptionsName {
   count: number;
   next?: null;

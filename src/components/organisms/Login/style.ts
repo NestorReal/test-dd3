@@ -26,6 +26,6 @@ export const FormButtonContainer = styled.div`
 export const ErrorMessageContainer = styled.div`
   width: 100%;
   margin-top: ${spaces[3]};
-  color: ${props => props.theme.text.message.error};
+  color: ${(props) => props.theme.text.message.error};
   text-align: center;
 `;
