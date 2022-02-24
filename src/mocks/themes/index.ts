@@ -76,6 +76,13 @@ export const mainTheme = {
       error: '#E92B2B',
     },
   },
+  graphs: {
+    heatmap: {
+      yAxisLabelsTextColor: '#969696',
+      xAxisLabelsTextColor: '#5d2c55',
+      dataLabelsTextColor: ['#fff'],
+    },
+  },
 };
 
 export const anotherTheme = {
@@ -149,6 +156,13 @@ export const anotherTheme = {
     },
     message: {
       error: '#E92B2B',
+    },
+  },
+  graphs: {
+    heatmap: {
+      yAxisLabelsTextColor: '#969696',
+      xAxisLabelsTextColor: '#5d2c55',
+      dataLabelsTextColor: ['#fff'],
     },
   },
 };

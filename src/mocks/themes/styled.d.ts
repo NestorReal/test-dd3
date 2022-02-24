@@ -81,5 +81,12 @@ declare module 'styled-components' {
         error: string;
       };
     };
+    graphs: {
+      heatmap: {
+        yAxisLabelsTextColor: string | string[];
+        xAxisLabelsTextColor: string | string[];
+        dataLabelsTextColor: string[];
+      };
+    };
   }
 }

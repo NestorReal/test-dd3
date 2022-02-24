@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Chart from 'react-apexcharts';
-import { options, axisData } from './Options';
+import { ThemeContext } from 'styled-components';
+import { buildAxisData, buildOptions } from './Options';
 import { FormattedDayWeekAverageResult } from '../../../types/graphs/heatmap';
 import Skeleton from '../../atoms/Skeleton';
 
@@ -25,10 +26,16 @@ export interface HeatmapProps {
 
 const Heatmap = ({ data, colorScale, isLoading, categories, height }: HeatmapProps) => {
   if (isLoading) return <Skeleton width="100%" height={height} borderRadius={8} />;
-  const axisDataJson = axisData(categories);
+  const themeContext = useContext(ThemeContext);
+  const axisDataConfig = buildAxisData(categories, themeContext.graphs.heatmap);
+
   return (
     <Chart
-      options={{ ...options, plotOptions: colorScale, xaxis: axisDataJson }}
+      options={{
+        ...buildOptions(themeContext.graphs.heatmap),
+        plotOptions: colorScale,
+        xaxis: axisDataConfig,
+      }}
       series={data}
       type="heatmap"
       width="100%"
