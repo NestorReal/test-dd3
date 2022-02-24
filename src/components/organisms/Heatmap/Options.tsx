@@ -1,10 +1,16 @@
+import { ApexOptions } from 'apexcharts';
 import { builderTooltip } from './BuilderTooltip';
 import { humanFormat } from '../../../helpers/graphsHelpers/graphs/humanFormat';
 import { ApexXAxis } from '../../../types/graphs/heatmap';
 
-type genericObject = {};
+type HeatmapOptions = Pick<ApexOptions, 'tooltip' | 'yaxis' | 'stroke' | 'dataLabels' | 'legend'>;
+type HeatmapColors = {
+  yAxisLabelsTextColor: string | string[];
+  xAxisLabelsTextColor: string | string[];
+  dataLabelsTextColor: string[];
+};
 
-export const options: genericObject = {
+export const buildOptions = (colors: HeatmapColors): HeatmapOptions => ({
   tooltip: {
     shared: true,
     intersect: false,
@@ -18,30 +24,30 @@ export const options: genericObject = {
       const { secondaryRange } = series.w.config.series[seriesIndex];
       const labels = series.w.globals.seriesNames;
       return `<div>
-                        ${builderTooltip(
-                          mainRange[0],
-                          mainRange[1],
-                          labels[seriesIndex],
-                          currentValue,
-                          diff,
-                          false,
-                        )}
-                    <hr />
-                        ${builderTooltip(
-                          secondaryRange[0],
-                          secondaryRange[1],
-                          labels[seriesIndex],
-                          comparedValue,
-                          diff,
-                          true,
-                        )}
-                </div>`;
+                          ${builderTooltip(
+                            mainRange[0],
+                            mainRange[1],
+                            labels[seriesIndex],
+                            currentValue,
+                            diff,
+                            false,
+                          )}
+                      <hr />
+                          ${builderTooltip(
+                            secondaryRange[0],
+                            secondaryRange[1],
+                            labels[seriesIndex],
+                            comparedValue,
+                            diff,
+                            true,
+                          )}
+                  </div>`;
     },
   },
   yaxis: {
     labels: {
       style: {
-        colors: '#969696',
+        colors: `${colors.yAxisLabelsTextColor}`,
         fontSize: '13px',
         fontFamily: 'Helvetica',
       },
@@ -53,14 +59,14 @@ export const options: genericObject = {
   dataLabels: {
     enabled: true,
     textAnchor: 'middle',
-    formatter(value: object, { seriesIndex, w }: any) {
+    formatter(value, { seriesIndex, w }) {
       if (w.config.series[seriesIndex].name === 'Tasa de conversión') {
         return `${value}%`;
       }
       return humanFormat(value);
     },
     style: {
-      colors: ['#fff'],
+      colors: colors.dataLabelsTextColor,
       fontSize: '16px',
       fontFamily: 'Helvetica',
     },
@@ -68,15 +74,15 @@ export const options: genericObject = {
   legend: {
     show: false,
   },
-};
+});
 
-export const axisData = (labels: string[]): ApexXAxis => ({
+export const buildAxisData = (labels: string[], colors: HeatmapColors): ApexXAxis => ({
   type: 'category',
   categories: labels,
   position: 'top',
   labels: {
     style: {
-      colors: '#5d2c55',
+      colors: colors.xAxisLabelsTextColor,
       fontSize: '16px',
       fontWeight: 500,
       fontFamily: 'Helvetica',

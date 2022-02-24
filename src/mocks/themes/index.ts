@@ -76,6 +76,34 @@ export const mainTheme = {
       error: '#E92B2B',
     },
   },
+  graphs: {
+    heatmap: {
+      yAxisLabelsTextColor: '#969696',
+      xAxisLabelsTextColor: '#5d2c55',
+      dataLabelsTextColor: ['#fff'],
+    },
+    rangeBar: {
+      yAxisLabelsTextColor: '#969696',
+      xAxisLabelsTextColor: '#969696',
+      dataLabelsTextColor: ['#F7F7F7'],
+      strokeColors: ['#fff'],
+      bars: {
+        gender: ['#ba59aa', '#003566'],
+      },
+    },
+    graphBar: {
+      bars: {
+        clients: ['#8c4380', '#ff9f2d', '#168fff'],
+      },
+    },
+    groupedGraph: {
+      bars: {
+        gender: ['#ba59aa', '#003566'],
+        ageRange: ['#168fff', '#17cb49', '#ff9f2d', '#f74141', '#e96fd5', '#9b51e0', '#797979'],
+        clients: ['#FF9F2D', '#168FFF', '#E96FD5'],
+      },
+    },
+  },
 };
 
 export const anotherTheme = {
@@ -149,6 +177,34 @@ export const anotherTheme = {
     },
     message: {
       error: '#E92B2B',
+    },
+  },
+  graphs: {
+    heatmap: {
+      yAxisLabelsTextColor: '#969696',
+      xAxisLabelsTextColor: '#5d2c55',
+      dataLabelsTextColor: ['#fff'],
+    },
+    rangeBar: {
+      yAxisLabelsTextColor: '#969696',
+      xAxisLabelsTextColor: '#969696',
+      dataLabelsTextColor: ['#F7F7F7'],
+      strokeColors: ['#fff'],
+      bars: {
+        gender: ['#ba59aa', '#003566'],
+      },
+    },
+    graphBar: {
+      bars: {
+        clients: ['#8c4380', '#ff9f2d', '#168fff'],
+      },
+    },
+    groupedGraph: {
+      bars: {
+        gender: ['#ba59aa', '#003566'],
+        ageRange: ['#168fff', '#17cb49', '#ff9f2d', '#f74141', '#e96fd5', '#9b51e0', '#797979'],
+        clients: ['#FF9F2D', '#168FFF', '#E96FD5'],
+      },
     },
   },
 };

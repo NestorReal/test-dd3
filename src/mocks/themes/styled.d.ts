@@ -81,5 +81,33 @@ declare module 'styled-components' {
         error: string;
       };
     };
+    graphs: {
+      heatmap: {
+        yAxisLabelsTextColor: string | string[];
+        xAxisLabelsTextColor: string | string[];
+        dataLabelsTextColor: string[];
+      };
+      rangeBar: {
+        yAxisLabelsTextColor: string | string[];
+        xAxisLabelsTextColor: string | string[];
+        dataLabelsTextColor: string[];
+        strokeColors: string[];
+        bars: {
+          gender: string[];
+        };
+      };
+      graphBar: {
+        bars: {
+          clients: string[];
+        };
+      };
+      groupedGraph: {
+        bars: {
+          gender: string[];
+          ageRange: string[];
+          clients: string[];
+        };
+      };
+    };
   }
 }
