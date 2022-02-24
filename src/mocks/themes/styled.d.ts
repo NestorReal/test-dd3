@@ -92,6 +92,20 @@ declare module 'styled-components' {
         xAxisLabelsTextColor: string | string[];
         dataLabelsTextColor: string[];
         strokeColors: string[];
+        bars: {
+          gender: string[];
+        };
+      };
+      graphBar: {
+        bars: {
+          clients: string[];
+        };
+      };
+      groupedGraph: {
+        bars: {
+          gender: string[];
+          ageRange: string[];
+        };
       };
     };
   }

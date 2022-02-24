@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from 'styled-components';
 import { useAppSelector } from '../../config/app/hooks';
 import { buildQuery } from '../../helpers/buildEndpoints';
 import {
@@ -81,6 +82,8 @@ const Dashboard = () => {
     skip: filtersSelected.stores.length === 0,
   });
 
+  const themeContext = useContext(ThemeContext);
+
   return (
     <>
       <Section title="Objetivos">
@@ -112,7 +115,7 @@ const Dashboard = () => {
           <GraphBarContainer>
             <GraphBar
               data={hourAverageResults || defaultFormattedHourAverageResult}
-              colors={['#8c4380', '#ff9f2d', '#168fff']}
+              colors={themeContext.graphs.graphBar.bars.clients}
               labels={hourAverageResults ? labelFormatData(hourAverageResults) : []}
               isLoading={isLoadingHourAverageResults || isFetchingHourAverageResults}
             />
@@ -123,7 +126,7 @@ const Dashboard = () => {
               optionsData={classificationHourResults?.labels || []}
               isLoading={isLoadingClassificationHourResults || isFetchingClassificationHourResults}
               horizontal={false}
-              colors={['#ba59aa', '#003566']}
+              colors={themeContext.graphs.groupedGraph.bars.gender}
             />
           </GroupedGraphContainer>
           <GroupedGraphContainer>
@@ -134,7 +137,7 @@ const Dashboard = () => {
               optionsData={classificationHourResults?.labels || []}
               isLoading={isLoadingClassificationHourResults || isFetchingClassificationHourResults}
               horizontal={false}
-              colors={['#168fff', '#17cb49', '#ff9f2d', '#f74141', '#e96fd5', '#9b51e0', '#797979']}
+              colors={themeContext.graphs.groupedGraph.bars.ageRange}
             />
           </GroupedGraphContainer>
         </Tabs>
@@ -154,7 +157,7 @@ const Dashboard = () => {
         <RangeBarContainer>
           <RangeBar
             data={classificationResults?.data || defaultFormattedClassficationResult}
-            colors={['#ba59aa', '#003566']}
+            colors={themeContext.graphs.rangeBar.bars.gender}
             isLoading={isLoadingClassificationResults || isFetchingClassificationResults}
             valueAxis={valueAxis(
               classificationResults?.data || defaultFormattedClassficationResult,
