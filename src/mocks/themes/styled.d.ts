@@ -87,6 +87,12 @@ declare module 'styled-components' {
         xAxisLabelsTextColor: string | string[];
         dataLabelsTextColor: string[];
       };
+      rangeBar: {
+        yAxisLabelsTextColor: string | string[];
+        xAxisLabelsTextColor: string | string[];
+        dataLabelsTextColor: string[];
+        strokeColors: string[];
+      };
     };
   }
 }

@@ -82,6 +82,12 @@ export const mainTheme = {
       xAxisLabelsTextColor: '#5d2c55',
       dataLabelsTextColor: ['#fff'],
     },
+    rangeBar: {
+      yAxisLabelsTextColor: '#969696',
+      xAxisLabelsTextColor: '#969696',
+      dataLabelsTextColor: ['#F7F7F7'],
+      strokeColors: ['#fff'],
+    },
   },
 };
 
