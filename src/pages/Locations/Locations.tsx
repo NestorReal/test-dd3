@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from 'styled-components';
 import { useAppSelector } from '../../config/app/hooks';
 import { buildQuery } from '../../helpers/buildEndpoints';
 import {
@@ -23,7 +24,6 @@ import Tabs from '../../components/organisms/Tabs';
 const Locations = () => {
   const filtersSelected = useAppSelector((state) => state.filters);
   const query = buildQuery(filtersSelected);
-
   const {
     data: counterLocationResults,
     isLoading: isLoadingcounterLocationResults,
@@ -49,6 +49,8 @@ const Locations = () => {
     counterLocationResults || defaultFormattedCounterLocationResult,
     storesData || StoresResultDefault,
   );
+
+  const themeContext = useContext(ThemeContext);
 
   return (
     <Section title="Objetivos">
@@ -77,7 +79,7 @@ const Locations = () => {
               isLoadingClassificationLocationResults || isFetchingClassificationLocationResults
             }
             horizontal
-            colors={['#FF9F2D', '#168FFF', '#E96FD5']}
+            colors={themeContext.graphs.groupedGraph.bars.clients}
           />
         </GroupedGraphContainer>
         <GroupedGraphContainer>
@@ -90,7 +92,7 @@ const Locations = () => {
               isLoadingClassificationLocationResults || isFetchingClassificationLocationResults
             }
             horizontal
-            colors={['#ba59aa', '#003566']}
+            colors={themeContext.graphs.groupedGraph.bars.gender}
           />
         </GroupedGraphContainer>
         <GroupedGraphContainer>
@@ -103,7 +105,7 @@ const Locations = () => {
               isLoadingClassificationLocationResults || isFetchingClassificationLocationResults
             }
             horizontal
-            colors={['#168fff', '#17cb49', '#ff9f2d', '#f74141', '#e96fd5', '#9b51e0', '#797979']}
+            colors={themeContext.graphs.groupedGraph.bars.ageRange}
           />
         </GroupedGraphContainer>
       </Tabs>

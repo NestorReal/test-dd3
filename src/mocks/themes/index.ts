@@ -100,6 +100,7 @@ export const mainTheme = {
       bars: {
         gender: ['#ba59aa', '#003566'],
         ageRange: ['#168fff', '#17cb49', '#ff9f2d', '#f74141', '#e96fd5', '#9b51e0', '#797979'],
+        clients: ['#FF9F2D', '#168FFF', '#E96FD5'],
       },
     },
   },
@@ -202,6 +203,7 @@ export const anotherTheme = {
       bars: {
         gender: ['#ba59aa', '#003566'],
         ageRange: ['#168fff', '#17cb49', '#ff9f2d', '#f74141', '#e96fd5', '#9b51e0', '#797979'],
+        clients: ['#FF9F2D', '#168FFF', '#E96FD5'],
       },
     },
   },

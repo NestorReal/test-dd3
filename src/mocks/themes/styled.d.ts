@@ -105,6 +105,7 @@ declare module 'styled-components' {
         bars: {
           gender: string[];
           ageRange: string[];
+          clients: string[];
         };
       };
     };
