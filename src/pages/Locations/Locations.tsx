@@ -62,7 +62,7 @@ const Locations = () => {
       <HeatMapContainer>
         <Heatmap
           data={counterLocationResults || defaultFormattedDayWeekAverageResult}
-          colorScale={rangesColors(counterLocationResults)}
+          colorScale={rangesColors(counterLocationResults || defaultFormattedDayWeekAverageResult)}
           isLoading={isLoadingcounterLocationResults || isFetchingcounterLocationResults}
           categories={labelsData}
           height={300}

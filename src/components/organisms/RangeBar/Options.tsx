@@ -33,8 +33,6 @@ export const buildOptions = (colors: RangeBarColors): RangeBarOptions => ({
     },
     style: {
       colors: colors.dataLabelsTextColor,
-      fontSize: '10px',
-      fontFamily: 'Helvetica',
     },
   },
   stroke: {
@@ -58,8 +56,6 @@ export const buildOptions = (colors: RangeBarColors): RangeBarOptions => ({
     labels: {
       style: {
         colors: colors.xAxisLabelsTextColor,
-        fontSize: '13px',
-        fontFamily: 'Helvetica',
       },
     },
   },
@@ -91,7 +87,6 @@ export const options: RangeBarOptions = {
     style: {
       colors: ['#F7F7F7'],
       fontSize: '10px',
-      fontFamily: 'Helvetica',
     },
   },
   stroke: {
@@ -115,8 +110,6 @@ export const options: RangeBarOptions = {
     labels: {
       style: {
         colors: '#969696',
-        fontSize: '13px',
-        fontFamily: 'Helvetica',
       },
     },
   },
@@ -133,8 +126,6 @@ export const buildYAxisData = (value: number, colors: RangeBarColors) => ({
   labels: {
     style: {
       colors: colors.xAxisLabelsTextColor,
-      fontSize: '13px',
-      fontFamily: 'Helvetica',
     },
   },
 });
