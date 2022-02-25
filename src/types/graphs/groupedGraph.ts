@@ -84,17 +84,6 @@ export const RetrieveOptionEntityDefaultFormat = {
   name: '',
   categories: [],
 };
-export interface ResultsRetrieveOptionsName {
-  name: string;
-  options: RetrieveOptionEntity[] | null;
-}
-
-export interface FormattedRetrieveOptionsName {
-  count: number;
-  next?: null;
-  previous?: null;
-  results: ResultsRetrieveOptionsName[] | null;
-}
 
 export interface ICustom {
   series: string[];

@@ -9,6 +9,7 @@ import { OptionsGroup } from '../../../types/filters';
 import SelectorDropdown from '../../atoms/SelectorDropdown';
 import useDropdownProps from '../../../hooks/useDropdownProps';
 import { useAppDispatch } from '../../../config/app/hooks';
+import { retrieveOptionName } from '../../../helpers/graphsHelpers/groupedGraph';
 
 interface ISelectorProps {
   /**
@@ -61,17 +62,6 @@ const Selector = ({ selectorTitle, optionGroups = [], setFilters }: ISelectorPro
     closeDropdown();
   };
 
-  const retrieveOptionName = (id: number) => {
-    const mappedOptions = optionGroups.map((option) => option.options);
-    const flatenOptions = mappedOptions.flat();
-
-    const foundOption = flatenOptions.find((option) => option.id === id);
-    if (foundOption) {
-      return foundOption.name;
-    }
-    return null;
-  };
-
   const retrieveNumerOfOptions = () => {
     const mappedOptions = optionGroups.map((option) => option.options);
     const flatenOptions = mappedOptions.flat();
@@ -109,7 +99,7 @@ const Selector = ({ selectorTitle, optionGroups = [], setFilters }: ISelectorPro
         let shouldShowAllPill = false;
 
         filters.forEach((filterId) => {
-          const name = retrieveOptionName(Number(filterId));
+          const name = retrieveOptionName(Number(filterId), optionGroups);
           if (name) {
             selectionsToAdd.unshift(name);
           }

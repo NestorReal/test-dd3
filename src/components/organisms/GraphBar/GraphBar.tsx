@@ -6,18 +6,20 @@ import Skeleton from '../../atoms/Skeleton';
 
 export interface GraphBarProps {
   /**
-   * data json
+   * accepts an array of [data, diff, hour, comparedData, name, mainRange] objects
    */
   data: FormattedHourAverageResult[];
   /**
-   * array colors
+   * add the colors to the graph
    */
   colors: string[];
   /**
-   * array colors
+   * add chart labels
    */
   labels: string[];
-
+  /**
+   * is displayed when the data is still loading
+   */
   isLoading: boolean;
 }
 

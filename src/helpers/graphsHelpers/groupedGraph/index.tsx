@@ -5,11 +5,10 @@ import {
   DataClassification,
   FormattedClassificationHourResult,
   ClassificationLocationResult,
-  ResultsRetrieveOptionsName,
   FormattedResponseClassificationLocationHour,
 } from '../../../types/graphs/groupedGraph';
 
-import { OptionsGroupDefault, StoresResult } from '../../../types/filters';
+import { OptionsGroupDefault, StoresResult, OptionsGroup } from '../../../types/filters';
 
 export const dataClassificationGrouped = (
   data: ClassificationHourResult | ClassificationLocationResult,
@@ -55,7 +54,7 @@ export const labelClassificationStore = (data: ClassificationLocationResult) => 
   return paramData;
 };
 
-export const retrieveOptionName = (id: number, optionGroups: ResultsRetrieveOptionsName[]) => {
+export const retrieveOptionName = (id: number, optionGroups: OptionsGroup[]) => {
   if (!optionGroups) return '';
   const mappedOptions = optionGroups.map((option) => option.options);
   const flattenOptions = mappedOptions.flat();

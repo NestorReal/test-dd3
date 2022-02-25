@@ -9,11 +9,18 @@ import {
   Data,
   DataClassification,
   DayWeekAverageClassificationResult,
+  IGraphicDictionary,
   Heatmap,
   HeatmapDefault,
 } from '../../../types/graphs/heatmap';
 import { OptionsGroupDefault, StoresResult } from '../../../types/filters';
 import { retrieveOptionName } from '../groupedGraph';
+
+const graphicDictionary = {
+  visitors: 'Entradas',
+  transactions: 'Transacciones',
+  conversions: 'Tasa de conversión',
+}
 
 export const rangesColors = (
   data: FormattedCounterLocationResult[] | FormattedDayWeekAverageResult[],
@@ -75,7 +82,7 @@ export const formatDayWeekAverageResults = (
       },
     );
 
-    formattedDataObject.name = key;
+    formattedDataObject.name = graphicDictionary[key as keyof IGraphicDictionary];
     formattedDataObject.mainRange = main_range || [];
     formattedDataObject.secondaryRange = secondary_range || [];
     return formattedDataObject;
@@ -118,7 +125,7 @@ export const formatCounterLocationAverageResults = (
       },
     );
 
-    formattedDataObject.name = key;
+    formattedDataObject.name = graphicDictionary[key as keyof IGraphicDictionary];
     formattedDataObject.mainRange = main_range || [];
     formattedDataObject.secondaryRange = secondary_range || [];
     return formattedDataObject;

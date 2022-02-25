@@ -8,18 +8,24 @@ import '../index.css';
 
 export interface GroupedGraphProps {
   /**
-   * data json
+   * accepts an array of [data] objects
    */
   data: FormattedClassificationHourResult[];
   /**
-   * option json
+   * add chart labels
    */
   optionsData: string[];
-
+  /**
+   * add the colors to the graph
+   */
   colors: string[];
-
+  /**
+   * is displayed when the data is still loading
+   */
   isLoading: boolean;
-
+  /**
+   * the orientation of the graph can be horizontal or vertical
+   */
   horizontal: boolean;
 }
 

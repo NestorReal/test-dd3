@@ -17,7 +17,7 @@ export const options: genericObject = {
           <div>${valuesGlobals.globals.labels[dataPointIndex]}</div>
           ${series.map(
             (item, index) =>
-              `<div class="info">
+              `<div class="info space">
               <div class="info">
                 <div class="circle" style="background: ${valuesGlobals.globals.colors[index]}" ></div>
                 <div>${valuesGlobals.globals.labels[index]}</div>
@@ -28,7 +28,7 @@ export const options: genericObject = {
             </div>`,
           )}
         </div>`;
-      return tooltip;
+      return tooltip.replace(/,/g, '');
     },
   },
 

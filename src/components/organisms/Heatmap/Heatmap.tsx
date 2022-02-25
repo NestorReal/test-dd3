@@ -7,20 +7,24 @@ import Skeleton from '../../atoms/Skeleton';
 
 export interface HeatmapProps {
   /**
-   * data formatted from /visitors/counter-day endpoint
+   * accepts an array of [data, diff, comparedData, colors, name, mainRange, secondaryRange] objects
    */
   data: FormattedDayWeekAverageResult[];
   /**
-   * colorScale json
+   * configure the colors and the iterations of the graph
    */
   colorScale: object;
   /**
-   * categories json
+   * add the categories we need to display
    */
   categories: string[];
-
+  /**
+   * change the height of the graph
+   */
   height: number;
-
+  /**
+   * is displayed when the data is still loading
+   */
   isLoading: boolean;
 }
 
