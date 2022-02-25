@@ -48,8 +48,6 @@ export const buildOptions = (colors: HeatmapColors): HeatmapOptions => ({
     labels: {
       style: {
         colors: `${colors.yAxisLabelsTextColor}`,
-        fontSize: '13px',
-        fontFamily: 'Helvetica',
       },
     },
   },
@@ -67,8 +65,6 @@ export const buildOptions = (colors: HeatmapColors): HeatmapOptions => ({
     },
     style: {
       colors: colors.dataLabelsTextColor,
-      fontSize: '16px',
-      fontFamily: 'Helvetica',
     },
   },
   legend: {
@@ -83,9 +79,6 @@ export const buildAxisData = (labels: string[], colors: HeatmapColors): ApexXAxi
   labels: {
     style: {
       colors: colors.xAxisLabelsTextColor,
-      fontSize: '16px',
-      fontWeight: 500,
-      fontFamily: 'Helvetica',
     },
   },
 });

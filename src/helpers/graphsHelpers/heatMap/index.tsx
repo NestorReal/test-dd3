@@ -9,12 +9,16 @@ import {
   Data,
   DataClassification,
   DayWeekAverageClassificationResult,
+  Heatmap,
+  HeatmapDefault,
 } from '../../../types/graphs/heatmap';
 import { OptionsGroupDefault, StoresResult } from '../../../types/filters';
 import { retrieveOptionName } from '../groupedGraph';
 
-export const rangesColors = (data: any) => {
-  if (!data) return {};
+export const rangesColors = (
+  data: FormattedCounterLocationResult[] | FormattedDayWeekAverageResult[],
+): Heatmap => {
+  if (!data) return HeatmapDefault;
   const arrayData: any = [];
   for (let i = 0; i < data.length; i += 1) {
     for (let j = 0; j < Object.values(data[i].colors).length; j += 1) {

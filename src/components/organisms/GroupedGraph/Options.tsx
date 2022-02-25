@@ -44,8 +44,6 @@ export const options: genericObject = {
     labels: {
       style: {
         colors: '#969696',
-        fontSize: '13px',
-        fontFamily: 'Helvetica',
       },
     },
   },
@@ -53,8 +51,6 @@ export const options: genericObject = {
     labels: {
       style: {
         colors: '#969696',
-        fontSize: '13px',
-        fontFamily: 'Helvetica',
       },
     },
   },

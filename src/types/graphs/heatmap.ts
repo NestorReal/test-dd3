@@ -80,9 +80,68 @@ export type ApexXAxis = {
   labels: {
     style: {
       colors?: string | string[];
-      fontSize: string;
-      fontWeight: number;
-      fontFamily: string;
     };
   };
+};
+
+export interface RangesEntity {
+  color: string;
+  from: number;
+  to: number;
+  name: string;
+}
+export interface ColorScale {
+  ranges?: RangesEntity[];
+}
+export interface HeatmapFormat {
+  shadeIntensity: number;
+  radius: number;
+  distributed: boolean;
+  colorScale: ColorScale;
+}
+export interface Heatmap {
+  heatmap: {
+    radius?: number;
+    enableShades?: boolean;
+    shadeIntensity?: number;
+    reverseNegativeShade?: boolean;
+    distributed?: boolean;
+    useFillColorAsStroke?: boolean;
+    colorScale?: {
+      ranges?: {
+        from?: number;
+        to?: number;
+        color?: string;
+        foreColor?: string;
+        name?: string;
+      }[];
+      inverse?: boolean;
+      min?: number;
+      max?: number;
+    };
+  };
+}
+
+export const RangesEntityFormat: RangesEntity[] = [
+  {
+    color: '',
+    from: 0,
+    to: 0,
+    name: '',
+  },
+];
+
+export const ColorScaleFormat: ColorScale = {
+  ranges: RangesEntityFormat,
+};
+
+export const HeatmapFormatDefault = {
+  shadeIntensity: 0,
+  radius: 0,
+  distributed: true,
+  colorScale: ColorScaleFormat,
+};
+
+export const HeatmapDefault: Heatmap = {
+  heatmap: HeatmapFormatDefault,
 };
