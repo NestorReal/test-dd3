@@ -54,7 +54,7 @@ export interface FormattedCounterLocationResult {
   data: number[];
   comparedData: number[];
   diff: number[];
-  labels?: number[];
+  labels: number[];
   colors: number[][];
   mainRange: string[];
   secondaryRange: string[];

@@ -64,7 +64,7 @@ const Locations = () => {
             formatStore(
               counterLocationResults || defaultFormattedCounterLocationResult,
               storesData || StoresResultDefault,
-            ) || defaultFormattedDayWeekAverageResult
+            )
           }
           colorScale={rangesColors(counterLocationResults || defaultFormattedDayWeekAverageResult)}
           isLoading={isLoadingcounterLocationResults || isFetchingcounterLocationResults}

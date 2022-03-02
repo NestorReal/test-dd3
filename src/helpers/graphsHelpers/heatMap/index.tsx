@@ -138,7 +138,7 @@ export const getStoreLabels = (
   stores: StoresResult,
 ): string[] => {
   if (!data || !stores) return [''];
-  const dataLabels = data[0].labels!.map((idValue) =>
+  const dataLabels = data[0].labels.map((idValue) =>
     retrieveOptionName(idValue, stores?.results || OptionsGroupDefault),
   );
   return dataLabels;
@@ -159,10 +159,10 @@ export const formatCounterLocationAverageHeatmapResults = (
   let comparedData: number[] = [];
   let colors = [];
   let name: number = 0;
-  const labelsNumber = unformattedDataValues.conversions?.map(value => value.store_id);
+  const labelsNumber = unformattedDataValues.conversions?.map(value => value.store_id) || [];
   const formattedData: FormattedCounterLocationResult[] = [];
 
-  for (let i = 0; i < labelsNumber!.length; i += 1) {
+  for (let i = 0; i < labelsNumber.length; i += 1) {
     for (let j = 0; j < keys.length; j += 1) {
       arrayData.push(unformattedDataValues[keys[j] as keyof DataClassification]![i].value);
       diffData.push(unformattedDataValues[keys[j] as keyof DataClassification]![i].diff);
@@ -196,5 +196,5 @@ export const formatStore = (
 ): FormattedCounterLocationResult[] =>
   data.map((dataJson) => ({
     ...dataJson,
-    name: retrieveOptionName(dataJson.name, stores?.results || OptionsGroupDefault),
+    name: retrieveOptionName(Number(dataJson.name), stores?.results || OptionsGroupDefault),
   }));
