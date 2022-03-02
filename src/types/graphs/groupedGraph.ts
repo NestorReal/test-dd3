@@ -67,6 +67,14 @@ export interface FormattedResponseClassificationLocationHour {
   labels: number[];
 }
 
+export const FormattedResponseClassificationLocationHourDeffault: FormattedResponseClassificationLocationHour =
+  {
+    genders: defaultFormattedClassificationHourResult,
+    ageRanges: defaultFormattedClassificationHourResult,
+    visitors: defaultFormattedClassificationHourResult,
+    labels: [],
+  };
+
 export interface RetrieveOptionEntity {
   id: number;
   name: string;

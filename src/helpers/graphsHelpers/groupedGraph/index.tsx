@@ -54,7 +54,7 @@ export const labelClassificationStore = (data: ClassificationLocationResult) => 
   return paramData;
 };
 
-export const retrieveOptionName = (id: number, optionGroups: OptionsGroup[]) => {
+export const retrieveOptionName = (id: number | string, optionGroups: OptionsGroup[]) => {
   if (!optionGroups) return '';
   const mappedOptions = optionGroups.map((option) => option.options);
   const flattenOptions = mappedOptions.flat();
