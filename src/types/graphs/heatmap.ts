@@ -36,7 +36,7 @@ export interface DayWeekAverageClassificationResult {
   data: DataClassification;
 }
 export interface FormattedDayWeekAverageResult {
-  name: string;
+  name: number | string;
   data: number[];
   comparedData: number[];
   diff: number[];
@@ -46,11 +46,11 @@ export interface FormattedDayWeekAverageResult {
 }
 
 export const defaultFormattedDayWeekAverageResult: FormattedDayWeekAverageResult[] = [
-  { name: '', data: [], comparedData: [], diff: [], mainRange: [], secondaryRange: [], colors: [] },
+  { name: 0, data: [], comparedData: [], diff: [], mainRange: [], secondaryRange: [], colors: [] },
 ];
 
 export interface FormattedCounterLocationResult {
-  name: string;
+  name: string | number;
   data: number[];
   comparedData: number[];
   diff: number[];

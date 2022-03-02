@@ -86,7 +86,6 @@ export const options: RangeBarOptions = {
     },
     style: {
       colors: ['#F7F7F7'],
-      fontSize: '10px',
     },
   },
   stroke: {

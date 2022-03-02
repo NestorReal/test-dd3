@@ -16,7 +16,7 @@ import {
   defaultFormattedDayWeekAverageResult,
   defaultFormattedCounterLocationResult,
 } from '../../types/graphs/heatmap';
-import { rangesColors, getStoreLabels } from '../../helpers/graphsHelpers/heatMap';
+import { rangesColors, getStoreLabels, formatStore } from '../../helpers/graphsHelpers/heatMap';
 import Section from '../../components/organisms/Section';
 import Title from '../../components/atoms/Title';
 import Tabs from '../../components/organisms/Tabs';
@@ -51,7 +51,6 @@ const Locations = () => {
   );
 
   const themeContext = useContext(ThemeContext);
-
   return (
     <Section title="Objetivos">
       <HeaderContainer>
@@ -61,10 +60,15 @@ const Locations = () => {
       </HeaderContainer>
       <HeatMapContainer>
         <Heatmap
-          data={counterLocationResults || defaultFormattedDayWeekAverageResult}
+          data={
+            formatStore(
+              counterLocationResults || defaultFormattedCounterLocationResult,
+              storesData || StoresResultDefault,
+            )
+          }
           colorScale={rangesColors(counterLocationResults || defaultFormattedDayWeekAverageResult)}
           isLoading={isLoadingcounterLocationResults || isFetchingcounterLocationResults}
-          categories={labelsData}
+          categories={['Entradas', 'Transacciones', 'Tasa de conversión']}
           height={300}
         />
       </HeatMapContainer>

@@ -20,7 +20,7 @@ import { baseUrl } from '../config/app/constants';
 import type { RootState } from '../config/app/store';
 import {
   formatDayWeekAverageResults,
-  formatCounterLocationAverageResults,
+  formatCounterLocationAverageHeatmapResults,
 } from '../helpers/graphsHelpers/heatMap';
 import { formatHourAverageResults } from '../helpers/graphsHelpers/graphBar';
 import { dataClassification } from '../helpers/graphsHelpers/rangeBar';
@@ -91,7 +91,7 @@ export const vicoApi = createApi({
     getCounterLocation: builder.query<FormattedCounterLocationResult[], string>({
       query: (queryString) => `/visitors/counter-location${queryString}`,
       transformResponse(response: DayWeekAverageClassificationResult) {
-        return formatCounterLocationAverageResults(response);
+        return formatCounterLocationAverageHeatmapResults(response);
       },
     }),
     getClassificationLocation: builder.query<FormattedResponseClassificationLocationHour, string>({
