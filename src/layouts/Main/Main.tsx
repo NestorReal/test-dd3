@@ -18,6 +18,7 @@ import {
   InsideContainer,
   IndividualContainer,
   BarContainer,
+  FilterDivider,
 } from './styled';
 import { throttle } from '../../helpers/performance';
 import { EMPTY_USER } from '../../config/app/constants';
@@ -102,52 +103,56 @@ const Main = () => {
       <FullContainer>
         <FiltersContainer title="Filtros">
           <InsideContainer>
-            <IndividualContainer>
-              {isLoading ? (
-                <SelectorSkeleton />
-              ) : (
-                <Selector
-                  selectorTitle="Categorías"
-                  optionGroups={data?.results}
-                  setFilters={setCategoriesFilter}
+            <FilterDivider>
+              <IndividualContainer>
+                {isLoading ? (
+                  <SelectorSkeleton />
+                ) : (
+                  <Selector
+                    selectorTitle="Categorías"
+                    optionGroups={data?.results}
+                    setFilters={setCategoriesFilter}
+                  />
+                )}
+              </IndividualContainer>
+
+              <IndividualContainer>
+                {isLoading || storesDataIsLoading ? (
+                  <SelectorSkeleton />
+                ) : (
+                  <Selector
+                    selectorTitle="Locaciones"
+                    optionGroups={storesData?.results}
+                    setFilters={setStoresFilter}
+                  />
+                )}
+              </IndividualContainer>
+            </FilterDivider>
+
+            <FilterDivider>
+              <IndividualContainer>
+                <RangeDateSelector
+                  selectorTitle="Tiempo"
+                  onClickDropdownItem={setTimeFilter}
+                  onClickFilterCalendar={setTimeFilter}
+                  onClickFilterCalendarRange={setTimeFilter}
+                  onClickExactDayOption={() => {}}
+                  onClickRangeOption={() => {}}
                 />
-              )}
-            </IndividualContainer>
+              </IndividualContainer>
 
-            <IndividualContainer>
-              {isLoading || storesDataIsLoading ? (
-                <SelectorSkeleton />
-              ) : (
-                <Selector
-                  selectorTitle="Locaciones"
-                  optionGroups={storesData?.results}
-                  setFilters={setStoresFilter}
+              <IndividualContainer>
+                <ComparisonDateSelector
+                  selectorTitle="Comparado con"
+                  optionId={timeSelected.id}
+                  onClickDropdownItem={setComparisonFilter}
+                  onClickExactDayOption={() => {}}
+                  onClickRangeOption={() => {}}
+                  onClickFilterCalendar={setComparisonFilter}
+                  onClickFilterCalendarRange={setComparisonFilter}
                 />
-              )}
-            </IndividualContainer>
-
-            <IndividualContainer>
-              <RangeDateSelector
-                selectorTitle="Tiempo"
-                onClickDropdownItem={setTimeFilter}
-                onClickFilterCalendar={setTimeFilter}
-                onClickFilterCalendarRange={setTimeFilter}
-                onClickExactDayOption={() => {}}
-                onClickRangeOption={() => {}}
-              />
-            </IndividualContainer>
-
-            <IndividualContainer>
-              <ComparisonDateSelector
-                selectorTitle="Comparado con"
-                optionId={timeSelected.id}
-                onClickDropdownItem={setComparisonFilter}
-                onClickExactDayOption={() => {}}
-                onClickRangeOption={() => {}}
-                onClickFilterCalendar={setComparisonFilter}
-                onClickFilterCalendarRange={setComparisonFilter}
-              />
-            </IndividualContainer>
+              </IndividualContainer>
+            </FilterDivider>
           </InsideContainer>
         </FiltersContainer>
 

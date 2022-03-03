@@ -1,11 +1,10 @@
 import styled from 'styled-components';
+import fontTypes from '../../../config/font';
 import space from '../../../config/spacing';
 import StyledText from '../../reusableStyledComponents/StyledText';
 
 export const ContainerCard = styled.div`
   position: relative;
-  max-width: 340px;
-  width: calc(100% / 3);
   height: 102px;
   padding: ${space[5]};
   background: ${(props) => props.theme.background.datacard.main};
@@ -18,4 +17,8 @@ export const TitleCard = styled(StyledText)`
 
 export const ValueCard = styled(StyledText)`
   color: ${(props) => props.theme.text.datacard.value};
+
+  @media (max-width: 1000px) {
+    ${fontTypes.heading3}
+  }
 `;

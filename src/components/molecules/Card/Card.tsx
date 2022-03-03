@@ -26,7 +26,7 @@ const Card = ({ title, value, upDown, upDownTypography = 'paragraph2' }: ICard) 
       {title}
     </TitleCard>
     <ValueCard typography="heading2">{value}</ValueCard>
-    <UpDown value={upDown} top={58} right={19} typography={upDownTypography} />
+    <UpDown value={upDown} top={62} right={19} typography={upDownTypography} />
   </ContainerCard>
 );
 

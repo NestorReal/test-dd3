@@ -3,6 +3,7 @@ import Card from '../Card';
 import Container from '../../reusableStyledComponents/Container';
 import Skeleton from '../../atoms/Skeleton';
 import { Entity } from '../../../types/graphs/counter';
+import CardContainer from './styled';
 
 export interface CounterEntity extends Entity {
   name: string;
@@ -26,30 +27,43 @@ const Counters: React.FunctionComponent<ICountersProps> = ({
     <Container display="flex" justifyContent="space-between">
       {isLoading ? (
         <>
-          <Skeleton width={340} height={102} borderRadius={8} />
-          <Skeleton width={340} height={102} borderRadius={8} />
-          <Skeleton width={340} height={102} borderRadius={8} />
+          <CardContainer>
+            <Skeleton width="100%" height={102} borderRadius={8} />
+          </CardContainer>
+          <CardContainer>
+            <Skeleton width="100%" height={102} borderRadius={8} />
+          </CardContainer>
+          <CardContainer>
+            <Skeleton width="100%" height={102} borderRadius={8} />
+          </CardContainer>
         </>
       ) : (
         <>
-          <Card
-            title={first.name}
-            value={Number(first.value)}
-            upDown={Number(first.diff)}
-            upDownTypography="paragraph2"
-          />
-          <Card
-            title={second.name}
-            value={Number(second.value)}
-            upDown={Number(second.diff)}
-            upDownTypography="paragraph2"
-          />
-          <Card
-            title={third.name}
-            value={Number(third.value)}
-            upDown={Number(third.diff)}
-            upDownTypography="paragraph2"
-          />
+          <CardContainer>
+            <Card
+              title={first.name}
+              value={Number(first.value)}
+              upDown={Number(first.diff)}
+              upDownTypography="paragraph2"
+            />
+          </CardContainer>
+
+          <CardContainer>
+            <Card
+              title={second.name}
+              value={Number(second.value)}
+              upDown={Number(second.diff)}
+              upDownTypography="paragraph2"
+            />
+          </CardContainer>
+          <CardContainer>
+            <Card
+              title={third.name}
+              value={Number(third.value)}
+              upDown={Number(third.diff)}
+              upDownTypography="paragraph2"
+            />
+          </CardContainer>
         </>
       )}
     </Container>

@@ -35,14 +35,41 @@ export const TopMenuContainer = styled.div`
 
 export const InsideContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media (min-width: 1425px) {
+    flex-direction: row;
+  }
 `;
 
 export const IndividualContainer = styled.div`
   &:not(:first-child) {
-    margin-left: ${space[4]};
+    margin-left: 0;
+  }
+
+  @media (min-width: 865px) {
+    &:not(:first-child) {
+      margin-left: ${space[4]};
+    }
   }
 `;
 
 export const BarContainer = styled.div`
   margin-left: ${asideMenuWidth}px;
+`;
+
+export const FilterDivider = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  @media (min-width: 1425px) {
+    &:not(:first-child) {
+      margin-left: ${space[4]};
+    }
+  }
+
+  @media (min-width: 865px) {
+    flex-direction: row;
+  }
 `;
