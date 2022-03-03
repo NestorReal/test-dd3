@@ -20,6 +20,6 @@ Primary.args = {
   data: formattedData,
   colorScale: rangesColors(formattedData),
   isLoading: false,
-  categories: ['L', 'Ma', 'Mi', 'J', 'V', 'S', 'D'],
+  categories: ['D', 'L', 'Ma', 'Mi', 'J', 'V', 'S'],
   height: 300,
 };
