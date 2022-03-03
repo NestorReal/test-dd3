@@ -30,6 +30,10 @@ const Item = styled.div<IItemProps>`
   border-radius: 6px;
   padding: 0 ${space[5]} 0 ${space[2]};
   ${(props) => fontTypes[`${props.typography}`]}
+
+  @media (max-width: 1000px) {
+    ${fontTypes.paragraph3}
+  }
 `;
 
 export const IconContainer = styled.div`
