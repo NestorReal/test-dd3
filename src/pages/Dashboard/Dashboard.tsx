@@ -106,7 +106,7 @@ const Dashboard = () => {
             data={dayWeekAverageResults || defaultFormattedDayWeekAverageResult}
             colorScale={rangesColors(dayWeekAverageResults || defaultFormattedDayWeekAverageResult)}
             isLoading={isLoadingDayWeekAverageResults || isFetchingDayWeekAverageResults}
-            categories={['L', 'Ma', 'Mi', 'J', 'V', 'S', 'D']}
+            categories={['D', 'L', 'Ma', 'Mi', 'J', 'V', 'S']}
             height={150}
           />
         </HeatMapContainer>
