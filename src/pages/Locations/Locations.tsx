@@ -70,6 +70,7 @@ const Locations = () => {
           isLoading={isLoadingcounterLocationResults || isFetchingcounterLocationResults}
           categories={['Entradas', 'Transacciones', 'Tasa de conversión']}
           height={300}
+          leakedDate={[filtersSelected.time.label, filtersSelected.comparison.label]}
         />
       </HeatMapContainer>
       <Tabs title="Entradas" nameButtons={['Clientes', 'Sexo', 'Edad']}>
@@ -84,6 +85,7 @@ const Locations = () => {
             }
             horizontal
             colors={themeContext.graphs.groupedGraph.bars.clients}
+            leakedDate={filtersSelected.time.label}
           />
         </GroupedGraphContainer>
         <GroupedGraphContainer>
@@ -97,6 +99,7 @@ const Locations = () => {
             }
             horizontal
             colors={themeContext.graphs.groupedGraph.bars.gender}
+            leakedDate={filtersSelected.time.label}
           />
         </GroupedGraphContainer>
         <GroupedGraphContainer>
@@ -110,6 +113,7 @@ const Locations = () => {
             }
             horizontal
             colors={themeContext.graphs.groupedGraph.bars.ageRange}
+            leakedDate={filtersSelected.time.label}
           />
         </GroupedGraphContainer>
       </Tabs>

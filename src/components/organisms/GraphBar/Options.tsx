@@ -1,5 +1,8 @@
 import { builderTooltip } from './BuilderTooltip';
 
+let leakedDate: string[] = [];
+// eslint-disable-next-line no-return-assign
+export const getleakedDate = (label: string[] | undefined) => (label !== undefined ? leakedDate = label : null);
 type genericObject = {};
 
 export const options: genericObject = {
@@ -15,25 +18,32 @@ export const options: genericObject = {
       const { mainRange } = series.w.config.series[seriesIndex];
       const { secondaryRange } = series.w.config.series[seriesIndex];
       const labels = series.w.globals.seriesNames;
-      return `<div>
-                      ${builderTooltip(
-                        mainRange[0],
-                        mainRange[1],
-                        labels[seriesIndex],
-                        currentValue,
-                        diff,
-                        false,
-                      )}
-                  <hr />
-                      ${builderTooltip(
-                        secondaryRange[0],
-                        secondaryRange[1],
-                        labels[seriesIndex],
-                        comparedValue,
-                        diff,
-                        true,
-                      )}
-              </div>`;
+      const comparison = `
+        <hr />
+        ${builderTooltip(
+          secondaryRange[0],
+          secondaryRange[1],
+          labels[seriesIndex],
+          comparedValue,
+          diff,
+          true,
+          leakedDate[1],
+        )}
+      `;
+      return `
+        <div>
+          ${builderTooltip(
+            mainRange[0],
+            mainRange[1],
+            labels[seriesIndex],
+            currentValue,
+            diff,
+            false,
+            leakedDate[0],
+          )}
+          ${secondaryRange[0] ? comparison : ''}
+        </div>
+      `;
     },
   },
   chart: {

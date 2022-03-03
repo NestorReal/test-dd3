@@ -42,7 +42,7 @@ import Title from '../../components/atoms/Title';
 import Tabs from '../../components/organisms/Tabs';
 
 const Dashboard = () => {
-  const filtersSelected = useAppSelector((state) => state.filters);
+  const filtersSelected = useAppSelector((state) => state.filters);  
   const query = buildQuery(filtersSelected);
   const {
     data: countersResults,
@@ -108,6 +108,7 @@ const Dashboard = () => {
             isLoading={isLoadingDayWeekAverageResults || isFetchingDayWeekAverageResults}
             categories={['D', 'L', 'Ma', 'Mi', 'J', 'V', 'S']}
             height={150}
+            leakedDate={[filtersSelected.time.label, filtersSelected.comparison.label]}
           />
         </HeatMapContainer>
 
@@ -118,6 +119,7 @@ const Dashboard = () => {
               colors={themeContext.graphs.graphBar.bars.clients}
               labels={hourAverageResults ? labelFormatData(hourAverageResults) : []}
               isLoading={isLoadingHourAverageResults || isFetchingHourAverageResults}
+              leakedDate={[filtersSelected.time.label, filtersSelected.comparison.label]}
             />
           </GraphBarContainer>
           <GroupedGraphContainer>
@@ -127,6 +129,7 @@ const Dashboard = () => {
               isLoading={isLoadingClassificationHourResults || isFetchingClassificationHourResults}
               horizontal={false}
               colors={themeContext.graphs.groupedGraph.bars.gender}
+              leakedDate={filtersSelected.time.label}
             />
           </GroupedGraphContainer>
           <GroupedGraphContainer>
@@ -138,6 +141,7 @@ const Dashboard = () => {
               isLoading={isLoadingClassificationHourResults || isFetchingClassificationHourResults}
               horizontal={false}
               colors={themeContext.graphs.groupedGraph.bars.ageRange}
+              leakedDate={filtersSelected.time.label}
             />
           </GroupedGraphContainer>
         </Tabs>

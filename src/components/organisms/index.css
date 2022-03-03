@@ -29,3 +29,8 @@
 .space {
   margin: 5px 0;
 }
+
+.tableTooltip {
+  width: 100%;
+  text-align: right;
+}
