@@ -23,20 +23,30 @@ export interface HeatmapProps {
    */
   height: number;
   /**
-   * is displayed when the data is still loading
+   * Should the Skeleton loader be visible?
    */
   isLoading: boolean;
+  /**
+   * dates labels passed/taken from time and comparison filters
+   */
+  dateLabelsFromFilters: string[];
 }
 
-const Heatmap = ({ data, colorScale, isLoading, categories, height }: HeatmapProps) => {
+const Heatmap = ({
+  data,
+  colorScale,
+  isLoading,
+  categories,
+  height,
+  dateLabelsFromFilters,
+}: HeatmapProps) => {
   if (isLoading) return <Skeleton width="100%" height={height} borderRadius={8} />;
   const themeContext = useContext(ThemeContext);
   const axisDataConfig = buildAxisData(categories, themeContext.graphs.heatmap);
-
   return (
     <Chart
       options={{
-        ...buildOptions(themeContext.graphs.heatmap),
+        ...buildOptions(themeContext.graphs.heatmap, dateLabelsFromFilters),
         plotOptions: colorScale,
         xaxis: axisDataConfig,
       }}

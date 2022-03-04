@@ -92,9 +92,3 @@ export const RetrieveOptionEntityDefaultFormat = {
   name: '',
   categories: [],
 };
-
-export interface ICustom {
-  series: string[];
-  dataPointIndex: number;
-  w: any;
-}

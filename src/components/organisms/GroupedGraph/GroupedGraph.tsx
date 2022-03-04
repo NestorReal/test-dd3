@@ -1,7 +1,7 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
 import { FormattedClassificationHourResult } from '../../../types/graphs/groupedGraph';
-import { options, height } from './Options';
+import { buildOptions, height } from './Options';
 import Skeleton from '../../atoms/Skeleton';
 
 import '../index.css';
@@ -20,18 +20,28 @@ export interface GroupedGraphProps {
    */
   colors: string[];
   /**
-   * is displayed when the data is still loading
+   * Should the Skeleton loader be visible?
    */
   isLoading: boolean;
   /**
-   * the orientation of the graph can be horizontal or vertical
+   * Should the orientation be horizontal or vertical?
    */
   horizontal: boolean;
+  /**
+   * A date label taken/passed from filter
+   */
+  dateLabelFromFilter: string;
 }
 
-const GroupedGraph = ({ data, optionsData, isLoading, horizontal, colors }: GroupedGraphProps) => {
+const GroupedGraph = ({
+  data,
+  optionsData,
+  isLoading,
+  horizontal,
+  colors,
+  dateLabelFromFilter,
+}: GroupedGraphProps) => {
   if (isLoading) return <Skeleton width="100%" height={300} borderRadius={8} />;
-
   const plotOptions = {
     bar: {
       horizontal,
@@ -43,7 +53,12 @@ const GroupedGraph = ({ data, optionsData, isLoading, horizontal, colors }: Grou
 
   return (
     <Chart
-      options={{ ...options, plotOptions, fill: { colors }, xaxis: { categories: optionsData } }}
+      options={{
+        ...buildOptions(dateLabelFromFilter),
+        plotOptions,
+        fill: { colors },
+        xaxis: { categories: optionsData },
+      }}
       series={data}
       type="bar"
       width="100%"

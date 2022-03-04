@@ -10,6 +10,11 @@ import {
 
 import { OptionsGroupDefault, StoresResult, OptionsGroup } from '../../../types/filters';
 
+const DictionaryLabels = {
+  genders: 'gender',
+  age_ranges: 'age_range',
+}
+
 export const dataClassificationGrouped = (
   data: ClassificationHourResult | ClassificationLocationResult,
   param: 'genders' | 'visitors' | 'age_ranges',
@@ -20,8 +25,16 @@ export const dataClassificationGrouped = (
   const paramData = unformattedDataArray
     .map((values) => values[param])
     .map((objectData) => objectData.map((valuesData) => valuesData.value));
+  const diffData = unformattedDataArray
+    .map((values) => values[param])
+    .map((objectData) => objectData.map((valuesData) => valuesData.diff));
+  const labels = unformattedDataArray
+    .map((values) => values[param])
+    .map((objectData) => objectData.map((valuesData) => valuesData[DictionaryLabels[param as keyof {}]]));
+  
   let arrayData: number[] = [];
-  const newArray: number[][] = [];
+  let arrayDiffData: number[] = [];
+  const newArray: number[][][] = [];
   for (let i = 0; i < paramData[1].length; i += 1) {
     for (let j = 0; j < paramData.length; j += 1) {
       if (paramData[j][i] !== undefined) {
@@ -29,11 +42,22 @@ export const dataClassificationGrouped = (
       } else {
         arrayData.push(0);
       }
+      if (diffData[j][i] !== undefined) {
+        arrayDiffData.push(diffData[j][i]);
+      } else {
+        arrayDiffData.push(0);
+      }
     }
-    newArray.push(arrayData);
+    newArray.push([arrayData, arrayDiffData]);
+    arrayDiffData = [];
     arrayData = [];
   }
-  return newArray.map((arrayDataNumbers) => ({ data: arrayDataNumbers }));
+  return newArray.map((arrayDataNumbers, index) => ({
+    mainRange: data.main_range,
+    data: arrayDataNumbers[0],
+    diff: arrayDataNumbers[1],
+    labels: labels[index]
+  }));
 };
 
 export const labelClassificationGrouped = (data: ClassificationHourResult): string[] => {

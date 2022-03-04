@@ -20,7 +20,7 @@ const graphicDictionary = {
   visitors: 'Entradas',
   transactions: 'Transacciones',
   conversions: 'Tasa de conversión',
-}
+};
 
 export const rangesColors = (
   data: FormattedCounterLocationResult[] | FormattedDayWeekAverageResult[],
@@ -159,7 +159,7 @@ export const formatCounterLocationAverageHeatmapResults = (
   let comparedData: number[] = [];
   let colors = [];
   let name: number = 0;
-  const labelsNumber = unformattedDataValues.conversions?.map(value => value.store_id) || [];
+  const labelsNumber = unformattedDataValues.conversions?.map((value) => value.store_id) || [];
   const formattedData: FormattedCounterLocationResult[] = [];
 
   for (let i = 0; i < labelsNumber.length; i += 1) {

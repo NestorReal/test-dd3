@@ -22,4 +22,5 @@ Primary.args = {
   isLoading: false,
   categories: ['D', 'L', 'Ma', 'Mi', 'J', 'V', 'S'],
   height: 300,
+  dateLabelsFromFilters: ['Mes actual', 'Mes Anterior'],
 };

@@ -14,9 +14,13 @@ export interface RangeBarProps {
    * array colors
    */
   colors: string[];
-
+  /**
+   * A value to represent the maximum axis value
+   */
   valueAxis: number;
-
+  /**
+   * Should the Skeleton loader be visible?
+   */
   isLoading: boolean;
 }
 

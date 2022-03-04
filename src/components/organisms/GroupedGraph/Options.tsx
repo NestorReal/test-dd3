@@ -1,8 +1,11 @@
-import { ICustom } from '../../../types/graphs/groupedGraph';
+import { ApexOptions } from 'apexcharts';
 
-type genericObject = {};
+type GroupedGraphOptions = Pick<
+  ApexOptions,
+  'chart' | 'tooltip' | 'dataLabels' | 'legend' | 'stroke' | 'xaxis' | 'yaxis'
+>;
 
-export const options: genericObject = {
+export const buildOptions = (date: string): GroupedGraphOptions => ({
   chart: {
     type: 'bar',
     height: 500,
@@ -11,22 +14,41 @@ export const options: genericObject = {
   tooltip: {
     shared: true,
     intersect: false,
-    custom({ series, dataPointIndex, w: valuesGlobals }: ICustom) {
+    custom(series: any) {
+      const { dataPointIndex } = series;
+      const { seriesIndex } = series;
+      const { mainRange } = series.w.config.series[seriesIndex];
       const tooltip = `
         <div class="tooltipHead">
-          <div>${valuesGlobals.globals.labels[dataPointIndex]}</div>
-          ${series.map(
-            (item, index) =>
-              `<div class="info space">
-              <div class="info">
-                <div class="circle" style="background: ${valuesGlobals.globals.colors[index]}" ></div>
-                <div>${valuesGlobals.globals.labels[index]}</div>
-              </div>
-              <div>
-                ${item[dataPointIndex]}
-              </div>
-            </div>`,
-          )}
+          <div class="info  space">
+            <div>${date}</div>
+            <div>&nbsp;&nbsp;&nbsp;</div>
+            <div>${mainRange[0].substring(0, 10)} / ${mainRange[1].substring(0, 10)}</div>
+          </div>
+          <table class="tableTooltip">
+            ${series.w.config.series.map(
+              (item: any, index: number) => `
+                <tr>
+                  <td>
+                    <div class="info" style="justify-content: start;">
+                      <div class="circle" style="background: ${
+                        item.labels[index] !== undefined && series.w.config.fill.colors[index]
+                      }" ></div>
+                      ${
+                        item.labels[index] !== undefined
+                          ? item.labels[index].toString().replace(',', '-')
+                          : series.w.globals.labels[dataPointIndex]
+                      }
+                    </div
+                  </td>
+                  <td>${item.data[dataPointIndex]}</td>
+                  <td>
+                    ${item.diff[dataPointIndex] ? `${item.diff[dataPointIndex]}%` : '----'}
+                  </td>
+                <tr>
+            `,
+            )}
+          </table>
         </div>`;
       return tooltip.replace(/,/g, '');
     },
@@ -57,5 +79,6 @@ export const options: genericObject = {
   legend: {
     show: false,
   },
-};
+});
+
 export const height = 400;

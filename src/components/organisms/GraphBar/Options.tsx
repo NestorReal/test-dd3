@@ -1,69 +1,83 @@
+import { ApexOptions } from 'apexcharts';
 import { builderTooltip } from './BuilderTooltip';
 
-type genericObject = {};
+type GraphBarOptions = Pick<
+  ApexOptions,
+  'chart' | 'tooltip' | 'plotOptions' | 'responsive' | 'legend' | 'fill'
+>;
 
-export const options: genericObject = {
-  tooltip: {
-    shared: true,
-    intersect: false,
-    custom(series: any) {
-      const { dataPointIndex } = series;
-      const { seriesIndex } = series;
-      const currentValue = series.series[seriesIndex][dataPointIndex];
-      const comparedValue = series.w.config.series[seriesIndex].comparedData[dataPointIndex];
-      const diff = series.w.config.series[seriesIndex].diff[dataPointIndex];
-      const { mainRange } = series.w.config.series[seriesIndex];
-      const { secondaryRange } = series.w.config.series[seriesIndex];
-      const labels = series.w.globals.seriesNames;
-      return `<div>
-                      ${builderTooltip(
-                        mainRange[0],
-                        mainRange[1],
-                        labels[seriesIndex],
-                        currentValue,
-                        diff,
-                        false,
-                      )}
-                  <hr />
-                      ${builderTooltip(
-                        secondaryRange[0],
-                        secondaryRange[1],
-                        labels[seriesIndex],
-                        comparedValue,
-                        diff,
-                        true,
-                      )}
-              </div>`;
-    },
-  },
-  chart: {
-    type: 'bar',
-    stacked: true,
-  },
-  plotOptions: {
-    bar: {
-      borderRadius: 8,
-      distributed: true,
-    },
-  },
-  responsive: [
-    {
-      breakpoint: 480,
-      options: {
-        legend: {
-          position: 'bottom',
-          offsetX: -10,
-          offsetY: 0,
-        },
+export const buildOptions = (dates: string[]): GraphBarOptions => {
+  const [timeDateFilter, comparisonDateFilter] = dates;
+  return {
+    tooltip: {
+      shared: true,
+      intersect: false,
+      custom(series: any) {
+        const { dataPointIndex } = series;
+        const { seriesIndex } = series;
+        const currentValue = series.series[seriesIndex][dataPointIndex];
+        const comparedValue = series.w.config.series[seriesIndex].comparedData[dataPointIndex];
+        const diff = series.w.config.series[seriesIndex].diff[dataPointIndex];
+        const { mainRange } = series.w.config.series[seriesIndex];
+        const { secondaryRange } = series.w.config.series[seriesIndex];
+        const labels = series.w.globals.seriesNames;
+        const comparison = `
+          <hr />
+          ${builderTooltip(
+            secondaryRange[0],
+            secondaryRange[1],
+            labels[seriesIndex],
+            comparedValue,
+            diff,
+            true,
+            comparisonDateFilter,
+          )}
+        `;
+        return `
+          <div>
+            ${builderTooltip(
+              mainRange[0],
+              mainRange[1],
+              labels[seriesIndex],
+              currentValue,
+              diff,
+              false,
+              timeDateFilter,
+            )}
+            ${secondaryRange[0] ? comparison : ''}
+          </div>
+        `;
       },
     },
-  ],
-  legend: {
-    show: false,
-  },
-  fill: {
-    opacity: 1,
-  },
+    chart: {
+      type: 'bar',
+      stacked: true,
+    },
+    plotOptions: {
+      bar: {
+        borderRadius: 8,
+        distributed: true,
+      },
+    },
+    responsive: [
+      {
+        breakpoint: 480,
+        options: {
+          legend: {
+            position: 'bottom',
+            offsetX: -10,
+            offsetY: 0,
+          },
+        },
+      },
+    ],
+    legend: {
+      show: false,
+    },
+    fill: {
+      opacity: 1,
+    },
+  };
 };
 
 export const height = 300;

@@ -60,16 +60,15 @@ const Locations = () => {
       </HeaderContainer>
       <HeatMapContainer>
         <Heatmap
-          data={
-            formatStore(
-              counterLocationResults || defaultFormattedCounterLocationResult,
-              storesData || StoresResultDefault,
-            )
-          }
+          data={formatStore(
+            counterLocationResults || defaultFormattedCounterLocationResult,
+            storesData || StoresResultDefault,
+          )}
           colorScale={rangesColors(counterLocationResults || defaultFormattedDayWeekAverageResult)}
           isLoading={isLoadingcounterLocationResults || isFetchingcounterLocationResults}
           categories={['Entradas', 'Transacciones', 'Tasa de conversión']}
           height={300}
+          dateLabelsFromFilters={[filtersSelected.time.label, filtersSelected.comparison.label]}
         />
       </HeatMapContainer>
       <Tabs title="Entradas" nameButtons={['Clientes', 'Sexo', 'Edad']}>
@@ -84,6 +83,7 @@ const Locations = () => {
             }
             horizontal
             colors={themeContext.graphs.groupedGraph.bars.clients}
+            dateLabelFromFilter={filtersSelected.time.label}
           />
         </GroupedGraphContainer>
         <GroupedGraphContainer>
@@ -97,6 +97,7 @@ const Locations = () => {
             }
             horizontal
             colors={themeContext.graphs.groupedGraph.bars.gender}
+            dateLabelFromFilter={filtersSelected.time.label}
           />
         </GroupedGraphContainer>
         <GroupedGraphContainer>
@@ -110,6 +111,7 @@ const Locations = () => {
             }
             horizontal
             colors={themeContext.graphs.groupedGraph.bars.ageRange}
+            dateLabelFromFilter={filtersSelected.time.label}
           />
         </GroupedGraphContainer>
       </Tabs>
