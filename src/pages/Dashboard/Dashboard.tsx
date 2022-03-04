@@ -42,7 +42,7 @@ import Title from '../../components/atoms/Title';
 import Tabs from '../../components/organisms/Tabs';
 
 const Dashboard = () => {
-  const filtersSelected = useAppSelector((state) => state.filters);  
+  const filtersSelected = useAppSelector((state) => state.filters);
   const query = buildQuery(filtersSelected);
   const {
     data: countersResults,
@@ -119,7 +119,7 @@ const Dashboard = () => {
               colors={themeContext.graphs.graphBar.bars.clients}
               labels={hourAverageResults ? labelFormatData(hourAverageResults) : []}
               isLoading={isLoadingHourAverageResults || isFetchingHourAverageResults}
-              leakedDate={[filtersSelected.time.label, filtersSelected.comparison.label]}
+              datesFromFilter={[filtersSelected.time.label, filtersSelected.comparison.label]}
             />
           </GraphBarContainer>
           <GroupedGraphContainer>

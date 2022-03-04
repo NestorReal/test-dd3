@@ -1,7 +1,7 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
 import { FormattedHourAverageResult } from '../../../types/graphs/graphBar';
-import { options, height, getleakedDate } from './Options';
+import { height, buildOptions } from './Options';
 import Skeleton from '../../atoms/Skeleton';
 
 export interface GraphBarProps {
@@ -22,17 +22,17 @@ export interface GraphBarProps {
    */
   isLoading: boolean;
   /**
-   * show filter label
+   * dates passed/taken from time and comparison filters
    */
-  leakedDate?: string[];
+  datesFromFilter: string[];
 }
 
-const GraphBar = ({ data, colors, labels, isLoading, leakedDate }: GraphBarProps) => {
+const GraphBar = ({ data, colors, labels, isLoading, datesFromFilter }: GraphBarProps) => {
   if (isLoading) return <Skeleton width="100%" height={300} borderRadius={8} />;
-  getleakedDate(leakedDate);
+
   return (
     <Chart
-      options={Object.assign(options, { colors }, { xaxis: { categories: labels } })}
+      options={{ ...buildOptions(datesFromFilter), colors, xaxis: { categories: labels } }}
       series={data}
       type="bar"
       width="100%"
