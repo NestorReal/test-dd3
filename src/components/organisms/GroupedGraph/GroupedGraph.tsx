@@ -1,7 +1,7 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
 import { FormattedClassificationHourResult } from '../../../types/graphs/groupedGraph';
-import { options, height, getleakedDate } from './Options';
+import { buildOptions, height } from './Options';
 import Skeleton from '../../atoms/Skeleton';
 
 import '../index.css';
@@ -28,14 +28,20 @@ export interface GroupedGraphProps {
    */
   horizontal: boolean;
   /**
-   * show filter label
+   * A date label taken/passed from filter
    */
-  leakedDate?: string;
+  dateFromFilter: string;
 }
 
-const GroupedGraph = ({ data, optionsData, isLoading, horizontal, colors, leakedDate }: GroupedGraphProps) => {
+const GroupedGraph = ({
+  data,
+  optionsData,
+  isLoading,
+  horizontal,
+  colors,
+  dateFromFilter,
+}: GroupedGraphProps) => {
   if (isLoading) return <Skeleton width="100%" height={300} borderRadius={8} />;
-  getleakedDate(leakedDate);
   const plotOptions = {
     bar: {
       horizontal,
@@ -47,7 +53,12 @@ const GroupedGraph = ({ data, optionsData, isLoading, horizontal, colors, leaked
 
   return (
     <Chart
-      options={{ ...options, plotOptions, fill: { colors }, xaxis: { categories: optionsData } }}
+      options={{
+        ...buildOptions(dateFromFilter),
+        plotOptions,
+        fill: { colors },
+        xaxis: { categories: optionsData },
+      }}
       series={data}
       type="bar"
       width="100%"

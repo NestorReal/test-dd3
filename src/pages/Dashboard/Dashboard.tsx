@@ -129,7 +129,7 @@ const Dashboard = () => {
               isLoading={isLoadingClassificationHourResults || isFetchingClassificationHourResults}
               horizontal={false}
               colors={themeContext.graphs.groupedGraph.bars.gender}
-              leakedDate={filtersSelected.time.label}
+              dateFromFilter={filtersSelected.time.label}
             />
           </GroupedGraphContainer>
           <GroupedGraphContainer>
@@ -141,7 +141,7 @@ const Dashboard = () => {
               isLoading={isLoadingClassificationHourResults || isFetchingClassificationHourResults}
               horizontal={false}
               colors={themeContext.graphs.groupedGraph.bars.ageRange}
-              leakedDate={filtersSelected.time.label}
+              dateFromFilter={filtersSelected.time.label}
             />
           </GroupedGraphContainer>
         </Tabs>

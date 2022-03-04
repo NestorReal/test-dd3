@@ -23,5 +23,5 @@ Primary.args = {
   isLoading: false,
   horizontal: false,
   colors: ['#ff9f2d', '#168fff', '#ff9f2d', '#f74141', '#e96fd5', '#9b51e0', '#797979'],
-  leakedDate: 'Mes actual'
+  dateFromFilter: 'Mes actual',
 };

@@ -22,7 +22,7 @@ export interface GraphBarProps {
    */
   isLoading: boolean;
   /**
-   * dates passed/taken from time and comparison filters
+   * dates labels passed/taken from time and comparison filters
    */
   datesFromFilter: string[];
 }
