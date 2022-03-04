@@ -23,13 +23,13 @@ export interface HeatmapProps {
    */
   height: number;
   /**
-   * is displayed when the data is still loading
+   * Should the Skeleton loader be visible?
    */
   isLoading: boolean;
   /**
-   * show filter label
+   * dates labels passed/taken from time and comparison filters
    */
-  datesFromFilters: string[];
+  dateLabelsFromFilters: string[];
 }
 
 const Heatmap = ({
@@ -38,7 +38,7 @@ const Heatmap = ({
   isLoading,
   categories,
   height,
-  datesFromFilters,
+  dateLabelsFromFilters,
 }: HeatmapProps) => {
   if (isLoading) return <Skeleton width="100%" height={height} borderRadius={8} />;
   const themeContext = useContext(ThemeContext);
@@ -46,7 +46,7 @@ const Heatmap = ({
   return (
     <Chart
       options={{
-        ...buildOptions(themeContext.graphs.heatmap, datesFromFilters),
+        ...buildOptions(themeContext.graphs.heatmap, dateLabelsFromFilters),
         plotOptions: colorScale,
         xaxis: axisDataConfig,
       }}

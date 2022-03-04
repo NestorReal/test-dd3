@@ -68,7 +68,7 @@ const Locations = () => {
           isLoading={isLoadingcounterLocationResults || isFetchingcounterLocationResults}
           categories={['Entradas', 'Transacciones', 'Tasa de conversión']}
           height={300}
-          datesFromFilters={[filtersSelected.time.label, filtersSelected.comparison.label]}
+          dateLabelsFromFilters={[filtersSelected.time.label, filtersSelected.comparison.label]}
         />
       </HeatMapContainer>
       <Tabs title="Entradas" nameButtons={['Clientes', 'Sexo', 'Edad']}>
@@ -83,7 +83,7 @@ const Locations = () => {
             }
             horizontal
             colors={themeContext.graphs.groupedGraph.bars.clients}
-            dateFromFilter={filtersSelected.time.label}
+            dateLabelFromFilter={filtersSelected.time.label}
           />
         </GroupedGraphContainer>
         <GroupedGraphContainer>
@@ -97,7 +97,7 @@ const Locations = () => {
             }
             horizontal
             colors={themeContext.graphs.groupedGraph.bars.gender}
-            dateFromFilter={filtersSelected.time.label}
+            dateLabelFromFilter={filtersSelected.time.label}
           />
         </GroupedGraphContainer>
         <GroupedGraphContainer>
@@ -111,7 +111,7 @@ const Locations = () => {
             }
             horizontal
             colors={themeContext.graphs.groupedGraph.bars.ageRange}
-            dateFromFilter={filtersSelected.time.label}
+            dateLabelFromFilter={filtersSelected.time.label}
           />
         </GroupedGraphContainer>
       </Tabs>

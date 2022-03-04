@@ -22,5 +22,5 @@ Primary.args = {
   colors: ['#8c4380', '#ff9f2d', '#168fff'],
   labels: labelFormatData(formattedData),
   isLoading: false,
-  datesFromFilter: ['Mes actual', 'Mes Anterior'],
+  dateLabelsFromFilter: ['Mes actual', 'Mes Anterior'],
 };

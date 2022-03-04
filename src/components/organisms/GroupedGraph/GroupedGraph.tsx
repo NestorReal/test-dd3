@@ -20,17 +20,17 @@ export interface GroupedGraphProps {
    */
   colors: string[];
   /**
-   * is displayed when the data is still loading
+   * Should the Skeleton loader be visible?
    */
   isLoading: boolean;
   /**
-   * the orientation of the graph can be horizontal or vertical
+   * Should the orientation be horizontal or vertical?
    */
   horizontal: boolean;
   /**
    * A date label taken/passed from filter
    */
-  dateFromFilter: string;
+  dateLabelFromFilter: string;
 }
 
 const GroupedGraph = ({
@@ -39,7 +39,7 @@ const GroupedGraph = ({
   isLoading,
   horizontal,
   colors,
-  dateFromFilter,
+  dateLabelFromFilter,
 }: GroupedGraphProps) => {
   if (isLoading) return <Skeleton width="100%" height={300} borderRadius={8} />;
   const plotOptions = {
@@ -54,7 +54,7 @@ const GroupedGraph = ({
   return (
     <Chart
       options={{
-        ...buildOptions(dateFromFilter),
+        ...buildOptions(dateLabelFromFilter),
         plotOptions,
         fill: { colors },
         xaxis: { categories: optionsData },

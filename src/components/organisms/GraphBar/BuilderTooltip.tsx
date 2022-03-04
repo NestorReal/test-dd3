@@ -1,10 +1,10 @@
-import { IGraphicDictionary } from "../../../types/graphs/heatmap";
+import { IGraphicDictionary } from '../../../types/graphs/heatmap';
 
 const graphicDictionary = {
   visitors: 'Entradas',
   transactions: 'Transacciones',
   conversions: 'Tasa de conversión',
-}
+};
 
 // eslint-disable-next-line import/prefer-default-export
 export const builderTooltip = (
@@ -14,11 +14,11 @@ export const builderTooltip = (
   currentValue: number,
   diff: number,
   showDiff: boolean,
-  leakedDate: string,
+  filterDateLabel: string,
 ) =>
   `<div class="tooltipHead">
     <div class="info">
-      <div>${leakedDate}</div>
+      <div>${filterDateLabel}</div>
       <div>&nbsp;&nbsp;&nbsp;</div>
       <div>
         ${initialDate && initialDate.substring(0, 10)}

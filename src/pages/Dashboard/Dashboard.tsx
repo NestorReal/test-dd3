@@ -108,7 +108,7 @@ const Dashboard = () => {
             isLoading={isLoadingDayWeekAverageResults || isFetchingDayWeekAverageResults}
             categories={['D', 'L', 'Ma', 'Mi', 'J', 'V', 'S']}
             height={150}
-            datesFromFilters={[filtersSelected.time.label, filtersSelected.comparison.label]}
+            dateLabelsFromFilters={[filtersSelected.time.label, filtersSelected.comparison.label]}
           />
         </HeatMapContainer>
 
@@ -119,7 +119,7 @@ const Dashboard = () => {
               colors={themeContext.graphs.graphBar.bars.clients}
               labels={hourAverageResults ? labelFormatData(hourAverageResults) : []}
               isLoading={isLoadingHourAverageResults || isFetchingHourAverageResults}
-              datesFromFilter={[filtersSelected.time.label, filtersSelected.comparison.label]}
+              dateLabelsFromFilter={[filtersSelected.time.label, filtersSelected.comparison.label]}
             />
           </GraphBarContainer>
           <GroupedGraphContainer>
@@ -129,7 +129,7 @@ const Dashboard = () => {
               isLoading={isLoadingClassificationHourResults || isFetchingClassificationHourResults}
               horizontal={false}
               colors={themeContext.graphs.groupedGraph.bars.gender}
-              dateFromFilter={filtersSelected.time.label}
+              dateLabelFromFilter={filtersSelected.time.label}
             />
           </GroupedGraphContainer>
           <GroupedGraphContainer>
@@ -141,7 +141,7 @@ const Dashboard = () => {
               isLoading={isLoadingClassificationHourResults || isFetchingClassificationHourResults}
               horizontal={false}
               colors={themeContext.graphs.groupedGraph.bars.ageRange}
-              dateFromFilter={filtersSelected.time.label}
+              dateLabelFromFilter={filtersSelected.time.label}
             />
           </GroupedGraphContainer>
         </Tabs>
