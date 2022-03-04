@@ -108,7 +108,7 @@ const Dashboard = () => {
             isLoading={isLoadingDayWeekAverageResults || isFetchingDayWeekAverageResults}
             categories={['D', 'L', 'Ma', 'Mi', 'J', 'V', 'S']}
             height={150}
-            leakedDate={[filtersSelected.time.label, filtersSelected.comparison.label]}
+            datesFromFilters={[filtersSelected.time.label, filtersSelected.comparison.label]}
           />
         </HeatMapContainer>
 

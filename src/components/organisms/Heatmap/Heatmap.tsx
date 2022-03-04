@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Chart from 'react-apexcharts';
 import { ThemeContext } from 'styled-components';
-import { buildAxisData, buildOptions, getleakedDate } from './Options';
+import { buildAxisData, buildOptions } from './Options';
 import { FormattedDayWeekAverageResult } from '../../../types/graphs/heatmap';
 import Skeleton from '../../atoms/Skeleton';
 
@@ -29,18 +29,24 @@ export interface HeatmapProps {
   /**
    * show filter label
    */
-   leakedDate?: string[];
+  datesFromFilters: string[];
 }
 
-const Heatmap = ({ data, colorScale, isLoading, categories, height, leakedDate }: HeatmapProps) => {
+const Heatmap = ({
+  data,
+  colorScale,
+  isLoading,
+  categories,
+  height,
+  datesFromFilters,
+}: HeatmapProps) => {
   if (isLoading) return <Skeleton width="100%" height={height} borderRadius={8} />;
   const themeContext = useContext(ThemeContext);
   const axisDataConfig = buildAxisData(categories, themeContext.graphs.heatmap);
-  getleakedDate(leakedDate);
   return (
     <Chart
       options={{
-        ...buildOptions(themeContext.graphs.heatmap),
+        ...buildOptions(themeContext.graphs.heatmap, datesFromFilters),
         plotOptions: colorScale,
         xaxis: axisDataConfig,
       }}

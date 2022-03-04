@@ -68,7 +68,7 @@ const Locations = () => {
           isLoading={isLoadingcounterLocationResults || isFetchingcounterLocationResults}
           categories={['Entradas', 'Transacciones', 'Tasa de conversión']}
           height={300}
-          leakedDate={[filtersSelected.time.label, filtersSelected.comparison.label]}
+          datesFromFilters={[filtersSelected.time.label, filtersSelected.comparison.label]}
         />
       </HeatMapContainer>
       <Tabs title="Entradas" nameButtons={['Clientes', 'Sexo', 'Edad']}>

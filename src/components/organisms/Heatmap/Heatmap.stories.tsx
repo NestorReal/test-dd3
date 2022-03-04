@@ -22,5 +22,5 @@ Primary.args = {
   isLoading: false,
   categories: ['D', 'L', 'Ma', 'Mi', 'J', 'V', 'S'],
   height: 300,
-  leakedDate: ['Mes actual', 'Mes Anterior']
+  datesFromFilters: ['Mes actual', 'Mes Anterior'],
 };
