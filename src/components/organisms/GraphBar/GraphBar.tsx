@@ -29,7 +29,7 @@ export interface GraphBarProps {
 
 const GraphBar = ({ data, colors, labels, isLoading, dateLabelsFromFilter }: GraphBarProps) => {
   if (isLoading) return <Skeleton width="100%" height={300} borderRadius={8} />;
-
+  
   return (
     <Chart
       options={{ ...buildOptions(dateLabelsFromFilter), colors, xaxis: { categories: labels } }}

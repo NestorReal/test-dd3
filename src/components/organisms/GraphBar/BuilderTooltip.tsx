@@ -8,8 +8,7 @@ const graphicDictionary = {
 
 // eslint-disable-next-line import/prefer-default-export
 export const builderTooltip = (
-  initialDate: string,
-  finalDate: string,
+  date: string,
   label: string,
   currentValue: number,
   diff: number,
@@ -20,11 +19,7 @@ export const builderTooltip = (
     <div class="info">
       <div>${filterDateLabel}</div>
       <div>&nbsp;&nbsp;&nbsp;</div>
-      <div>
-        ${initialDate && initialDate.substring(0, 10)}
-          / 
-        ${finalDate && finalDate.substring(0, 10)}
-      </div>
+      <div>${date}</div>
     </div>
     <div class="info">
       <div>${graphicDictionary[label as keyof IGraphicDictionary]}</div>

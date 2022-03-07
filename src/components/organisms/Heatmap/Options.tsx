@@ -2,6 +2,7 @@ import { ApexOptions } from 'apexcharts';
 import { builderTooltip } from './BuilderTooltip';
 import { humanFormat } from '../../../helpers/graphsHelpers/graphs/humanFormat';
 import { ApexXAxis } from '../../../types/graphs/heatmap';
+import changeDateFormat from "../../../helpers/compareTimeHelpers/changeDateFormat";
 
 type HeatmapOptions = Pick<ApexOptions, 'tooltip' | 'yaxis' | 'stroke' | 'dataLabels' | 'legend'>;
 type HeatmapColors = {
@@ -26,22 +27,20 @@ export const buildOptions = (colors: HeatmapColors, dates: string[]): HeatmapOpt
         const { secondaryRange } = series.w.config.series[seriesIndex];
         const labels = series.w.globals.seriesNames;
         const comparison = `
-        <hr />
-        ${builderTooltip(
-          secondaryRange[0],
-          secondaryRange[1],
-          labels[seriesIndex],
-          comparedValue,
-          diff,
-          true,
-          comparisonDateFilter,
-        )}
-      `;
+          <hr />
+          ${builderTooltip(
+            changeDateFormat(secondaryRange),
+            labels[seriesIndex],
+            comparedValue,
+            diff,
+            true,
+            comparisonDateFilter,
+          )}
+        `;
         return `
         <div>
           ${builderTooltip(
-            mainRange[0],
-            mainRange[1],
+            changeDateFormat(mainRange),
             labels[seriesIndex],
             currentValue,
             diff,
