@@ -37,12 +37,14 @@ export const InsideContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   @media (min-width: 1425px) {
     flex-direction: row;
   }
 `;
 
 export const IndividualContainer = styled.div`
+  width: 100%;
   &:not(:first-child) {
     margin-left: 0;
   }
@@ -62,6 +64,7 @@ export const FilterDivider = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  width: 100%;
 
   @media (min-width: 1425px) {
     &:not(:first-child) {

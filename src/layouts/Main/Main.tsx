@@ -96,6 +96,7 @@ const Main = () => {
           hidden={!(scrollY >= 120)}
         />
       </BarContainer>
+
       <AsideMenuContainer top={topMenuHeight - scrollY}>
         <AsideMenu title="Main Menu" />
       </AsideMenuContainer>
