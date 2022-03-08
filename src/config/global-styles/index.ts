@@ -35,7 +35,14 @@ const GlobalStyles = createGlobalStyle`
     ol,ul,li {
         list-style: none;
     }
+
+
+    html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
 `;
+
 // If needed, we can continue writing global styles inside string interpolation.
 
 export default GlobalStyles;

@@ -8,7 +8,7 @@ const SelectorSkeleton = () => (
       <Skeleton width={80} height={20} borderRadius={5} />
     </Container>
 
-    <Skeleton width={260} height={36} borderRadius={5} />
+    <Skeleton width="100%" height={36} borderRadius={5} />
   </div>
 );
 
