@@ -67,7 +67,7 @@ const Locations = () => {
           colorScale={rangesColors(counterLocationResults || defaultFormattedDayWeekAverageResult)}
           isLoading={isLoadingcounterLocationResults || isFetchingcounterLocationResults}
           categories={['Entradas', 'Transacciones', 'Tasa de conversión']}
-          height={300}
+          height={500}
           dateLabelsFromFilters={[filtersSelected.time.label, filtersSelected.comparison.label]}
         />
       </HeatMapContainer>
