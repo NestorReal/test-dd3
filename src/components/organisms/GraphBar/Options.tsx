@@ -1,5 +1,6 @@
 import { ApexOptions } from 'apexcharts';
 import { builderTooltip } from './BuilderTooltip';
+import changeDateFormat from "../../../helpers/compareTimeHelpers/changeDateFormat";
 
 type GraphBarOptions = Pick<
   ApexOptions,
@@ -21,11 +22,11 @@ export const buildOptions = (dates: string[]): GraphBarOptions => {
         const { mainRange } = series.w.config.series[seriesIndex];
         const { secondaryRange } = series.w.config.series[seriesIndex];
         const labels = series.w.globals.seriesNames;
+        
         const comparison = `
           <hr />
           ${builderTooltip(
-            secondaryRange[0],
-            secondaryRange[1],
+            changeDateFormat(secondaryRange),
             labels[seriesIndex],
             comparedValue,
             diff,
@@ -36,8 +37,7 @@ export const buildOptions = (dates: string[]): GraphBarOptions => {
         return `
           <div>
             ${builderTooltip(
-              mainRange[0],
-              mainRange[1],
+              changeDateFormat(mainRange),
               labels[seriesIndex],
               currentValue,
               diff,

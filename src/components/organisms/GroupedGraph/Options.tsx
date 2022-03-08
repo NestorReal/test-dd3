@@ -1,4 +1,5 @@
 import { ApexOptions } from 'apexcharts';
+import changeDateFormat from "../../../helpers/compareTimeHelpers/changeDateFormat";
 
 type GroupedGraphOptions = Pick<
   ApexOptions,
@@ -18,12 +19,13 @@ export const buildOptions = (date: string): GroupedGraphOptions => ({
       const { dataPointIndex } = series;
       const { seriesIndex } = series;
       const { mainRange } = series.w.config.series[seriesIndex];
+      
       const tooltip = `
         <div class="tooltipHead">
           <div class="info  space">
             <div>${date}</div>
             <div>&nbsp;&nbsp;&nbsp;</div>
-            <div>${mainRange[0].substring(0, 10)} / ${mainRange[1].substring(0, 10)}</div>
+            <div>${changeDateFormat(mainRange)}</div>
           </div>
           <table class="tableTooltip">
             ${series.w.config.series.map(
