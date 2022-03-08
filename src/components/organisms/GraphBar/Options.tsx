@@ -80,4 +80,4 @@ export const buildOptions = (dates: string[]): GraphBarOptions => {
   };
 };
 
-export const height = 300;
+export const height = 400;

@@ -107,7 +107,7 @@ const Dashboard = () => {
             colorScale={rangesColors(dayWeekAverageResults || defaultFormattedDayWeekAverageResult)}
             isLoading={isLoadingDayWeekAverageResults || isFetchingDayWeekAverageResults}
             categories={['D', 'L', 'Ma', 'Mi', 'J', 'V', 'S']}
-            height={150}
+            height={130}
             dateLabelsFromFilters={[filtersSelected.time.label, filtersSelected.comparison.label]}
           />
         </HeatMapContainer>
