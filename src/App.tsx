@@ -5,9 +5,10 @@ import Main from './layouts/Main';
 import Login from './pages/Login';
 import RequireAuth from './components/auth/RequireAuth';
 import PasswordRecovery from './pages/PasswordRecovery';
-import PasswordReset from "./pages/PasswordReset";
+import PasswordReset from './pages/PasswordReset';
 import Dashboard from './pages/Dashboard';
 import Locations from './pages/Locations';
+import NotFound from './pages/NotFound';
 import { mainTheme } from './mocks/themes';
 
 const App = () => (
@@ -31,7 +32,7 @@ const App = () => (
             </RequireAuth>
           }
         />
-        <Route path="*" element={<div>No match route</div>} />
+        <Route path="*" element={<NotFound />} />
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="password-recovery" element={<PasswordRecovery />} />
