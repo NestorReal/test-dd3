@@ -19,11 +19,20 @@ export const buildOptions = (colors: RangeBarColors): RangeBarOptions => ({
   },
   tooltip: {
     theme: 'dark',
+    shared: false,
+    y: {
+      formatter (val) {
+        return Math.abs(val);
+      }
+    }
   },
   plotOptions: {
     bar: {
       horizontal: true,
       columnWidth: '90%',
+      dataLabels: {
+        position: 'top',
+      },
     },
   },
   dataLabels: {
@@ -31,8 +40,10 @@ export const buildOptions = (colors: RangeBarColors): RangeBarOptions => ({
     formatter(value: number) {
       return Math.abs(value);
     },
+    offsetY: 0,
+    offsetX: 30,
     style: {
-      colors: colors.dataLabelsTextColor,
+      colors: ['#003566'],
     },
   },
   stroke: {
@@ -57,6 +68,9 @@ export const buildOptions = (colors: RangeBarColors): RangeBarOptions => ({
       style: {
         colors: colors.xAxisLabelsTextColor,
       },
+      formatter (value){
+        return Math.abs(Math.round(value));
+      }
     },
   },
   legend: {
@@ -87,6 +101,8 @@ export const options: RangeBarOptions = {
     style: {
       colors: ['#F7F7F7'],
     },
+    offsetX: -50,
+    offsetY: -20,
   },
   stroke: {
     width: 3,
@@ -120,8 +136,8 @@ export const options: RangeBarOptions = {
 export const height = 400;
 
 export const buildYAxisData = (value: number, colors: RangeBarColors) => ({
-  min: -value,
-  max: value,
+  min: -value-(value*0.1),
+  max: value+(value*.1),
   labels: {
     style: {
       colors: colors.xAxisLabelsTextColor,
