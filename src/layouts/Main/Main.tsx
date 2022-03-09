@@ -30,10 +30,17 @@ import FiltersContainer from '../../components/atoms/FiltersContainer';
 import RangeDateSelector from '../../components/molecules/RangeDateSelector';
 import ComparisonDateSelector from '../../components/molecules/ComparisonDateSelector';
 import StatusBar from '../../components/molecules/StatusBar';
+import { withoutComparison } from '../../helpers/compareTimeHelpers/conformComparisons';
 
 const Main = () => {
   const filtersSelected = useAppSelector((state) => state.filters);
-  const statusBarText = `${filtersSelected.time.label} (${filtersSelected.time.sideLabel}) comparado con ${filtersSelected.comparison.label} (${filtersSelected.comparison.sideLabel})`;
+  const timeFilterText = `${filtersSelected.time.label} (${filtersSelected.time.sideLabel})`;
+  const comparisonFilterText =
+    filtersSelected.comparison.id !== withoutComparison.id
+      ? `comparado con ${filtersSelected.comparison.label} (${filtersSelected.comparison.sideLabel})`
+      : '';
+  const statusBarText = `${timeFilterText} ${comparisonFilterText}`;
+
   const [scrollY, setScrollY] = useState(0);
   const [topMenuHeight, setTopMenuHeight] = useState(0);
   const dispatch = useAppDispatch();

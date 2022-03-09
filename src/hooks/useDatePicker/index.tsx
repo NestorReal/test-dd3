@@ -78,6 +78,7 @@ const useDatePicker = () => {
                     onClickFilter({
                       lowDate: formatedLowDate,
                       upDate: formatedUpDate,
+                      sideLabel,
                     });
                   }
                   setSelectedOption({

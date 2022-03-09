@@ -18,7 +18,7 @@ import {
 } from '.';
 import { TIME_RANGES_ID, CUSTOM_RANGES_ID } from '../rangeDateHelpers';
 
-const withoutComparison = {
+export const withoutComparison = {
   label: 'Sin Comparación',
   sideLabel: '',
   lowDate: '',
@@ -63,6 +63,7 @@ export const conformComparations = {
   [TIME_RANGES_ID.currentYear]: [{ ...lastYear() }, { ...withoutComparison }],
   [TIME_RANGES_ID.lastYear]: [{ ...yearBefore() }, { ...withoutComparison }],
   [CUSTOM_RANGES_ID.exactDay]: [
+    { ...withoutComparison },
     {
       label: 'Día Exacto',
       sideLabel: '',
@@ -70,9 +71,9 @@ export const conformComparations = {
       upDate: '',
       id: 9.0,
     },
-    { ...withoutComparison },
   ],
   [CUSTOM_RANGES_ID.range]: [
+    { ...withoutComparison },
     {
       label: 'Rango de Fechas',
       sideLabel: '',
@@ -80,6 +81,5 @@ export const conformComparations = {
       upDate: '',
       id: 10.0,
     },
-    { ...withoutComparison },
   ],
 };

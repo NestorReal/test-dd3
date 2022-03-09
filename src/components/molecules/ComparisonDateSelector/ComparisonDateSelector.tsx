@@ -48,8 +48,8 @@ const ComparisonDateSelector = ({
   const dispatch = useAppDispatch();
   const location = useLocation();
 
-  const [exactDayOption] = conformComparations[CUSTOM_RANGES_ID.exactDay];
-  const [rangeOption] = conformComparations[CUSTOM_RANGES_ID.range];
+  const [, exactDayOption] = conformComparations[CUSTOM_RANGES_ID.exactDay];
+  const [, rangeOption] = conformComparations[CUSTOM_RANGES_ID.range];
 
   const onClickItem = (option: RangeOption) => {
     closeDropdown();

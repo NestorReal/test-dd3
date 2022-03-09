@@ -89,6 +89,7 @@ const useRangeDatePicker = () => {
                     onClickFilter({
                       lowDate: formatedLowDate,
                       upDate: formatedUpDate,
+                      sideLabel,
                     });
                   }
                   setSelectedOption({
