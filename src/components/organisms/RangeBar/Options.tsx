@@ -21,10 +21,10 @@ export const buildOptions = (colors: RangeBarColors): RangeBarOptions => ({
     theme: 'dark',
     shared: false,
     y: {
-      formatter (val) {
-        return Math.abs(val);
-      }
-    }
+      formatter(val) {
+        return Math.abs(val).toString();
+      },
+    },
   },
   plotOptions: {
     bar: {
@@ -68,9 +68,9 @@ export const buildOptions = (colors: RangeBarColors): RangeBarOptions => ({
       style: {
         colors: colors.xAxisLabelsTextColor,
       },
-      formatter (value){
-        return Math.abs(Math.round(value));
-      }
+      formatter(value) {
+        return Math.abs(Math.round(Number(value))).toString();
+      },
     },
   },
   legend: {
@@ -136,8 +136,8 @@ export const options: RangeBarOptions = {
 export const height = 400;
 
 export const buildYAxisData = (value: number, colors: RangeBarColors) => ({
-  min: -value-(value*0.1),
-  max: value+(value*.1),
+  min: -value - value * 0.1,
+  max: value + value * 0.1,
   labels: {
     style: {
       colors: colors.xAxisLabelsTextColor,
