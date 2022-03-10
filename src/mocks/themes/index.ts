@@ -85,7 +85,7 @@ export const mainTheme = {
     rangeBar: {
       yAxisLabelsTextColor: '#969696',
       xAxisLabelsTextColor: '#969696',
-      dataLabelsTextColor: ['#F7F7F7'],
+      dataLabelsTextColor: ['#003566'],
       strokeColors: ['#fff'],
       bars: {
         gender: ['#ba59aa', '#003566'],
@@ -188,7 +188,7 @@ export const anotherTheme = {
     rangeBar: {
       yAxisLabelsTextColor: '#969696',
       xAxisLabelsTextColor: '#969696',
-      dataLabelsTextColor: ['#F7F7F7'],
+      dataLabelsTextColor: ['#003566'],
       strokeColors: ['#fff'],
       bars: {
         gender: ['#ba59aa', '#003566'],

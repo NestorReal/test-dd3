@@ -19,11 +19,20 @@ export const buildOptions = (colors: RangeBarColors): RangeBarOptions => ({
   },
   tooltip: {
     theme: 'dark',
+    shared: false,
+    y: {
+      formatter(val) {
+        return Math.abs(val).toString();
+      },
+    },
   },
   plotOptions: {
     bar: {
       horizontal: true,
       columnWidth: '90%',
+      dataLabels: {
+        position: 'top',
+      },
     },
   },
   dataLabels: {
@@ -31,6 +40,8 @@ export const buildOptions = (colors: RangeBarColors): RangeBarOptions => ({
     formatter(value: number) {
       return Math.abs(value);
     },
+    offsetY: 0,
+    offsetX: 30,
     style: {
       colors: colors.dataLabelsTextColor,
     },
@@ -57,6 +68,9 @@ export const buildOptions = (colors: RangeBarColors): RangeBarOptions => ({
       style: {
         colors: colors.xAxisLabelsTextColor,
       },
+      formatter(value) {
+        return Math.abs(Math.round(Number(value))).toString();
+      },
     },
   },
   legend: {
@@ -64,64 +78,11 @@ export const buildOptions = (colors: RangeBarColors): RangeBarOptions => ({
   },
 });
 
-export const options: RangeBarOptions = {
-  chart: {
-    type: 'bar',
-    stacked: true,
-    offsetY: 0,
-  },
-  tooltip: {
-    theme: 'dark',
-  },
-  plotOptions: {
-    bar: {
-      horizontal: true,
-      columnWidth: '90%',
-    },
-  },
-  dataLabels: {
-    enabled: true,
-    formatter(value: number) {
-      return Math.abs(value);
-    },
-    style: {
-      colors: ['#F7F7F7'],
-    },
-  },
-  stroke: {
-    width: 3,
-    colors: ['#fff'],
-  },
-  grid: {
-    xaxis: {
-      lines: {
-        show: false,
-      },
-    },
-    yaxis: {
-      lines: {
-        show: false,
-      },
-    },
-  },
-  xaxis: {
-    categories: ['+65', '55-64', '45-54', '35-44', '25-34', '16-24', '-15'],
-    labels: {
-      style: {
-        colors: '#969696',
-      },
-    },
-  },
-  legend: {
-    show: false,
-  },
-};
-
 export const height = 400;
 
 export const buildYAxisData = (value: number, colors: RangeBarColors) => ({
-  min: -value,
-  max: value,
+  min: -value - value * 0.1,
+  max: value + value * 0.1,
   labels: {
     style: {
       colors: colors.xAxisLabelsTextColor,
