@@ -43,7 +43,7 @@ export const buildOptions = (colors: RangeBarColors): RangeBarOptions => ({
     offsetY: 0,
     offsetX: 30,
     style: {
-      colors: ['#003566'],
+      colors: colors.dataLabelsTextColor,
     },
   },
   stroke: {
@@ -77,61 +77,6 @@ export const buildOptions = (colors: RangeBarColors): RangeBarOptions => ({
     show: false,
   },
 });
-
-export const options: RangeBarOptions = {
-  chart: {
-    type: 'bar',
-    stacked: true,
-    offsetY: 0,
-  },
-  tooltip: {
-    theme: 'dark',
-  },
-  plotOptions: {
-    bar: {
-      horizontal: true,
-      columnWidth: '90%',
-    },
-  },
-  dataLabels: {
-    enabled: true,
-    formatter(value: number) {
-      return Math.abs(value);
-    },
-    style: {
-      colors: ['#F7F7F7'],
-    },
-    offsetX: -50,
-    offsetY: -20,
-  },
-  stroke: {
-    width: 3,
-    colors: ['#fff'],
-  },
-  grid: {
-    xaxis: {
-      lines: {
-        show: false,
-      },
-    },
-    yaxis: {
-      lines: {
-        show: false,
-      },
-    },
-  },
-  xaxis: {
-    categories: ['+65', '55-64', '45-54', '35-44', '25-34', '16-24', '-15'],
-    labels: {
-      style: {
-        colors: '#969696',
-      },
-    },
-  },
-  legend: {
-    show: false,
-  },
-};
 
 export const height = 400;
 
