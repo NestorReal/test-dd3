@@ -11,7 +11,8 @@ import GraphBar from '../../components/organisms/GraphBar';
 import Heatmap from '../../components/organisms/Heatmap';
 import GroupedGraph from '../../components/organisms/GroupedGraph';
 import { HeaderContainer, HeatMapContainer, GroupedGraphContainer, TitleContainer } from './styled';
-import { defaultFormattedClassificationHourResult, defaultFormattedClassificationHourResultGraph } from '../../types/graphs/groupedGraph';
+import { defaultFormattedClassificationHourResult } from '../../types/graphs/groupedGraph';
+import { defaultFormattedHourAverageResult } from '../../types/graphs/graphBar';
 import { StoresResultDefault } from '../../types/filters';
 import {
   defaultFormattedDayWeekAverageResult,
@@ -74,7 +75,7 @@ const Locations = () => {
       <Tabs title="Entradas" nameButtons={['Clientes', 'Sexo', 'Edad']}>
         <GroupedGraphContainer>
         <GraphBar
-              data={classificationLocationResults?.visitors || defaultFormattedClassificationHourResultGraph}
+              data={classificationLocationResults?.visitors || defaultFormattedHourAverageResult}
               colors={themeContext.graphs.graphBar.bars.clientsLocation}
               labels={labelsData}
               isLoading={

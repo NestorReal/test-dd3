@@ -1,6 +1,7 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
 import { FormattedHourAverageResult } from '../../../types/graphs/graphBar';
+import { FormattedClassificationHourResult } from '../../../types/graphs/groupedGraph'
 import { height, buildOptions } from './Options';
 import Skeleton from '../../atoms/Skeleton';
 
@@ -8,7 +9,7 @@ export interface GraphBarProps {
   /**
    * accepts an array of [data, diff, hour, comparedData, name, mainRange] objects
    */
-  data: FormattedHourAverageResult[];
+  data: FormattedHourAverageResult[] | FormattedClassificationHourResult[];
   /**
    * add the colors to the graph
    */
