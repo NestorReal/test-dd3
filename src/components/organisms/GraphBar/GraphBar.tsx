@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext }from 'react';
 import Chart from 'react-apexcharts';
+import { ThemeContext } from 'styled-components';
 import { FormattedHourAverageResult } from '../../../types/graphs/graphBar';
 import { FormattedClassificationHourResult } from '../../../types/graphs/groupedGraph'
 import { height, buildOptions } from './Options';
@@ -33,6 +34,7 @@ export interface GraphBarProps {
 }
 
 const GraphBar = ({ data, colors, labels, isLoading, dateLabelsFromFilter, horizontal }: GraphBarProps) => {
+  const themeContext = useContext(ThemeContext);
   if (isLoading) return <Skeleton width="100%" height={300} borderRadius={8} />;
   const plotOptions = {
     bar: {
@@ -47,7 +49,7 @@ const GraphBar = ({ data, colors, labels, isLoading, dateLabelsFromFilter, horiz
   };
   return (
     <Chart
-      options={{ ...buildOptions(dateLabelsFromFilter), plotOptions, colors, xaxis: { categories: labels } }}
+      options={{ ...buildOptions(dateLabelsFromFilter, themeContext.graphs.graphBar), plotOptions, colors, xaxis: { categories: labels } }}
       series={data}
       type="bar"
       width="100%"
