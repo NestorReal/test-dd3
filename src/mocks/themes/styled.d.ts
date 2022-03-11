@@ -99,6 +99,7 @@ declare module 'styled-components' {
       graphBar: {
         bars: {
           clients: string[];
+          clientsLocation: string[];
         };
       };
       groupedGraph: {

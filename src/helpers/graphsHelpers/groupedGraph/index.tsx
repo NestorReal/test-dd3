@@ -7,6 +7,7 @@ import {
   ClassificationLocationResult,
   FormattedResponseClassificationLocationHour,
 } from '../../../types/graphs/groupedGraph';
+import { FormattedHourAverageResult } from '../../../types/graphs/graphBar';
 
 import { OptionsGroupDefault, StoresResult, OptionsGroup } from '../../../types/filters';
 
@@ -18,7 +19,7 @@ const DictionaryLabels = {
 export const dataClassificationGrouped = (
   data: ClassificationHourResult | ClassificationLocationResult,
   param: 'genders' | 'visitors' | 'age_ranges',
-): FormattedClassificationHourResult[] => {
+): FormattedClassificationHourResult[] | FormattedHourAverageResult[] => {
   const dataValues = data.data;
   const keys = Object.keys(dataValues);
   const [unformattedDataArray] = keys.map((key) => dataValues[key as keyof Data]);
@@ -31,14 +32,18 @@ export const dataClassificationGrouped = (
   const labels = unformattedDataArray
     .map((values) => values[param])
     .map((objectData) => objectData.map((valuesData) => valuesData[DictionaryLabels[param as keyof {}]]));
-  
+  const comparedData = unformattedDataArray
+    .map((values) => values[param])
+    .map((objectData) => objectData.map((valuesData) => valuesData.secondary_value));
   let arrayData: number[] = [];
+  const comparedDataArray: number[] = [];
   let arrayDiffData: number[] = [];
   const newArray: number[][][] = [];
   for (let i = 0; i < paramData[1].length; i += 1) {
     for (let j = 0; j < paramData.length; j += 1) {
       if (paramData[j][i] !== undefined) {
         arrayData.push(paramData[j][i]);
+        comparedDataArray.push(comparedData[j][i])
       } else {
         arrayData.push(0);
       }
@@ -48,15 +53,18 @@ export const dataClassificationGrouped = (
         arrayDiffData.push(0);
       }
     }
-    newArray.push([arrayData, arrayDiffData]);
+    newArray.push([arrayData, arrayDiffData, comparedDataArray]);
     arrayDiffData = [];
     arrayData = [];
   }
   return newArray.map((arrayDataNumbers, index) => ({
     mainRange: data.main_range,
+    secondaryRange: data.secondary_range,
     data: arrayDataNumbers[0],
     diff: arrayDataNumbers[1],
-    labels: labels[index]
+    comparedData: arrayDataNumbers[2],
+    labels: labels[index],
+    name: 'visitors',
   }));
 };
 

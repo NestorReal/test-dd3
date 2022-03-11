@@ -120,6 +120,7 @@ const Dashboard = () => {
               labels={hourAverageResults ? labelFormatData(hourAverageResults) : []}
               isLoading={isLoadingHourAverageResults || isFetchingHourAverageResults}
               dateLabelsFromFilter={[filtersSelected.time.label, filtersSelected.comparison.label]}
+              horizontal={false}
             />
           </GraphBarContainer>
           <GroupedGraphContainer>

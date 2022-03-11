@@ -32,6 +32,7 @@ export const buildOptions = (colors: RangeBarColors): RangeBarOptions => ({
       columnWidth: '90%',
       dataLabels: {
         position: 'top',
+        hideOverflowingLabels: false,
       },
     },
   },

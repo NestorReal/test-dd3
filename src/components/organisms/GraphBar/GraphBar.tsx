@@ -25,14 +25,28 @@ export interface GraphBarProps {
    * dates labels passed/taken from time and comparison filters
    */
   dateLabelsFromFilter: string[];
+  /**
+   * Should the orientation be horizontal or vertical?
+   */
+   horizontal: boolean;
 }
 
-const GraphBar = ({ data, colors, labels, isLoading, dateLabelsFromFilter }: GraphBarProps) => {
+const GraphBar = ({ data, colors, labels, isLoading, dateLabelsFromFilter, horizontal }: GraphBarProps) => {
   if (isLoading) return <Skeleton width="100%" height={300} borderRadius={8} />;
-  
+  const plotOptions = {
+    bar: {
+      borderRadius: 8,
+      horizontal,
+      distributed: true,
+      dataLabels: {
+        position: 'top',
+        hideOverflowingLabels: false,
+      },
+    },
+  };
   return (
     <Chart
-      options={{ ...buildOptions(dateLabelsFromFilter), colors, xaxis: { categories: labels } }}
+      options={{ ...buildOptions(dateLabelsFromFilter), plotOptions, colors, xaxis: { categories: labels } }}
       series={data}
       type="bar"
       width="100%"

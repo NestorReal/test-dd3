@@ -4,7 +4,7 @@ import changeDateFormat from "../../../helpers/compareTimeHelpers/changeDateForm
 
 type GraphBarOptions = Pick<
   ApexOptions,
-  'chart' | 'tooltip' | 'plotOptions' | 'responsive' | 'legend' | 'fill'
+  'chart' | 'tooltip' | 'plotOptions' | 'responsive' | 'legend' | 'fill' | 'dataLabels' | 'yaxis'
 >;
 
 export const buildOptions = (dates: string[]): GraphBarOptions => {
@@ -53,10 +53,14 @@ export const buildOptions = (dates: string[]): GraphBarOptions => {
       type: 'bar',
       stacked: true,
     },
-    plotOptions: {
-      bar: {
-        borderRadius: 8,
-        distributed: true,
+    dataLabels: {
+      enabled: true,
+      distributed: false,
+      offsetY: -20,
+      offsetX: 0,
+      style: {
+        fontSize: '12px',
+        colors: ["#304758"]
       },
     },
     responsive: [
