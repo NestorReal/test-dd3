@@ -94,6 +94,7 @@ export const mainTheme = {
     graphBar: {
       bars: {
         clients: ['#8c4380', '#ff9f2d', '#168fff'],
+        clientsLocation: ['#ff9f2d'],
       },
     },
     groupedGraph: {
