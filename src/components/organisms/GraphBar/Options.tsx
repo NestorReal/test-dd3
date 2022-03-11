@@ -7,11 +7,7 @@ type GraphBarOptions = Pick<
   'chart' | 'tooltip' | 'plotOptions' | 'responsive' | 'legend' | 'fill' | 'dataLabels' | 'yaxis'
 >;
 
-type GraphBarColors = {
-  dataLabelsTextColor: string[];
-};
-
-export const buildOptions = (dates: string[], colors: GraphBarColors): GraphBarOptions => {
+export const buildOptions = (dates: string[]): GraphBarOptions => {
   const [timeDateFilter, comparisonDateFilter] = dates;
   return {
     tooltip: {
@@ -56,16 +52,6 @@ export const buildOptions = (dates: string[], colors: GraphBarColors): GraphBarO
     chart: {
       type: 'bar',
       stacked: true,
-    },
-    dataLabels: {
-      enabled: true,
-      distributed: false,
-      offsetY: -20,
-      offsetX: 0,
-      style: {
-        fontSize: '12px',
-        colors: colors.dataLabelsTextColor,
-      },
     },
     responsive: [
       {

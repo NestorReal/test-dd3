@@ -47,9 +47,19 @@ const GraphBar = ({ data, colors, labels, isLoading, dateLabelsFromFilter, horiz
       },
     },
   };
+  const dataLabels = {
+    enabled: true,
+    distributed: false,
+    offsetY: horizontal ? 0 : -20,
+    offsetX: horizontal ? 30: 0,
+    style: {
+      fontSize: '12px',
+      colors: themeContext.graphs.graphBar.dataLabelsTextColor,
+    },
+  };
   return (
     <Chart
-      options={{ ...buildOptions(dateLabelsFromFilter, themeContext.graphs.graphBar), plotOptions, colors, xaxis: { categories: labels } }}
+      options={{ ...buildOptions(dateLabelsFromFilter), plotOptions, dataLabels, colors, xaxis: { categories: labels } }}
       series={data}
       type="bar"
       width="100%"
