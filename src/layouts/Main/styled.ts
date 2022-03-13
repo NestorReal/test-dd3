@@ -31,48 +31,22 @@ export const TopMenuContainer = styled.div`
   padding-left: ${space[8]};
   padding-right: ${space[8]};
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.06);
+  
 `;
 
 export const InsideContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  @media (min-width: 1425px) {
-    flex-direction: row;
+  display: grid;
+  gap: ${space[4]};
+  grid-template-columns: repeat(auto-fill, minmax(230px, 24%));
+  @media only screen and (min-width: 1000px) and (max-width: 1335px) {
+    grid-template-columns: repeat(auto-fill, minmax(45%, 49%));
+  }
+  @media only screen and (max-width: 1000px) {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   }
 `;
 
-export const IndividualContainer = styled.div`
-  width: 100%;
-  &:not(:first-child) {
-    margin-left: 0;
-  }
-
-  @media (min-width: 865px) {
-    &:not(:first-child) {
-      margin-left: ${space[4]};
-    }
-  }
-`;
 
 export const BarContainer = styled.div`
   margin-left: ${asideMenuWidth}px;
-`;
-
-export const FilterDivider = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  width: 100%;
-
-  @media (min-width: 1425px) {
-    &:not(:first-child) {
-      margin-left: ${space[4]};
-    }
-  }
-
-  @media (min-width: 865px) {
-    flex-direction: row;
-  }
 `;

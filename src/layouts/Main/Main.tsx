@@ -16,9 +16,7 @@ import {
   AsideMenuContainer,
   TopMenuContainer,
   InsideContainer,
-  IndividualContainer,
   BarContainer,
-  FilterDivider,
 } from './styled';
 import { throttle } from '../../helpers/performance';
 import { EMPTY_USER } from '../../config/app/constants';
@@ -111,8 +109,7 @@ const Main = () => {
       <FullContainer>
         <FiltersContainer title="Filtros">
           <InsideContainer>
-            <FilterDivider>
-              <IndividualContainer>
+              <div>
                 {isLoading ? (
                   <SelectorSkeleton />
                 ) : (
@@ -122,9 +119,9 @@ const Main = () => {
                     setFilters={setCategoriesFilter}
                   />
                 )}
-              </IndividualContainer>
+              </div>
 
-              <IndividualContainer>
+              <div>
                 {isLoading || storesDataIsLoading ? (
                   <SelectorSkeleton />
                 ) : (
@@ -134,11 +131,9 @@ const Main = () => {
                     setFilters={setStoresFilter}
                   />
                 )}
-              </IndividualContainer>
-            </FilterDivider>
+              </div>
 
-            <FilterDivider>
-              <IndividualContainer>
+              <div>
                 <RangeDateSelector
                   selectorTitle="Tiempo"
                   onClickDropdownItem={setTimeFilter}
@@ -147,9 +142,9 @@ const Main = () => {
                   onClickExactDayOption={() => {}}
                   onClickRangeOption={() => {}}
                 />
-              </IndividualContainer>
+              </div>
 
-              <IndividualContainer>
+              <div>
                 <ComparisonDateSelector
                   selectorTitle="Comparado con"
                   optionId={timeSelected.id}
@@ -159,8 +154,7 @@ const Main = () => {
                   onClickFilterCalendar={setComparisonFilter}
                   onClickFilterCalendarRange={setComparisonFilter}
                 />
-              </IndividualContainer>
-            </FilterDivider>
+              </div>
           </InsideContainer>
         </FiltersContainer>
 
