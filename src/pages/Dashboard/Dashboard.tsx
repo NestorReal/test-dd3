@@ -116,7 +116,7 @@ const Dashboard = () => {
           <GraphBarContainer>
             <GraphBar
               data={hourAverageResults || defaultFormattedHourAverageResult}
-              colors={themeContext.graphs.graphBar.bars.clients}
+              colors={themeContext.graphs.graphBar.bars.clientsDashboard}
               labels={hourAverageResults ? labelFormatData(hourAverageResults) : []}
               isLoading={isLoadingHourAverageResults || isFetchingHourAverageResults}
               dateLabelsFromFilter={[filtersSelected.time.label, filtersSelected.comparison.label]}
