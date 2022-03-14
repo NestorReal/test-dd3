@@ -53,12 +53,6 @@ export const buildOptions = (dates: string[]): GraphBarOptions => {
       type: 'bar',
       stacked: true,
     },
-    plotOptions: {
-      bar: {
-        borderRadius: 8,
-        distributed: true,
-      },
-    },
     responsive: [
       {
         breakpoint: 480,

@@ -11,11 +11,11 @@ export const dataClassification = (data: ClassificationResults): FormattedDataEn
       data: dataFemale.map((infoFemale) => {
         const negativeValue = infoFemale.value * -1;
         return negativeValue;
-      }),
+      }).reverse(),
       name: 'Mujeres',
     },
     {
-      data: dataMale.map((infoMale: any) => infoMale.value),
+      data: dataMale.map((infoMale: any) => infoMale.value).reverse(),
       name: 'Hombres',
     },
   ];

@@ -97,8 +97,10 @@ declare module 'styled-components' {
         };
       };
       graphBar: {
+        dataLabelsTextColor: string[];
         bars: {
-          clients: string[];
+          clientsDashboard: string[];
+          clientsLocation: string[];
         };
       };
       groupedGraph: {

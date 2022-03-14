@@ -92,8 +92,10 @@ export const mainTheme = {
       },
     },
     graphBar: {
+      dataLabelsTextColor: ['#304758'],
       bars: {
-        clients: ['#8c4380', '#ff9f2d', '#168fff'],
+        clientsDashboard: ['#8c4380', '#ff9f2d', '#168fff'],
+        clientsLocation: ['#ff9f2d'],
       },
     },
     groupedGraph: {
@@ -195,8 +197,10 @@ export const anotherTheme = {
       },
     },
     graphBar: {
+      dataLabelsTextColor: ['#304758'],
       bars: {
-        clients: ['#8c4380', '#ff9f2d', '#168fff'],
+        clientsDashboard: ['#8c4380', '#ff9f2d', '#168fff'],
+        clientsLocation: ['#ff9f2d'],
       },
     },
     groupedGraph: {

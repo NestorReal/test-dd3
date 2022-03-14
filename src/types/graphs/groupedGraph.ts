@@ -54,6 +54,10 @@ export const defaultFormattedClassificationHourResult: FormattedClassificationHo
   { data: [] },
 ];
 
+export const defaultFormattedClassificationHourResultGraph = [
+  { name: '', data: [], hour: [], comparedData: [], diff: [], mainRange: [], secondaryRange: [] },
+];
+
 export interface FormattedResponseClassificationHour {
   genders: FormattedClassificationHourResult[];
   ageRanges: FormattedClassificationHourResult[];

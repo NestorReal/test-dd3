@@ -7,10 +7,12 @@ import {
   useGetClassificationLocationQuery,
   useGetStoresByCategoryQuery,
 } from '../../features/vicoApi';
+import GraphBar from '../../components/organisms/GraphBar';
 import Heatmap from '../../components/organisms/Heatmap';
 import GroupedGraph from '../../components/organisms/GroupedGraph';
 import { HeaderContainer, HeatMapContainer, GroupedGraphContainer, TitleContainer } from './styled';
 import { defaultFormattedClassificationHourResult } from '../../types/graphs/groupedGraph';
+import { defaultFormattedHourAverageResult } from '../../types/graphs/graphBar';
 import { StoresResultDefault } from '../../types/filters';
 import {
   defaultFormattedDayWeekAverageResult,
@@ -49,7 +51,6 @@ const Locations = () => {
     counterLocationResults || defaultFormattedCounterLocationResult,
     storesData || StoresResultDefault,
   );
-
   const themeContext = useContext(ThemeContext);
   return (
     <Section title="Objetivos">
@@ -73,18 +74,16 @@ const Locations = () => {
       </HeatMapContainer>
       <Tabs title="Entradas" nameButtons={['Clientes', 'Sexo', 'Edad']}>
         <GroupedGraphContainer>
-          <GroupedGraph
-            data={
-              classificationLocationResults?.visitors || defaultFormattedClassificationHourResult
-            }
-            optionsData={labelsData}
-            isLoading={
-              isLoadingClassificationLocationResults || isFetchingClassificationLocationResults
-            }
-            horizontal
-            colors={themeContext.graphs.groupedGraph.bars.clients}
-            dateLabelFromFilter={filtersSelected.time.label}
-          />
+        <GraphBar
+              data={classificationLocationResults?.visitors || defaultFormattedHourAverageResult}
+              colors={themeContext.graphs.graphBar.bars.clientsLocation}
+              labels={labelsData}
+              isLoading={
+                isLoadingClassificationLocationResults || isFetchingClassificationLocationResults
+              }
+              dateLabelsFromFilter={[filtersSelected.time.label, filtersSelected.comparison.label]}
+              horizontal
+            />
         </GroupedGraphContainer>
         <GroupedGraphContainer>
           <GroupedGraph
