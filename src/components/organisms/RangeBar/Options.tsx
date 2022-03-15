@@ -81,12 +81,15 @@ export const buildOptions = (colors: RangeBarColors): RangeBarOptions => ({
 
 export const height = 400;
 
-export const buildYAxisData = (value: number, colors: RangeBarColors) => ({
-  min: -value - value * 0.1,
-  max: value + value * 0.1,
-  labels: {
-    style: {
-      colors: colors.xAxisLabelsTextColor,
+export const buildYAxisData = (value: number, colors: RangeBarColors) => {
+  const minMax = value + value * 0.1;
+  return {
+    min: -minMax,
+    max: minMax,
+    labels: {
+      style: {
+        colors: colors.xAxisLabelsTextColor,
+      },
     },
-  },
-});
+  };
+};
