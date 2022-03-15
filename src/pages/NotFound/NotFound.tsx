@@ -7,7 +7,7 @@ const NotFound = () => (
   <PageContainer>
     <PageTitle>Error 404</PageTitle>
     <Message>Ups, algo salió mal</Message>
-    <Link to="/">
+    <Link to="/" style={{ textDecoration: 'none' }}>
       <Button primary borderRadius={8} onClick={() => {}}>
         Regresar al inicio
       </Button>

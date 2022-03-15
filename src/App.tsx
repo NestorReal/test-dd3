@@ -32,7 +32,14 @@ const App = () => (
             </RequireAuth>
           }
         />
-        <Route path="*" element={<NotFound />} />
+        <Route
+          path="*"
+          element={
+            <RequireAuth>
+              <NotFound />
+            </RequireAuth>
+          }
+        />
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="password-recovery" element={<PasswordRecovery />} />
