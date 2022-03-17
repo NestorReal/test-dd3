@@ -2,7 +2,7 @@ import { ApexOptions } from 'apexcharts';
 import { builderTooltip } from './BuilderTooltip';
 import { humanFormat } from '../../../helpers/graphsHelpers/graphs/humanFormat';
 import { ApexXAxis } from '../../../types/graphs/heatmap';
-import changeDateFormat from "../../../helpers/compareTimeHelpers/changeDateFormat";
+import changeDateFormat from '../../../helpers/compareTimeHelpers/changeDateFormat';
 
 type HeatmapOptions = Pick<ApexOptions, 'tooltip' | 'yaxis' | 'stroke' | 'dataLabels' | 'legend'>;
 type HeatmapColors = {

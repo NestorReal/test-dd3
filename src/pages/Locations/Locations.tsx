@@ -52,6 +52,12 @@ const Locations = () => {
     storesData || StoresResultDefault,
   );
   const themeContext = useContext(ThemeContext);
+  const formatDataHeatmap = formatStore(
+    counterLocationResults || defaultFormattedCounterLocationResult,
+    storesData || StoresResultDefault,
+  );
+  const sizeHeatmap: number = formatDataHeatmap.length || 0;
+
   return (
     <Section title="Objetivos">
       <HeaderContainer>
@@ -61,29 +67,26 @@ const Locations = () => {
       </HeaderContainer>
       <HeatMapContainer>
         <Heatmap
-          data={formatStore(
-            counterLocationResults || defaultFormattedCounterLocationResult,
-            storesData || StoresResultDefault,
-          )}
+          data={formatDataHeatmap}
           colorScale={rangesColors(counterLocationResults || defaultFormattedDayWeekAverageResult)}
           isLoading={isLoadingcounterLocationResults || isFetchingcounterLocationResults}
           categories={['Entradas', 'Transacciones', 'Tasa de conversión']}
-          height={500}
+          height={60 * sizeHeatmap}
           dateLabelsFromFilters={[filtersSelected.time.label, filtersSelected.comparison.label]}
         />
       </HeatMapContainer>
       <Tabs title="Entradas" nameButtons={['Clientes', 'Sexo', 'Edad']}>
         <GroupedGraphContainer>
-        <GraphBar
-              data={classificationLocationResults?.visitors || defaultFormattedHourAverageResult}
-              colors={themeContext.graphs.graphBar.bars.clientsLocation}
-              labels={labelsData}
-              isLoading={
-                isLoadingClassificationLocationResults || isFetchingClassificationLocationResults
-              }
-              dateLabelsFromFilter={[filtersSelected.time.label, filtersSelected.comparison.label]}
-              horizontal
-            />
+          <GraphBar
+            data={classificationLocationResults?.visitors || defaultFormattedHourAverageResult}
+            colors={themeContext.graphs.graphBar.bars.clientsLocation}
+            labels={labelsData}
+            isLoading={
+              isLoadingClassificationLocationResults || isFetchingClassificationLocationResults
+            }
+            dateLabelsFromFilter={[filtersSelected.time.label, filtersSelected.comparison.label]}
+            horizontal
+          />
         </GroupedGraphContainer>
         <GroupedGraphContainer>
           <GroupedGraph

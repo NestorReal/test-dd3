@@ -1,6 +1,6 @@
 import { ApexOptions } from 'apexcharts';
 import { builderTooltip } from './BuilderTooltip';
-import changeDateFormat from "../../../helpers/compareTimeHelpers/changeDateFormat";
+import changeDateFormat from '../../../helpers/compareTimeHelpers/changeDateFormat';
 
 type GraphBarOptions = Pick<
   ApexOptions,
@@ -22,7 +22,7 @@ export const buildOptions = (dates: string[]): GraphBarOptions => {
         const { mainRange } = series.w.config.series[seriesIndex];
         const { secondaryRange } = series.w.config.series[seriesIndex];
         const labels = series.w.globals.seriesNames;
-        
+
         const comparison = `
           <hr />
           ${builderTooltip(

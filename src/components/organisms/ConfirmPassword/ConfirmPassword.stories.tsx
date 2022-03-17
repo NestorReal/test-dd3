@@ -9,7 +9,9 @@ export default {
   component: ConfirmPassword,
   argTypes: {
     // eslint-disable-next-line no-unused-expressions
-    onSubmit: (values: any) => { values; },
+    onSubmit: (values: any) => {
+      values;
+    },
   },
 } as ComponentMeta<typeof ConfirmPassword>;
 

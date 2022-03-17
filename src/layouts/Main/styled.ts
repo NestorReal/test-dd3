@@ -31,7 +31,6 @@ export const TopMenuContainer = styled.div`
   padding-left: ${space[8]};
   padding-right: ${space[8]};
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.06);
-  
 `;
 
 export const InsideContainer = styled.div`
@@ -45,7 +44,6 @@ export const InsideContainer = styled.div`
     grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   }
 `;
-
 
 export const BarContainer = styled.div`
   margin-left: ${asideMenuWidth}px;

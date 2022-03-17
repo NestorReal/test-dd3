@@ -1,8 +1,8 @@
-import React, { useContext }from 'react';
+import React, { useContext } from 'react';
 import Chart from 'react-apexcharts';
 import { ThemeContext } from 'styled-components';
 import { FormattedHourAverageResult } from '../../../types/graphs/graphBar';
-import { FormattedClassificationHourResult } from '../../../types/graphs/groupedGraph'
+import { FormattedClassificationHourResult } from '../../../types/graphs/groupedGraph';
 import { height, buildOptions } from './Options';
 import Skeleton from '../../atoms/Skeleton';
 
@@ -30,10 +30,17 @@ export interface GraphBarProps {
   /**
    * Should the orientation be horizontal or vertical?
    */
-   horizontal: boolean;
+  horizontal: boolean;
 }
 
-const GraphBar = ({ data, colors, labels, isLoading, dateLabelsFromFilter, horizontal }: GraphBarProps) => {
+const GraphBar = ({
+  data,
+  colors,
+  labels,
+  isLoading,
+  dateLabelsFromFilter,
+  horizontal,
+}: GraphBarProps) => {
   const themeContext = useContext(ThemeContext);
   if (isLoading) return <Skeleton width="100%" height={300} borderRadius={8} />;
   const plotOptions = {
@@ -51,7 +58,7 @@ const GraphBar = ({ data, colors, labels, isLoading, dateLabelsFromFilter, horiz
     enabled: true,
     distributed: false,
     offsetY: horizontal ? 0 : -20,
-    offsetX: horizontal ? 30: 0,
+    offsetX: horizontal ? 30 : 0,
     style: {
       fontSize: '12px',
       colors: themeContext.graphs.graphBar.dataLabelsTextColor,
@@ -59,7 +66,13 @@ const GraphBar = ({ data, colors, labels, isLoading, dateLabelsFromFilter, horiz
   };
   return (
     <Chart
-      options={{ ...buildOptions(dateLabelsFromFilter), plotOptions, dataLabels, colors, xaxis: { categories: labels } }}
+      options={{
+        ...buildOptions(dateLabelsFromFilter),
+        plotOptions,
+        dataLabels,
+        colors,
+        xaxis: { categories: labels },
+      }}
       series={data}
       type="bar"
       width="100%"
