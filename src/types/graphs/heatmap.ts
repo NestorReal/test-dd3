@@ -85,9 +85,9 @@ export type ApexXAxis = {
 };
 
 export interface IGraphicDictionary {
-  visitors: string,
-  transactions: string,
-  conversions: string,
+  visitors: string;
+  transactions: string;
+  conversions: string;
 }
 
 export interface RangesEntity {

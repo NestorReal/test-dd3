@@ -109,52 +109,52 @@ const Main = () => {
       <FullContainer>
         <FiltersContainer title="Filtros">
           <InsideContainer>
-              <div>
-                {isLoading ? (
-                  <SelectorSkeleton />
-                ) : (
-                  <Selector
-                    selectorTitle="Categorías"
-                    optionGroups={data?.results}
-                    setFilters={setCategoriesFilter}
-                  />
-                )}
-              </div>
-
-              <div>
-                {isLoading || storesDataIsLoading ? (
-                  <SelectorSkeleton />
-                ) : (
-                  <Selector
-                    selectorTitle="Locaciones"
-                    optionGroups={storesData?.results}
-                    setFilters={setStoresFilter}
-                  />
-                )}
-              </div>
-
-              <div>
-                <RangeDateSelector
-                  selectorTitle="Tiempo"
-                  onClickDropdownItem={setTimeFilter}
-                  onClickFilterCalendar={setTimeFilter}
-                  onClickFilterCalendarRange={setTimeFilter}
-                  onClickExactDayOption={() => {}}
-                  onClickRangeOption={() => {}}
+            <div>
+              {isLoading ? (
+                <SelectorSkeleton />
+              ) : (
+                <Selector
+                  selectorTitle="Categorías"
+                  optionGroups={data?.results}
+                  setFilters={setCategoriesFilter}
                 />
-              </div>
+              )}
+            </div>
 
-              <div>
-                <ComparisonDateSelector
-                  selectorTitle="Comparado con"
-                  optionId={timeSelected.id}
-                  onClickDropdownItem={setComparisonFilter}
-                  onClickExactDayOption={() => {}}
-                  onClickRangeOption={() => {}}
-                  onClickFilterCalendar={setComparisonFilter}
-                  onClickFilterCalendarRange={setComparisonFilter}
+            <div>
+              {isLoading || storesDataIsLoading ? (
+                <SelectorSkeleton />
+              ) : (
+                <Selector
+                  selectorTitle="Locaciones"
+                  optionGroups={storesData?.results}
+                  setFilters={setStoresFilter}
                 />
-              </div>
+              )}
+            </div>
+
+            <div>
+              <RangeDateSelector
+                selectorTitle="Tiempo"
+                onClickDropdownItem={setTimeFilter}
+                onClickFilterCalendar={setTimeFilter}
+                onClickFilterCalendarRange={setTimeFilter}
+                onClickExactDayOption={() => {}}
+                onClickRangeOption={() => {}}
+              />
+            </div>
+
+            <div>
+              <ComparisonDateSelector
+                selectorTitle="Comparado con"
+                optionId={timeSelected.id}
+                onClickDropdownItem={setComparisonFilter}
+                onClickExactDayOption={() => {}}
+                onClickRangeOption={() => {}}
+                onClickFilterCalendar={setComparisonFilter}
+                onClickFilterCalendarRange={setComparisonFilter}
+              />
+            </div>
           </InsideContainer>
         </FiltersContainer>
 

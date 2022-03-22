@@ -1,8 +1,5 @@
 import { startOfMonth, subMonths, isThisYear } from 'date-fns';
-import {
-  formatToMonthAndDay,
-  formatToMonthAndDayAndYear,
-} from '../../formatDateHelpers';
+import { formatToMonthAndDay, formatToMonthAndDayAndYear } from '../../formatDateHelpers';
 
 const changeDateFormat = (dates: string[]): string => {
   const dayMonthAgo = subMonths(new Date(), 1);

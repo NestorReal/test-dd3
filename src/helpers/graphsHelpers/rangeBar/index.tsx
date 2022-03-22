@@ -8,10 +8,12 @@ export const dataClassification = (data: ClassificationResults): FormattedDataEn
   const dataMale = filterDataByParameter(dataValues, 'f');
   return [
     {
-      data: dataFemale.map((infoFemale) => {
-        const negativeValue = infoFemale.value * -1;
-        return negativeValue;
-      }).reverse(),
+      data: dataFemale
+        .map((infoFemale) => {
+          const negativeValue = infoFemale.value * -1;
+          return negativeValue;
+        })
+        .reverse(),
       name: 'Mujeres',
     },
     {

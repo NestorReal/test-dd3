@@ -14,7 +14,7 @@ import { OptionsGroupDefault, StoresResult, OptionsGroup } from '../../../types/
 const DictionaryLabels = {
   genders: 'gender',
   age_ranges: 'age_range',
-}
+};
 
 export const dataClassificationGrouped = (
   data: ClassificationHourResult | ClassificationLocationResult,
@@ -31,7 +31,9 @@ export const dataClassificationGrouped = (
     .map((objectData) => objectData.map((valuesData) => valuesData.diff));
   const labels = unformattedDataArray
     .map((values) => values[param])
-    .map((objectData) => objectData.map((valuesData) => valuesData[DictionaryLabels[param as keyof {}]]));
+    .map((objectData) =>
+      objectData.map((valuesData) => valuesData[DictionaryLabels[param as keyof {}]]),
+    );
   const comparedData = unformattedDataArray
     .map((values) => values[param])
     .map((objectData) => objectData.map((valuesData) => valuesData.secondary_value));
@@ -43,7 +45,7 @@ export const dataClassificationGrouped = (
     for (let j = 0; j < paramData.length; j += 1) {
       if (paramData[j][i] !== undefined) {
         arrayData.push(paramData[j][i]);
-        comparedDataArray.push(comparedData[j][i])
+        comparedDataArray.push(comparedData[j][i]);
       } else {
         arrayData.push(0);
       }
