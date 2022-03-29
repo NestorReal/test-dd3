@@ -64,6 +64,7 @@ const GraphBar = ({
       colors: themeContext.graphs.graphBar.dataLabelsTextColor,
     },
   };
+
   return (
     <Chart
       options={{
@@ -73,7 +74,7 @@ const GraphBar = ({
         colors,
         xaxis: { categories: labels },
       }}
-      series={data}
+      series={[data[0]]}
       type="bar"
       width="100%"
       height={height}
