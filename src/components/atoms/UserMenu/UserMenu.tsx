@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useTranslation } from 'react-i18next';
 import { StyledUserMenu, MenuItem } from './styled';
 import ShadowBox from '../../reusableStyledComponents/ShadowBox';
 
@@ -14,12 +15,18 @@ export interface IUserMenuProps {
   onCloseSession: Function;
 }
 
-const UserMenu = ({ open, onCloseSession }: IUserMenuProps) => (
-  <StyledUserMenu open={open}>
-    <ShadowBox>
-      <MenuItem onClick={() => onCloseSession()}>Cerrar Sesión</MenuItem>
-    </ShadowBox>
-  </StyledUserMenu>
-);
+const UserMenu = ({ open, onCloseSession }: IUserMenuProps) => {
+  const [t] = useTranslation("global");
+
+  return(
+    <StyledUserMenu open={open}>
+      <ShadowBox>
+        <MenuItem onClick={() => onCloseSession()}>
+          {t("header.sign_off")}
+        </MenuItem>
+      </ShadowBox>
+    </StyledUserMenu>
+  );
+};
 
 export default UserMenu;
