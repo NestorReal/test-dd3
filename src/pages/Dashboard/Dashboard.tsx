@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import { useAppSelector } from '../../config/app/hooks';
 import { buildQuery } from '../../helpers/buildEndpoints';
 import {
@@ -84,12 +85,14 @@ const Dashboard = () => {
 
   const themeContext = useContext(ThemeContext);
   const sizeHeatmap: number = dayWeekAverageResults?.length || 0;
+  const [t] = useTranslation("global");
+
   return (
     <>
-      <Section title="Objetivos">
+      <Section title={t("section.objectives")}>
         <CountersContainer>
           <TitleContainer>
-            <Title typography="caps1Regular" text="Tienda" uppercase />
+            <Title typography="caps1Regular" text={t("titles.shop")} uppercase />
           </TitleContainer>
 
           <Counters
@@ -112,7 +115,14 @@ const Dashboard = () => {
           />
         </HeatMapContainer>
 
-        <Tabs title="Entradas por hora del día" nameButtons={['Clientes', 'Sexo', 'Edad']}>
+        <Tabs
+          title={t("tabs.tickets_hour")}
+          nameButtons={[
+            t("tabs.customers"),
+            t("tabs.gender"),
+            t("tabs.age")
+          ]}
+        >
           <GraphBarContainer>
             <GraphBar
               data={hourAverageResults || defaultFormattedHourAverageResult}
@@ -148,7 +158,7 @@ const Dashboard = () => {
         </Tabs>
       </Section>
 
-      <Section title="Demográficos">
+      <Section title={t("section.demographics")}>
         <CountersContainer>
           <Counters
             counters={

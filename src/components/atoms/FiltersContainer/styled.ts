@@ -16,4 +16,6 @@ export const StyledTitle = styled.div`
   text-transform: uppercase;
   margin-bottom: ${space[3]};
   ${fontTypes.caps1Regular};
+  display: flex;
+  justify-content: space-between;
 `;

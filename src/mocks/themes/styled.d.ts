@@ -21,6 +21,8 @@ declare module 'styled-components' {
         secondary: string;
       };
       filters: string;
+      switchOn: string,
+      switchOff: string,
       datacard: {
         main: string;
         increment: string;
