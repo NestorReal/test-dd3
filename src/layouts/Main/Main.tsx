@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, Outlet } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../config/app/hooks';
 import {
   setCategoriesFilter,
@@ -80,6 +81,8 @@ const Main = () => {
     return user.username;
   };
 
+  const [t] = useTranslation("global");
+
   return (
     <>
       <TopMenuContainer ref={ref}>
@@ -103,18 +106,18 @@ const Main = () => {
       </BarContainer>
 
       <AsideMenuContainer top={topMenuHeight - scrollY}>
-        <AsideMenu title="Main Menu" />
+        <AsideMenu title={t("main_menu.main_menu")} />
       </AsideMenuContainer>
 
       <FullContainer>
-        <FiltersContainer title="Filtros">
+        <FiltersContainer title={t("filters.filters")}>
           <InsideContainer>
             <div>
               {isLoading ? (
                 <SelectorSkeleton />
               ) : (
                 <Selector
-                  selectorTitle="Categorías"
+                  selectorTitle={t("filters.categories")}
                   optionGroups={data?.results}
                   setFilters={setCategoriesFilter}
                 />
@@ -126,7 +129,7 @@ const Main = () => {
                 <SelectorSkeleton />
               ) : (
                 <Selector
-                  selectorTitle="Locaciones"
+                  selectorTitle={t("filters.locations")}
                   optionGroups={storesData?.results}
                   setFilters={setStoresFilter}
                 />
@@ -135,7 +138,7 @@ const Main = () => {
 
             <div>
               <RangeDateSelector
-                selectorTitle="Tiempo"
+                selectorTitle={t("filters.time")}
                 onClickDropdownItem={setTimeFilter}
                 onClickFilterCalendar={setTimeFilter}
                 onClickFilterCalendarRange={setTimeFilter}
@@ -146,7 +149,7 @@ const Main = () => {
 
             <div>
               <ComparisonDateSelector
-                selectorTitle="Comparado con"
+                selectorTitle={t("filters.compared_to")}
                 optionId={timeSelected.id}
                 onClickDropdownItem={setComparisonFilter}
                 onClickExactDayOption={() => {}}
