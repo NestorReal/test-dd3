@@ -84,6 +84,8 @@ const Dashboard = () => {
 
   const themeContext = useContext(ThemeContext);
   const sizeHeatmap: number = dayWeekAverageResults?.length || 0;
+  const size = 100 * sizeHeatmap;
+
   return (
     <>
       <Section title="Objetivos">
@@ -107,7 +109,7 @@ const Dashboard = () => {
             colorScale={rangesColors(dayWeekAverageResults || defaultFormattedDayWeekAverageResult)}
             isLoading={isLoadingDayWeekAverageResults || isFetchingDayWeekAverageResults}
             categories={['D', 'L', 'Ma', 'Mi', 'J', 'V', 'S']}
-            height={100 * sizeHeatmap}
+            height={sizeHeatmap < 3 ? size + 40 : size}
             dateLabelsFromFilters={[filtersSelected.time.label, filtersSelected.comparison.label]}
           />
         </HeatMapContainer>
