@@ -85,11 +85,8 @@ const Dashboard = () => {
 
   const themeContext = useContext(ThemeContext);
   const sizeHeatmap: number = dayWeekAverageResults?.length || 0;
-<<<<<<< HEAD
   const [t] = useTranslation("global");
-=======
   const size = 100 * sizeHeatmap;
->>>>>>> a4990d9f6dfdb6d4857ceccde0728dab7b238b86
 
   return (
     <>

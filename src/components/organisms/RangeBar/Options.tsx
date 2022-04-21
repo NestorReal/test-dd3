@@ -1,4 +1,5 @@
 import { ApexOptions } from 'apexcharts';
+import { humanFormat } from '../../../helpers/graphsHelpers/graphs/humanFormat';
 
 type RangeBarOptions = Pick<
   ApexOptions,
@@ -39,7 +40,10 @@ export const buildOptions = (colors: RangeBarColors): RangeBarOptions => ({
   dataLabels: {
     enabled: true,
     formatter(value: number) {
-      return Math.abs(value);
+      if(value === 0){
+        return '-';
+      }
+      return humanFormat(Math.abs(value));
     },
     offsetY: 0,
     offsetX: 30,
@@ -64,7 +68,7 @@ export const buildOptions = (colors: RangeBarColors): RangeBarOptions => ({
     },
   },
   xaxis: {
-    categories: ['+65', '55-64', '45-54', '35-44', '25-34', '16-24', '-15'],
+    categories: ['55-64', '45-54', '35-44', '25-34', '16-24', '0-15'],
     labels: {
       style: {
         colors: colors.xAxisLabelsTextColor,
