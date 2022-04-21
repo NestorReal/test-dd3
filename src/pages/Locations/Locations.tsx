@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import { useAppSelector } from '../../config/app/hooks';
 import { buildQuery } from '../../helpers/buildEndpoints';
 import {
@@ -58,11 +59,13 @@ const Locations = () => {
   );
   const sizeHeatmap: number = formatDataHeatmap.length || 0;
 
+  const [t] = useTranslation("global");  
+
   return (
-    <Section title="Objetivos">
+    <Section title={t("section.objectives")}>
       <HeaderContainer>
         <TitleContainer>
-          <Title typography="caps1Regular" text="Objetivos por tienda" uppercase />
+          <Title typography="caps1Regular" text={t("titles.objectives_store")} uppercase />
         </TitleContainer>
       </HeaderContainer>
       <HeatMapContainer>
@@ -70,12 +73,23 @@ const Locations = () => {
           data={formatDataHeatmap}
           colorScale={rangesColors(counterLocationResults || defaultFormattedDayWeekAverageResult)}
           isLoading={isLoadingcounterLocationResults || isFetchingcounterLocationResults}
-          categories={['Entradas', 'Transacciones', 'Tasa de conversión']}
+          categories={[
+            t("cards.visitors"),
+            t("cards.transactions"),
+            t("cards.conversion"),
+          ]}
           height={60 * sizeHeatmap}
           dateLabelsFromFilters={[filtersSelected.time.label, filtersSelected.comparison.label]}
         />
       </HeatMapContainer>
-      <Tabs title="Entradas" nameButtons={['Clientes', 'Sexo', 'Edad']}>
+      <Tabs
+          title={t("tabs.inputs")}
+          nameButtons={[
+            t("tabs.customers"),
+            t("tabs.gender"),
+            t("tabs.age")
+          ]}
+        >
         <GroupedGraphContainer>
           <GraphBar
             data={classificationLocationResults?.visitors || defaultFormattedHourAverageResult}

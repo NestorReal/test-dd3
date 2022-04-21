@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import AsideMenuItem from '../../atoms/AsideMenuItem';
 import { MenuStyledContainer, MenuTitle } from './styled';
 import Container from '../../reusableStyledComponents/Container';
@@ -10,20 +11,23 @@ export interface IAsideMenuProps {
   title: string;
 }
 
-const AsideMenu = ({ title }: IAsideMenuProps) => (
-  <MenuStyledContainer>
-    <Container paddingLeft={6} paddingTop={6} paddingBottom={6}>
-      <MenuTitle>{title}</MenuTitle>
-    </Container>
+const AsideMenu = ({ title }: IAsideMenuProps) => {
+  const [t] = useTranslation("global");
+  return (
+    <MenuStyledContainer>
+      <Container paddingLeft={6} paddingTop={6} paddingBottom={6}>
+        <MenuTitle>{title}</MenuTitle>
+      </Container>
 
-    <Container paddingLeft={4} paddingRight={4}>
-      <AsideMenuItem name="Dashboard" to="/dashboard" />
-    </Container>
+      <Container paddingLeft={4} paddingRight={4}>
+        <AsideMenuItem name={t("main_menu.dashboard")} to="/dashboard" />
+      </Container>
 
-    <Container paddingLeft={4} paddingRight={4}>
-      <AsideMenuItem name="Locaciones" to="/locations" />
-    </Container>
-  </MenuStyledContainer>
-);
+      <Container paddingLeft={4} paddingRight={4}>
+        <AsideMenuItem name={t("main_menu.locations")} to="/locations" />
+      </Container>
+    </MenuStyledContainer>
+  );
+}
 
 export default AsideMenu;
