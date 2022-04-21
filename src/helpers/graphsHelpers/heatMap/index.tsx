@@ -137,7 +137,6 @@ export const getStoreLabels = (
   data: FormattedCounterLocationResult[],
   stores: StoresResult,
 ): string[] => {
-  console.log(data)
   if (!data || !stores) return [''];
   let dataLabels = [''];
   if(data.length !== 0 ){
