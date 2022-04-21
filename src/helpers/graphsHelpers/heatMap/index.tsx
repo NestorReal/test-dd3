@@ -137,10 +137,14 @@ export const getStoreLabels = (
   data: FormattedCounterLocationResult[],
   stores: StoresResult,
 ): string[] => {
+  console.log(data)
   if (!data || !stores) return [''];
-  const dataLabels = data[0].labels.map((idValue) =>
+  let dataLabels = [''];
+  if(data.length !== 0 ){
+    dataLabels = data[0].labels.map((idValue) =>
     retrieveOptionName(idValue, stores?.results || OptionsGroupDefault),
   );
+  }
   return dataLabels;
 };
 
