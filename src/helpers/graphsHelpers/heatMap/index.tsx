@@ -138,9 +138,12 @@ export const getStoreLabels = (
   stores: StoresResult,
 ): string[] => {
   if (!data || !stores) return [''];
-  const dataLabels = data[0].labels.map((idValue) =>
+  let dataLabels = [''];
+  if(data.length !== 0 ){
+    dataLabels = data[0].labels.map((idValue) =>
     retrieveOptionName(idValue, stores?.results || OptionsGroupDefault),
   );
+  }
   return dataLabels;
 };
 

@@ -77,8 +77,8 @@ export const setNewPassword = createAsyncThunk<
       userInfo,
     );
     return response.data;
-  } catch (error) {
-    return rejectWithValue('Ocurrió un error');
+  } catch (error: any ) {
+    return rejectWithValue(error.response.data.new_password2);
   }
 });
 

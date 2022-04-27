@@ -36,5 +36,27 @@ export interface Dictionary {
     "women": string,
     "mens": string,
     "total": string,
-  }
+  },
+  "time": {
+    "yesterday": string,
+    "current_week": string,
+    "last_week": string,
+    "current_month": string,
+    "last_month": string,
+    "q_current": string,
+    "previous_q": string,
+    "current_year": string,
+    "last_year": string,
+    "exact_day": string,
+    "date_range": string,
+  },
+  "labels": string[],
+  "categories": string[]
+  "difference": string,
+  "heatmapLabels": {
+    "visitors": string,
+    "transactions": string,
+    "conversions": string,
+  },
+  "day_week": string[],
 }

@@ -59,7 +59,7 @@ const Locations = () => {
   );
   const sizeHeatmap: number = formatDataHeatmap.length || 0;
 
-  const [t] = useTranslation("global");  
+  const [t] = useTranslation("global");
 
   return (
     <Section title={t("section.objectives")}>
@@ -73,11 +73,7 @@ const Locations = () => {
           data={formatDataHeatmap}
           colorScale={rangesColors(counterLocationResults || defaultFormattedDayWeekAverageResult)}
           isLoading={isLoadingcounterLocationResults || isFetchingcounterLocationResults}
-          categories={[
-            t("cards.visitors"),
-            t("cards.transactions"),
-            t("cards.conversion"),
-          ]}
+          categories={t("categories", { returnObjects: true })}
           height={60 * sizeHeatmap}
           dateLabelsFromFilters={[filtersSelected.time.label, filtersSelected.comparison.label]}
         />

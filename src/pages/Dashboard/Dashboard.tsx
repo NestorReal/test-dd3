@@ -86,6 +86,7 @@ const Dashboard = () => {
   const themeContext = useContext(ThemeContext);
   const sizeHeatmap: number = dayWeekAverageResults?.length || 0;
   const [t] = useTranslation("global");
+  const size = 100 * sizeHeatmap;
 
   return (
     <>
@@ -109,8 +110,8 @@ const Dashboard = () => {
             data={dayWeekAverageResults || defaultFormattedDayWeekAverageResult}
             colorScale={rangesColors(dayWeekAverageResults || defaultFormattedDayWeekAverageResult)}
             isLoading={isLoadingDayWeekAverageResults || isFetchingDayWeekAverageResults}
-            categories={['D', 'L', 'Ma', 'Mi', 'J', 'V', 'S']}
-            height={100 * sizeHeatmap}
+            categories={t("day_week", { returnObjects: true })}
+            height={sizeHeatmap < 3 ? size + 40 : size}
             dateLabelsFromFilters={[filtersSelected.time.label, filtersSelected.comparison.label]}
           />
         </HeatMapContainer>

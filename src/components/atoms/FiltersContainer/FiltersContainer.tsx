@@ -20,6 +20,7 @@ const FiltersContainer = ({ title, children }: IFiltersContainerProps) => {
     }
   }  
   
+
   return(
     <StyledFilterContainer>
       <StyledContent>
