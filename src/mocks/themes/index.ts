@@ -18,6 +18,8 @@ export const mainTheme = {
       secondary: '#ffffff',
     },
     filters: '#8c4380',
+    switchOn: '#5d2c55',
+    switchOff: '#DCA7D3',
     datacard: {
       main: '#f7f7f7',
       increment: '#e6f3ff',
@@ -124,6 +126,8 @@ export const anotherTheme = {
       selected: '#ffffff',
     },
     filters: '#8c4380',
+    switchOn: '#5d2c55',
+    switchOff: '#DCA7D3',
     datacard: {
       main: '#f7f7f7',
       increment: '#e6f3ff',

@@ -1,4 +1,5 @@
 import { ApexOptions } from 'apexcharts';
+import { useTranslation } from 'react-i18next';
 import { builderTooltip } from './BuilderTooltip';
 import { humanFormat } from '../../../helpers/graphsHelpers/graphs/humanFormat';
 import { ApexXAxis } from '../../../types/graphs/heatmap';
@@ -13,6 +14,7 @@ type HeatmapColors = {
 
 export const buildOptions = (colors: HeatmapColors, dates: string[]): HeatmapOptions => {
   const [timeDateFilter, comparisonDateFilter] = dates;
+  const [t] = useTranslation("global");
   return {
     tooltip: {
       shared: true,
@@ -25,31 +27,33 @@ export const buildOptions = (colors: HeatmapColors, dates: string[]): HeatmapOpt
         const diff = series.w.config.series[seriesIndex].diff[dataPointIndex];
         const { mainRange } = series.w.config.series[seriesIndex];
         const { secondaryRange } = series.w.config.series[seriesIndex];
-        const labels = series.w.globals.seriesNames;
+        
         const comparison = `
           <hr />
           ${builderTooltip(
             changeDateFormat(secondaryRange),
-            labels[seriesIndex],
+            t(`labels.${seriesIndex}`),
             comparedValue,
             diff,
             true,
             comparisonDateFilter,
           )}
         `;
+        
         return `
-        <div>
-          ${builderTooltip(
-            changeDateFormat(mainRange),
-            labels[seriesIndex],
-            currentValue,
-            diff,
-            false,
-            timeDateFilter,
-          )}
-          ${secondaryRange[0] ? comparison : ''}
-        </div>
-      `;
+          <div>
+            ${builderTooltip(
+              changeDateFormat(mainRange),
+              t(`labels.${seriesIndex}`),
+              currentValue,
+              diff,
+              false,
+              timeDateFilter,
+              // t("time"),
+            )}
+            ${secondaryRange[0] ? comparison : ''}
+          </div>
+        `;
       },
     },
     yaxis: {

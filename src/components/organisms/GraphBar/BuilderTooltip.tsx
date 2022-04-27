@@ -1,10 +1,5 @@
 import { IGraphicDictionary } from '../../../types/graphs/heatmap';
 
-const graphicDictionary = {
-  visitors: 'Entradas',
-  transactions: 'Transacciones',
-  conversions: 'Tasa de conversión',
-};
 
 // eslint-disable-next-line import/prefer-default-export
 export const builderTooltip = (
@@ -14,6 +9,7 @@ export const builderTooltip = (
   diff: number,
   showDiff: boolean,
   filterDateLabel: string,
+  graphicDictionary: any,
 ) =>
   `<div class="tooltipHead">
     <div class="info">

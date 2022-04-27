@@ -1,4 +1,5 @@
 import { ApexOptions } from 'apexcharts';
+import { useTranslation } from 'react-i18next';
 import { builderTooltip } from './BuilderTooltip';
 import changeDateFormat from '../../../helpers/compareTimeHelpers/changeDateFormat';
 
@@ -9,6 +10,13 @@ type GraphBarOptions = Pick<
 
 export const buildOptions = (dates: string[]): GraphBarOptions => {
   const [timeDateFilter, comparisonDateFilter] = dates;
+  const [t] = useTranslation("global");
+  const graphicDictionary = {
+    visitors: t("heatmapLabels.visitors"),
+    transactions: t("heatmapLabels.transactions"),
+    conversions: t("heatmapLabels.conversions"),
+  };
+  
   return {
     tooltip: {
       shared: true,
@@ -32,6 +40,7 @@ export const buildOptions = (dates: string[]): GraphBarOptions => {
             diff,
             true,
             comparisonDateFilter,
+            graphicDictionary,
           )}
         `;
         return `
@@ -43,6 +52,7 @@ export const buildOptions = (dates: string[]): GraphBarOptions => {
               diff,
               false,
               timeDateFilter,
+              graphicDictionary,
             )}
             ${secondaryRange[0] ? comparison : ''}
           </div>
