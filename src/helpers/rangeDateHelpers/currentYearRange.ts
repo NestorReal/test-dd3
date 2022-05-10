@@ -1,5 +1,6 @@
 import { startOfYear, endOfToday } from 'date-fns';
 import { formatToISOWithoutTimeZone, formatToMonthAndDay } from '../formatDateHelpers';
+import i18next from '../../i18n';
 
 // eslint-disable-next-line import/prefer-default-export
 export const currentYearRange = () => {
@@ -12,6 +13,6 @@ export const currentYearRange = () => {
     lowDate: formatedToISOLowDate,
     upDate: formatedTOISOUpDate,
     sideLabel,
-    label: 'Año Actual',
+    label: i18next.t('global:time.current_year'),
   };
 };

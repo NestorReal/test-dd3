@@ -1,5 +1,6 @@
 import { startOfMonth, endOfMonth, subYears } from 'date-fns';
 import { formatToISOWithoutTimeZone, formatToMonthAndDayAndYear } from '../../formatDateHelpers';
+import i18next from '../../../i18n';
 
 // eslint-disable-next-line import/prefer-default-export
 export const sameMonthLastYear = () => {
@@ -11,7 +12,7 @@ export const sameMonthLastYear = () => {
   const sideLabel = `${formatToMonthAndDayAndYear(lowDate)} - ${formatToMonthAndDayAndYear(
     upDate,
   )}`;
-  const label = 'Mes Año Anterior';
+  const label = i18next.t('global:time.month_previous_year');
 
   return {
     label,

@@ -1,5 +1,6 @@
 import { startOfWeek, endOfToday } from 'date-fns';
 import { formatToISOWithoutTimeZone, formatToMonthAndDay } from '../formatDateHelpers';
+import i18next from '../../i18n';
 
 // eslint-disable-next-line import/prefer-default-export
 export const currentWeekRange = () => {
@@ -12,6 +13,6 @@ export const currentWeekRange = () => {
     lowDate: formatedISOLowDate,
     upDate: formatedISOUpDate,
     sideLabel,
-    label: 'Semana Actual',
+    label: i18next.t('global:time.current_week'),
   };
 };

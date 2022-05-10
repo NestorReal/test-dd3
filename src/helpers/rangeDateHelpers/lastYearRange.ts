@@ -1,5 +1,6 @@
 import { startOfYear, endOfYear, subYears } from 'date-fns';
 import { formatToISOWithoutTimeZone, formatToMonthAndDayAndYear } from '../formatDateHelpers';
+import i18next from '../../i18n';
 
 // eslint-disable-next-line import/prefer-default-export
 export const lastYearRange = () => {
@@ -15,6 +16,6 @@ export const lastYearRange = () => {
     lowDate: formatedTOISOLowDate,
     upDate: formatedTOISOUpDate,
     sideLabel,
-    label: 'Año Anterior',
+    label: i18next.t('global:time.last_year'),
   };
 };

@@ -9,6 +9,7 @@ import {
   lastQuarterRange,
   lastYearRange,
 } from '.';
+import i18next from '../../i18n';
 // eslint-disable-next-line import/prefer-default-export
 
 export const TIME_RANGES_ID = {
@@ -43,14 +44,14 @@ export const conformRanges = {
   ],
   custom: [
     {
-      label: 'Día exacto',
+      label: i18next.t('global:time.exact_day'),
       sideLabel: '',
       id: CUSTOM_RANGES_ID.exactDay,
       lowDate: '',
       upDate: '',
     },
     {
-      label: 'Rango de fechas',
+      label: i18next.t('global:time.date_range'),
       sideLabel: '',
       id: CUSTOM_RANGES_ID.range,
       lowDate: '',

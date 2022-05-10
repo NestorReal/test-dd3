@@ -1,5 +1,6 @@
 import { startOfYear, endOfYear, subYears } from 'date-fns';
 import { formatToISOWithoutTimeZone, formatToMonthAndDayAndYear } from '../../formatDateHelpers';
+import i18next from '../../../i18n';
 
 // eslint-disable-next-line import/prefer-default-export
 export const yearBefore = () => {
@@ -11,7 +12,7 @@ export const yearBefore = () => {
   const sideLabel = `${formatToMonthAndDayAndYear(lowDate)} - ${formatToMonthAndDayAndYear(
     upDate,
   )}`;
-  const label = 'Año Anterior';
+  const label = i18next.t('global:time.last_year');
 
   return {
     label,

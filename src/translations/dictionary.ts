@@ -49,6 +49,12 @@ export interface Dictionary {
     "last_year": string,
     "exact_day": string,
     "date_range": string,
+    "month_previous_year": string,
+    "q_previous_year": string,
+    "week_previous_year": string,
+    "same_day_previous_week": string,
+    "same_day_previous_year": string,
+    "without_comparison": string,
   },
   "labels": string[],
   "categories": string[]

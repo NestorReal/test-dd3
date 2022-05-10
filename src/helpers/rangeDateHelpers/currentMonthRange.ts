@@ -1,5 +1,6 @@
 import { startOfMonth, endOfToday } from 'date-fns';
 import { formatToISOWithoutTimeZone, formatToMonthAndDay } from '../formatDateHelpers';
+import i18next from '../../i18n';
 
 // eslint-disable-next-line import/prefer-default-export
 export const currentMonthRange = () => {
@@ -12,6 +13,6 @@ export const currentMonthRange = () => {
     lowDate: formatedISOLowDate,
     upDate: formatedToISOUpdate,
     sideLabel,
-    label: 'Mes Actual',
+    label: i18next.t('global:time.current_month'),
   };
 };

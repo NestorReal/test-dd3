@@ -1,5 +1,6 @@
 import { startOfWeek, endOfWeek, subWeeks, subYears } from 'date-fns';
 import { formatToISOWithoutTimeZone, formatToMonthAndDayAndYear } from '../../formatDateHelpers';
+import i18next from '../../../i18n';
 
 // eslint-disable-next-line import/prefer-default-export
 export const sameDaysLastYear = () => {
@@ -12,7 +13,7 @@ export const sameDaysLastYear = () => {
   const sideLabel = `${formatToMonthAndDayAndYear(lowDate)} - ${formatToMonthAndDayAndYear(
     upDate,
   )}`;
-  const label = 'Semana Año Ant';
+  const label = i18next.t('global:time.week_previous_year');
 
   return {
     label,

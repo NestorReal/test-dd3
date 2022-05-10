@@ -4,6 +4,7 @@ import {
   formatToMonthAndDay,
   formatToMonthAndDayAndYear,
 } from '../../formatDateHelpers';
+import i18next from '../../../i18n';
 
 // eslint-disable-next-line import/prefer-default-export
 export const sameDayLastWeek = () => {
@@ -15,7 +16,7 @@ export const sameDayLastWeek = () => {
   const formatedToISOUpDate = formatToISOWithoutTimeZone(upDate);
   const formatFn = isThisYear(lowDate) ? formatToMonthAndDay : formatToMonthAndDayAndYear;
   const sideLabel = `${formatFn(lowDate)}`;
-  const label = 'Mismo día, semana anterior';
+  const label = i18next.t('global:time.same_day_previous_week');;
 
   return {
     label,
