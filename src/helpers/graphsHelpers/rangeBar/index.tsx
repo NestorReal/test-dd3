@@ -1,5 +1,6 @@
 import { filterDataByParameter } from './paramFilter';
 import { ClassificationResults, FormattedDataEntity } from '../../../types/graphs/rangeBar';
+import i18next from '../../../i18n';
 
 /* eslint-disable import/prefer-default-export */
 export const dataClassification = (data: ClassificationResults): FormattedDataEntity[] => {
@@ -14,11 +15,11 @@ export const dataClassification = (data: ClassificationResults): FormattedDataEn
           return negativeValue;
         })
         .reverse(),
-      name: 'Mujeres',
+      name: i18next.t('global:cards.women'),
     },
     {
       data: dataMale.map((infoMale: any) => infoMale.value).reverse(),
-      name: 'Hombres',
+      name: i18next.t('global:cards.mens'),
     },
   ];
 };

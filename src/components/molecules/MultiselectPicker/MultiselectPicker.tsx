@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { useFormikContext } from 'formik';
+import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from '../../../config/app/hooks';
 import { setStoresFilter } from '../../../features/filtersSlice';
 import { OptionsGroup } from '../../../types/filters';
@@ -113,12 +114,14 @@ const MultiselectPicker = ({ optionGroups, filtersName }: IMultiselectPickerProp
     dispatch(setStoresFilter(allIds));
   }, [optionGroups]);
 
+  const [t] = useTranslation("global");
+
   return (
     <GroupsContainer>
       <OptionsContainer>
         <SelectAllContainer>
           <CustomCheckbox
-            label="Todos"
+            label={t("multiselect")}
             name="selectAll"
             customOnChange={customOnChange}
             checked={values.selectAll}
@@ -146,7 +149,7 @@ const MultiselectPicker = ({ optionGroups, filtersName }: IMultiselectPickerProp
       </OptionsContainer>
       <ButtonContainer>
         <Button type="submit" onClick={() => handleSubmit()} primary>
-          Filtrar
+          {t("filter")}
         </Button>
       </ButtonContainer>
     </GroupsContainer>

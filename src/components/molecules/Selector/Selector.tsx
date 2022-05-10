@@ -10,6 +10,7 @@ import SelectorDropdown from '../../atoms/SelectorDropdown';
 import useDropdownProps from '../../../hooks/useDropdownProps';
 import { useAppDispatch } from '../../../config/app/hooks';
 import { retrieveOptionName } from '../../../helpers/graphsHelpers/groupedGraph';
+import i18next from '../../../i18n';
 
 interface ISelectorProps {
   /**
@@ -38,7 +39,7 @@ const PillsSelection = ({ shouldShowAllPill, selectionsToAdd }: IPillsSelection)
   <PillsContainer>
     {shouldShowAllPill && (
       <IdividualPillContainer>
-        <Pill name="Todos" />
+        <Pill name={i18next.t('global:multiselect')} />
       </IdividualPillContainer>
     )}
     {!shouldShowAllPill &&

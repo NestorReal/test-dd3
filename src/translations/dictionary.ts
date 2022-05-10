@@ -7,7 +7,8 @@ export interface Dictionary {
     "categories": string,
     "locations": string,
     "time": string,
-    "compared_to": string
+    "compared_to": string,
+    "difference": string,
   },
   "main_menu": {
     "main_menu": string,
@@ -64,5 +65,37 @@ export interface Dictionary {
     "transactions": string,
     "conversions": string,
   },
+  "multiselect": string,
   "day_week": string[],
+  "categoriesOptions": {
+    "zone": {
+      "zone": string,
+      "north": string,
+      "south": string,
+      "center": string,
+    },
+    "class": {
+      "class": string,
+      "classA": string,
+      "classB": string,
+    },
+    "condition": {
+      "condition": string,
+      "mexico_city": string,
+    },
+    "size": {
+      "size": string,
+      "big": string,
+      "small": string,
+    },
+    "locations": {
+      "locations": string,
+      "monterrey_airport": string,
+      "tijuana_airport": string,
+      "steren_center": string,
+      "my_little_shop": string,
+      "test_store": string,
+    }
+  },
+  "filter": string,
 }
