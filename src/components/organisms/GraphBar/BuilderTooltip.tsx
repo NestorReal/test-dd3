@@ -1,5 +1,5 @@
 import { IGraphicDictionary } from '../../../types/graphs/heatmap';
-
+import i18next from '../../../i18n';
 
 // eslint-disable-next-line import/prefer-default-export
 export const builderTooltip = (
@@ -23,7 +23,7 @@ export const builderTooltip = (
     </div>
     <div class="info">
         <div>
-            ${showDiff ? 'Diferencia' : ''}
+            ${showDiff ? i18next.t('global:filters.difference') : ''}
         </div>
         <div>
           ${showDiff ? `${diff}%` : ''}

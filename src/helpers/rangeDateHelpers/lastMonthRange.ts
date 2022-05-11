@@ -4,6 +4,7 @@ import {
   formatToMonthAndDay,
   formatToMonthAndDayAndYear,
 } from '../formatDateHelpers';
+import i18next from '../../i18n';
 
 // eslint-disable-next-line import/prefer-default-export
 export const lastMonthRange = () => {
@@ -20,6 +21,6 @@ export const lastMonthRange = () => {
     lowDate: formatedToISOLowDate,
     upDate: formatedToISOUpDate,
     sideLabel,
-    label: 'Mes Anterior',
+    label: i18next.t('global:time.last_month'),
   };
 };

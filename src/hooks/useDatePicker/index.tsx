@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import DatePicker from 'react-datepicker';
 import { subYears, startOfDay, endOfDay, isThisYear } from 'date-fns';
 import { es } from 'date-fns/locale';
@@ -53,6 +54,7 @@ const useDatePicker = () => {
   }: ICalendarProps) => {
     const { ref } = useCloseOnClickOutside(isOpen, closeCalendar);
     if (isOpen) {
+      const [t] = useTranslation("global");
       return (
         <OverallCalendarContainer ref={ref}>
           <CalendarContainer>
@@ -91,7 +93,7 @@ const useDatePicker = () => {
                   closeCalendar();
                 }}
               >
-                Filtrar
+                {t("filter")}
               </Button>
             </ButtonContainer>
           </CalendarContainer>

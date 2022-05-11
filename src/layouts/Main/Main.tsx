@@ -32,11 +32,12 @@ import StatusBar from '../../components/molecules/StatusBar';
 import { withoutComparison } from '../../helpers/compareTimeHelpers/conformComparisons';
 
 const Main = () => {
+  const [t] = useTranslation("global");
   const filtersSelected = useAppSelector((state) => state.filters);
   const timeFilterText = `${filtersSelected.time.label} (${filtersSelected.time.sideLabel})`;
   const comparisonFilterText =
     filtersSelected.comparison.id !== withoutComparison.id
-      ? `comparado con ${filtersSelected.comparison.label} (${filtersSelected.comparison.sideLabel})`
+      ? `${t("filters.compared_to")} ${filtersSelected.comparison.label} (${filtersSelected.comparison.sideLabel})`
       : '';
   const statusBarText = `${timeFilterText} ${comparisonFilterText}`;
 
@@ -80,8 +81,6 @@ const Main = () => {
       JSON.parse(localStorage.getItem('user') || 'null') || EMPTY_USER;
     return user.username;
   };
-
-  const [t] = useTranslation("global");
 
   return (
     <>

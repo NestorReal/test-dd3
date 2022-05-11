@@ -17,9 +17,10 @@ import {
   yearBefore,
 } from '.';
 import { TIME_RANGES_ID, CUSTOM_RANGES_ID } from '../rangeDateHelpers';
+import i18next from '../../i18n';
 
 export const withoutComparison = {
-  label: 'Sin Comparación',
+  label: i18next.t('global:time.without_comparison'),
   sideLabel: '',
   lowDate: '',
   upDate: '',
@@ -65,7 +66,7 @@ export const conformComparations = {
   [CUSTOM_RANGES_ID.exactDay]: [
     { ...withoutComparison },
     {
-      label: 'Día Exacto',
+      label: i18next.t('global:time.exact_day'),
       sideLabel: '',
       lowDate: '',
       upDate: '',
@@ -75,7 +76,7 @@ export const conformComparations = {
   [CUSTOM_RANGES_ID.range]: [
     { ...withoutComparison },
     {
-      label: 'Rango de Fechas',
+      label: i18next.t('global:time.date_range'),
       sideLabel: '',
       lowDate: '',
       upDate: '',

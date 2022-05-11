@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
+import { useTranslation } from 'react-i18next';
 import { es } from 'date-fns/locale';
 import { subYears, startOfDay, endOfDay, isThisYear } from 'date-fns';
 import {
@@ -61,6 +62,7 @@ const useRangeDatePicker = () => {
   }: ICalendarProps) => {
     const { ref } = useCloseOnClickOutside(isOpen, closeCalendarRange);
     if (isOpen) {
+      const [t] = useTranslation("global");
       return (
         <OverallCalendarRangeContainer ref={ref}>
           <CalendarRangeContainer>
@@ -103,7 +105,7 @@ const useRangeDatePicker = () => {
                 }}
                 disabled={!lowDate || !upDate}
               >
-                Filtrar
+                {t("filter")}
               </Button>
             </ButtonRangeContainer>
           </CalendarRangeContainer>

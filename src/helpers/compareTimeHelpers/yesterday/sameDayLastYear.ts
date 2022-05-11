@@ -1,5 +1,6 @@
 import { startOfDay, endOfDay, subYears, subDays } from 'date-fns';
 import { formatToISOWithoutTimeZone, formatToMonthAndDayAndYear } from '../../formatDateHelpers';
+import i18next from '../../../i18n';
 
 // eslint-disable-next-line import/prefer-default-export
 export const sameDayLastYear = () => {
@@ -10,7 +11,7 @@ export const sameDayLastYear = () => {
   const upDate = endOfDay(lowDate);
   const formatedToISOUpDate = formatToISOWithoutTimeZone(upDate);
   const sideLabel = `${formatToMonthAndDayAndYear(lowDate)}`;
-  const label = 'Mismo día, año anterior';
+  const label = i18next.t('global:time.same_day_previous_year');
 
   return {
     label,

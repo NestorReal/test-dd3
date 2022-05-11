@@ -1,5 +1,6 @@
 import { startOfQuarter, endOfQuarter, subYears } from 'date-fns';
 import { formatToISOWithoutTimeZone, formatToMonthAndDayAndYear } from '../../formatDateHelpers';
+import i18next from '../../../i18n';
 
 // eslint-disable-next-line import/prefer-default-export
 export const sameLastQuarterLastYear = () => {
@@ -11,7 +12,7 @@ export const sameLastQuarterLastYear = () => {
   const sideLabel = `${formatToMonthAndDayAndYear(lowDate)} - ${formatToMonthAndDayAndYear(
     upDate,
   )}`;
-  const label = 'Q Año Anterior';
+  const label = i18next.t('global:time.q_previous_year');
 
   return {
     label,

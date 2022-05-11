@@ -10,7 +10,8 @@ const global_es: Dictionary = {
     "categories": "Categorías",
     "locations": "Locaciones",
     "time": "Tiempo",
-    "compared_to": "Comparado con"
+    "compared_to": "Comparado con",
+    "difference": 'Diferencia',
   },
   "main_menu": {
     "main_menu": "MENU PRINCIPAL",
@@ -36,8 +37,8 @@ const global_es: Dictionary = {
     "visitors": "ENTRADAS",
     "transactions": "TRANSACCIONES",
     "conversion": "TASA DE CONVERSIÓN",
-    "women": "MUJERES",
-    "mens": "HOMBRES",
+    "women": "Mujeres",
+    "mens": "Hombres",
     "total": "TOTAL",
   },
   "time": {
@@ -52,6 +53,12 @@ const global_es: Dictionary = {
     "last_year": "Año Anterior",
     "exact_day": "Día exacto",
     "date_range": "Rango de fechas",
+    "month_previous_year": "Mes Año Anterior",
+    "q_previous_year": "Q Año Anterior",
+    "week_previous_year": "Semana Año Anterior",
+    "same_day_previous_week": "Mismo día, semana anterior",
+    "same_day_previous_year": "Mismo día, año anterior",
+    "without_comparison": "Sin Comparación",
   },
   "labels": ["Entradas", "Transacciones", "Tasa de conversión"],
   "categories": ["ENTRADAS", "TRANSACCIONES", "TASA DE CONVERSION"],
@@ -61,7 +68,39 @@ const global_es: Dictionary = {
     "transactions": "Transacciones",
     "conversions": "Tasa de conversión",
   },
+  "multiselect": "Todos",
   "day_week": ['D', 'L', 'Ma', 'Mi', 'J', 'V', 'S'],
+  "categoriesOptions": {
+    "zone": {
+      "zone": "Zona",
+      "north": "Norte",
+      "south": "Sur",
+      "center": "Centro",
+    },
+    "class": {
+      "class": "Clase",
+      "classA": "Clase A++",
+      "classB": "Clase B++",
+    },
+    "condition": {
+      "condition": "Estado",
+      "mexico_city": "Ciudad de México",
+    },
+    "size": {
+      "size": "Tamaño",
+      "big": "Grande",
+      "small": "Pequeña",
+    },
+    "locations": {
+      "locations": "Locaciones",
+      "monterrey_airport": "Monterrey Aeropuerto",
+      "tijuana_airport": "Tijuana Aeropuerto",
+      "steren_center": "Steren Centro",
+      "my_little_shop": "Mi tiendita",
+      "test_store": "Tienda de prueba",
+    }
+  },
+  "filter": "Filtrar",
 };
 
 // eslint-disable-next-line camelcase
