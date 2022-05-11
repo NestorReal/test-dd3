@@ -15,11 +15,12 @@ import {
 } from '../../../types/graphs/heatmap';
 import { OptionsGroupDefault, StoresResult } from '../../../types/filters';
 import { retrieveOptionName } from '../groupedGraph';
+import i18next from '../../../i18n';
 
 const graphicDictionary = {
-  visitors: 'Entradas',
-  transactions: 'Transacciones',
-  conversions: 'Tasa de conversión',
+  visitors: i18next.t('global:heatmapLabels.visitors'),
+  transactions: i18next.t('global:heatmapLabels.transactions'),
+  conversions: i18next.t('global:heatmapLabels.conversions'),
 };
 
 export const rangesColors = (
