@@ -7,10 +7,6 @@ import useDatePicker from '.';
 
 const Template: Story = () => {
   const { lowDate, upDate, openCalendarRange, CalendarRange } = useDatePicker();
-
-  console.log('lowDate', lowDate);
-  console.log('upDate', upDate);
-
   return (
     <>
       <button type="button" onMouseDown={openCalendarRange}>

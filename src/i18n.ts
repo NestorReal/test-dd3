@@ -9,12 +9,13 @@ import global_es from './translations/es';
 // eslint-disable-next-line camelcase
 import global_en from "./translations/en";
 
+const language = localStorage.getItem("language")
 i18n
   .use(Backend)
   .use(LanguageDetector)
   .use(initReactI18next) // bind react-i18next to the instance
   .init({
-    lng: "en",
+    lng: language !== null ? language : 'es',
     debug: true,
 
     interpolation: {

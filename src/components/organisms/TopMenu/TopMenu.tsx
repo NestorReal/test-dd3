@@ -41,14 +41,27 @@ const TopMenu = ({ userName, urlLogo, onCloseSession }: ITopMenuProps) => {
     switch (event.value) {
       case 'Español':
         i18n.changeLanguage("es");
+        localStorage.setItem('language', 'es');
+        window.location.reload();
         break;
       case 'Ingles':
         i18n.changeLanguage("en");
+        localStorage.setItem('language', 'en');
+        window.location.reload();
         break;
       default:
         i18n.changeLanguage("es");
+        localStorage.setItem('language', 'es');
+        window.location.reload();
         break;
     }
+  }
+  let selectValue = {}
+  const language = localStorage.getItem("language") !== null ? localStorage.getItem("language") : 'es'
+  if(language === 'es'){
+    selectValue = {value: 'Español', label: 'Español'}
+  } else if( language === 'en'){
+    selectValue = {value: 'Ingles', label: 'Ingles'}
   }
   return (
     <Container display="flex" justifyContent="space-between" alignItems="center" width="100%">
@@ -56,7 +69,7 @@ const TopMenu = ({ userName, urlLogo, onCloseSession }: ITopMenuProps) => {
       <Container display="flex" justifyContent="space-between" alignItems="center">
         <Select
           options={options}
-          defaultValue={options[0]}
+          defaultValue={selectValue}
           styles={styles}
           onChange={optionT}
           theme={(theme) => ({
