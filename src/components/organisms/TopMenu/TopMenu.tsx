@@ -1,11 +1,10 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import Select from 'react-select';
+import { useTranslation } from 'react-i18next';
 import Container from '../../reusableStyledComponents/Container';
 import Logo from '../../atoms/Logo';
 import Avatar from '../../atoms/Avatar';
 import UserMenuDropDown from '../../molecules/UserMenuDropDown';
-
 
 export interface ITopMenuProps {
   /**
