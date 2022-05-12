@@ -6,7 +6,7 @@ import { Story, Meta } from '@storybook/react';
 import useDatePicker from '.';
 
 const Template: Story = () => {
-  const { lowDate, upDate, openCalendarRange, CalendarRange } = useDatePicker();
+  const { openCalendarRange, CalendarRange } = useDatePicker();
   return (
     <>
       <button type="button" onMouseDown={openCalendarRange}>

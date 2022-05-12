@@ -6,7 +6,7 @@ import { Story, Meta } from '@storybook/react';
 import useDatePicker from '.';
 
 const Template: Story = () => {
-  const { lowDate, openCalendar, Calendar } = useDatePicker();
+  const { openCalendar, Calendar } = useDatePicker();
 
   return (
     <>
