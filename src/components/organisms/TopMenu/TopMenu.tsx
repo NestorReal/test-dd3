@@ -25,7 +25,7 @@ const TopMenu = ({ userName, urlLogo, onCloseSession }: ITopMenuProps) => {
   const [, i18n] = useTranslation("global");
   const options = [
     { value: 'Español', label: 'Español' },
-    { value: 'Ingles', label: 'Ingles' },
+    { value: 'Ingles', label: 'English' },
   ];
   const styles = {
     control: (provided: any) => ({
@@ -61,7 +61,7 @@ const TopMenu = ({ userName, urlLogo, onCloseSession }: ITopMenuProps) => {
   if(language === 'es'){
     selectValue = {value: 'Español', label: 'Español'}
   } else if( language === 'en'){
-    selectValue = {value: 'Ingles', label: 'Ingles'}
+    selectValue = {value: 'Ingles', label: 'English'}
   }
   return (
     <Container display="flex" justifyContent="space-between" alignItems="center" width="100%">

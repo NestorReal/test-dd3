@@ -16,6 +16,18 @@ const DictionaryLabels = {
   age_ranges: 'age_range',
 };
 
+const language = localStorage.getItem("language") !== null ? localStorage.getItem("language") : 'es'
+
+const DictionaryLabelsGraphs = () => {
+  if(language === null){
+    return ['Hombres', 'Mujeres']
+  } 
+  if(language === 'en'){
+    return ['Mens', 'Women']
+  }
+  return ['Hombres', 'Mujeres']
+}
+
 export const dataClassificationGrouped = (
   data: ClassificationHourResult | ClassificationLocationResult,
   param: 'genders' | 'visitors' | 'age_ranges',
@@ -65,7 +77,7 @@ export const dataClassificationGrouped = (
     data: arrayDataNumbers[0],
     diff: arrayDataNumbers[1],
     comparedData: arrayDataNumbers[2],
-    labels: labels[index],
+    labels: labels[index].length === 2  ? DictionaryLabelsGraphs() : labels[index],
     name: 'visitors',
   }));
 };
