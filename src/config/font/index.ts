@@ -1,7 +1,8 @@
 const fontSizesPx = {
   display: '64px',
+  heading0: '40px',
   heading1: '48px',
-  heading2: '36px',
+  heading2: '35px',
   heading3: '24px',
   heading4: '20px',
   heading5: '16px',
@@ -9,15 +10,18 @@ const fontSizesPx = {
   caps1: '14px',
   caps2: '12px',
   caps3: '10px',
-  paragraph1: '20px',
+  paragraph1: '19px',
   paragraph2: '16px',
-  paragraph3: '13px',
+  paragraph3: '18px',
+  title1: '35px',
 };
 
 const fontWeights = {
   400: '400',
   500: '500',
   600: '600',
+  700: '700',
+  800: '800',
 };
 
 const lineHeights = {
@@ -31,9 +35,11 @@ const lineHeights = {
   caps1: '20px',
   caps2: '16px',
   caps3: '16px',
-  paragraph1: '28px',
+  paragraph1: '22px',
   paragraph2: '24px',
-  paragraph3: '20px',
+  paragraph3: '21.09px',
+  title1: '41px',
+  keyboard: '18px',
 };
 
 const fontTypes = {
@@ -51,8 +57,10 @@ const fontTypes = {
   caps3Bold: `font-size: ${fontSizesPx.caps3}; font-weight: ${fontWeights[600]};  line-height: ${lineHeights.caps3};`,
   caps3Regular: `font-size: ${fontSizesPx.caps3}; font-weight: ${fontWeights[400]};  line-height: ${lineHeights.caps3};`,
   paragraph1: `font-size: ${fontSizesPx.paragraph1}; font-weight: ${fontWeights[400]};  line-height: ${lineHeights.paragraph1};`,
-  paragraph2: `font-size: ${fontSizesPx.paragraph2}; font-weight: ${fontWeights[400]};  line-height: ${lineHeights.paragraph2};`,
-  paragraph3: `font-size: ${fontSizesPx.paragraph3}; font-weight: ${fontWeights[400]};  line-height: ${lineHeights.paragraph3};`,
+  title1: `font-size: ${fontSizesPx.title1}; font-weight: ${fontWeights[800]};  line-height: ${lineHeights.title1};`,
+  title2: `font-size: ${fontSizesPx.heading0}; font-weight: ${fontWeights[600]};  line-height: ${lineHeights.heading2};`,
+  paragraph2: `font-size: ${fontSizesPx.paragraph1}; font-weight: ${fontWeights[700]};  line-height: ${lineHeights.paragraph1};`,
+  paragraph3: `font-size: ${fontSizesPx.paragraph3}; font-weight: ${fontWeights[600]};  line-height: ${lineHeights.paragraph3};`,
 };
 
 export default fontTypes;

@@ -46,6 +46,7 @@ declare module 'styled-components' {
       selector: string;
     };
     text: {
+      default: string,
       section: {
         main: string;
         title: string;

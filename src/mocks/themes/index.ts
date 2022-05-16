@@ -9,17 +9,17 @@ export const mainTheme = {
   background: {
     topmenu: { main: '#FFFFFF', hovered: '#E8E8E8' },
     aside: {
-      main: '#5d2c55',
+      main: '#6AAA64',
       secondary: '#E8E8E8',
       selected: '#ffffff',
     },
     button: {
-      primary: '#5d2c55',
+      primary: '#6AAA64',
       secondary: '#ffffff',
     },
     filters: '#8c4380',
-    switchOn: '#5d2c55',
-    switchOff: '#DCA7D3',
+    switchOn: '#FFEEB2',
+    switchOff: '#2B4485',
     datacard: {
       main: '#f7f7f7',
       increment: '#e6f3ff',
@@ -41,17 +41,18 @@ export const mainTheme = {
     selector: '#e8e8e8',
   },
   text: {
+    default: '#000000',
     section: {
-      main: '#5d2c55',
+      main: '#6AAA64',
       title: '#8c4380',
-      subtitle: '#5d2c55',
+      subtitle: '#6AAA64',
     },
     topmenu: {
       main: '#1c1c1c',
     },
     aside: {
       main: '#ffffff',
-      secondary: '#5d2c55',
+      secondary: '#6AAA64',
     },
     filters: {
       title: '#ffffff',
@@ -59,7 +60,7 @@ export const mainTheme = {
       option: '#333333',
     },
     datacard: {
-      title: '#5d2c55',
+      title: '#6AAA64',
       increment: '#3b8bd5',
       decrement: '#c1751d',
       value: ' #003566',
@@ -81,7 +82,7 @@ export const mainTheme = {
   graphs: {
     heatmap: {
       yAxisLabelsTextColor: '#969696',
-      xAxisLabelsTextColor: '#5d2c55',
+      xAxisLabelsTextColor: '#6AAA64',
       dataLabelsTextColor: ['#fff'],
     },
     rangeBar: {
@@ -121,13 +122,13 @@ export const anotherTheme = {
   background: {
     topmenu: { main: '#FFFFFF', hovered: '#E8E8E8' },
     aside: {
-      main: '#5d2c55',
+      main: '#6AAA64',
       secondary: '#E8E8E8',
       selected: '#ffffff',
     },
     filters: '#8c4380',
-    switchOn: '#5d2c55',
-    switchOff: '#DCA7D3',
+    switchOn: '#FFEEB2',
+    switchOff: '#2B4485',
     datacard: {
       main: '#f7f7f7',
       increment: '#e6f3ff',
@@ -149,16 +150,16 @@ export const anotherTheme = {
   },
   text: {
     section: {
-      main: '#5d2c55',
+      main: '#6AAA64',
       title: '#8c4380',
-      subtitle: '#5d2c55',
+      subtitle: '#6AAA64',
     },
     topmenu: {
       main: '#1c1c1c',
     },
     aside: {
       main: '#ffffff',
-      secondary: '#5d2c55',
+      secondary: '#6AAA64',
     },
     filters: {
       title: '#ffffff',
@@ -166,7 +167,7 @@ export const anotherTheme = {
       option: '#333333',
     },
     datacard: {
-      title: '#5d2c55',
+      title: '#6AAA64',
       increment: ' #3b8bd5',
       decrement: ' #c1751d',
       value: ' #003566',
@@ -188,7 +189,7 @@ export const anotherTheme = {
   graphs: {
     heatmap: {
       yAxisLabelsTextColor: '#969696',
-      xAxisLabelsTextColor: '#5d2c55',
+      xAxisLabelsTextColor: '#6AAA64',
       dataLabelsTextColor: ['#fff'],
     },
     rangeBar: {

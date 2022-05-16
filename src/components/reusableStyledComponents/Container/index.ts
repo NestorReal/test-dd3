@@ -4,7 +4,7 @@ import space from '../../../config/spacing';
 type Spaces = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
 interface IContainerProps {
-  display?: 'flex' | 'block' | 'none';
+  display?: 'flex' | 'block' | 'none' | 'grid';
   flexDirection?: 'row' | 'column';
   justifyContent?:
     | 'center'
